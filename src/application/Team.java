@@ -3,7 +3,7 @@ package application;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 
-public class Team extends Button implements Comparable<Team> {
+public class Team extends Button implements Comparable<Team>, Cloneable {
     private String name;
     private Integer score;
 
@@ -28,10 +28,15 @@ public class Team extends Button implements Comparable<Team> {
         });
     }
 
+
     public Team setLoc(int x, int y) {
         setLayoutX(x);
         setLayoutY(y);
         return this;
+    }
+
+    public Team clone() {
+        return new Team(this.name);
     }
 
     private void setScore(int score) {

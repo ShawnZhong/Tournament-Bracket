@@ -41,9 +41,11 @@ public class Tournament {
 
     private void render(int round) {
         int size = data.get(round).size();
+        System.out.println(data.get(round));
         for (int i = 0; i < size; i++) {
-            int x = 50 + ((i < size / 2) ? 0 : 750);
-            int y = 30 + 60 * (i % (size / 2));
+
+            int x = 450 + (((i < size / 2) ? -400 + round * 100 : 350 - round * 100));
+            int y = 450 + (-60) * (i % (size / 2));
             pane.getChildren().add(data.get(round).get(i).setLoc(x, y));
         }
     }
@@ -65,13 +67,13 @@ public class Tournament {
             for (int i = 0; i < data.get(round).size() / 2; i++) {
                 Team t1 = data.get(round).get(2 * i + 1);
                 Team t2 = data.get(round).get(2 * i);
-                data.get(++round).add(t1.compareTo(t2) > 0 ? t1 : t2);
+                data.get(round + 1).add(t1.compareTo(t2) > 0 ? t1.clone() : t2.clone());
             }
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Balabala");
             alert.showAndWait();
         }
-        render(round);
+        render(++round);
     }
 
     @FXML
