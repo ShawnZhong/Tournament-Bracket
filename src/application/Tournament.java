@@ -2,6 +2,7 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -15,13 +16,13 @@ import java.util.List;
 public class Tournament {
     @FXML
     private Pane pane;
-    
+
     private int round = 0;
     private List<List<Team>> data = new ArrayList<>();
 
     @FXML
     private void loadTeamInfo(ActionEvent event) {
-    	pane.getChildren().clear();
+        pane.getChildren().clear();
         initialize(loadFile());
         render(round);
     }
@@ -29,22 +30,21 @@ public class Tournament {
     private void initialize(List<String> lines) {
         int teamSize = lines.size();
 
-        for (int i = 0; i < Math.log(teamSize)/Math.log(2)+1; i++)
+        for (int i = 0; i < Math.log(teamSize) / Math.log(2) + 1; i++)
             data.add(new ArrayList<>());
 
-        for (int i = 0; i < teamSize/2; i++) {
+        for (int i = 0; i < teamSize / 2; i++) {
             data.get(0).add(new Team(lines.get(i)));
             data.get(0).add(new Team(lines.get(teamSize - 1 - i)));
         }
     }
 
     private void render(int round) {
-    	int size = data.get(round).size();
-        for (int i = 0; i < size ; i++) {
-            Team team =data.get(round).get(i);
-            team.setLayoutX(50 + ((i < size / 2) ? 0 : 750));
-            team.setLayoutY(30 + 60 * (i % (size / 2)));
-            pane.getChildren().add(team);
+        int size = data.get(round).size();
+        for (int i = 0; i < size; i++) {
+            int x = 50 + ((i < size / 2) ? 0 : 750);
+            int y = 30 + 60 * (i % (size / 2));
+            pane.getChildren().add(data.get(round).get(i).setLoc(x, y));
         }
     }
 
@@ -61,16 +61,16 @@ public class Tournament {
 
     @FXML
     private void nextRound() {
-
-        // Add code for comparison
-    	List<Team> curRound = data.get(round++);
-    	System.out.println(data.toString());
-    	for(int i = 0; i < curRound.size()/2; i++) {
-    		if(curRound.get(2*i).compareTo(curRound.get(2*i+1)) > 0) 
-    			data.get(round).add(new Team(curRound.get(2*i).getText()));
-    		else
-    			data.get(round).add(new Team(curRound.get(2*i+1).getText()));
-    	}
+        try {
+            for (int i = 0; i < data.get(round).size() / 2; i++) {
+                Team t1 = data.get(round).get(2 * i + 1);
+                Team t2 = data.get(round).get(2 * i);
+                data.get(++round).add(t1.compareTo(t2) > 0 ? t1 : t2);
+            }
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Balabala");
+            alert.showAndWait();
+        }
         render(round);
     }
 
