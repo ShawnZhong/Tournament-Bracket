@@ -11,7 +11,7 @@ public class Team extends Button {
         this.name = name;
     }
 
-    public Team(String name, int score) {
+    public Team(String name, Integer score) {
         super(name);
         this.name = name;
         this.score = score;
@@ -25,11 +25,11 @@ public class Team extends Button {
         this.name = name;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
         setText(name + ": " + score);
     }
