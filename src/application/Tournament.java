@@ -10,15 +10,16 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tournament {
     @FXML
     private Pane pane;
 
-    private int teamSize;
+    private int size;
 
-    private Team[][] teams;
+    private List<List<Team>> round = new ArrayList<>();
 
     @FXML
     private void loadTeamInfo(ActionEvent event) {
@@ -28,25 +29,25 @@ public class Tournament {
     }
 
     private void initialize(List<String> lines) {
-        teamSize = lines.size();
-        teams = new Team[(int) (Math.log(teamSize) / Math.log(2)) + 1][];
-        for (int i = 0; i < teams.length; i++) {
-            teams[teams.length - i - 1] = new Team[(int) Math.pow(2, i)];
-        }
+        size = lines.size();
 
-        for (int i = 0; i < teams[0].length; i++) {
-            if (i % 2 == 0)
-                teams[0][i] = new Team(lines.get(i));
-            else
-                teams[0][teams[0].length - i] = new Team(lines.get(i));
+        for (int i = 0; i < size; i++)
+            round.add(new ArrayList<>());
+
+
+        List<Team> firstRound = round.get(0);
+
+        for (int i = 0; i < size; i++) {
+            firstRound.add(new Team(lines.get(i)));
+            firstRound.add(new Team(lines.get(size - 1 - i)));
         }
     }
 
     private void render() {
-        for (int i = 0; i < teamSize; i++) {
-            Team team = new Team(teams[0][i].getName());
-            team.setLayoutX(50 + ((i < teamSize / 2) ? 0 : 750));
-            team.setLayoutY(30 + 60 * (i % (teamSize / 2)));
+        for (int i = 0; i < size; i++) {
+            Team team = new Team(round.get(0).get(i).getName());
+            team.setLayoutX(50 + ((i < size / 2) ? 0 : 750));
+            team.setLayoutY(30 + 60 * (i % (size / 2)));
             team.setOnMouseClicked(e -> {
                 Team t = (Team) e.getSource();
                 TextInputDialog dialog = new TextInputDialog();
