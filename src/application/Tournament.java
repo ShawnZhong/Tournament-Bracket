@@ -33,12 +33,9 @@ public class Tournament {
         for (int i = 0; i < size; i++)
             round.add(new ArrayList<>());
 
-
-        List<Team> firstRound = round.get(0);
-
         for (int i = 0; i < size; i++) {
-            firstRound.add(new Team(lines.get(i)));
-            firstRound.add(new Team(lines.get(size - 1 - i)));
+            round.get(0).add(new Team(lines.get(i)));
+            round.get(0).add(new Team(lines.get(size - 1 - i)));
         }
     }
 
