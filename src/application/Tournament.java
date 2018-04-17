@@ -1,3 +1,5 @@
+package application;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
@@ -41,14 +43,13 @@ public class Tournament {
     }
 
     private List<String> loadFile() {
-        while (true) {
+        while (true)
             try {
                 FileChooser fc = new FileChooser();
                 fc.setTitle("Choose Team Info File");
                 fc.setInitialDirectory(new File("."));
                 return Files.readAllLines(fc.showOpenDialog(new Stage()).toPath());
             } catch (IOException e) { }
-        }
     }
 
 

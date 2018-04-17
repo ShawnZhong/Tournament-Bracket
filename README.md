@@ -1,4 +1,4 @@
-# Tournament-Bracket
+# application.Tournament-Bracket
 ![Screenshot](screenshot.png)
 
 # Environment

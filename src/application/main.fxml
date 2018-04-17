@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tournament">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
     <children>
         <Pane fx:id="pane" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
               style="-fx-border-color:black;-fx-border-width:1px; -fx-background-image: url('16.jpg');-fx-background-size:900 600;-fx-background-position:center center;"/>
