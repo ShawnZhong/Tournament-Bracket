@@ -9,7 +9,8 @@
         <Pane fx:id="pane" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
               style="-fx-border-color:black;-fx-border-width:1px; -fx-background-image: url('16.jpg');-fx-background-size:900 600;-fx-background-position:center center;"/>
         <Button layoutX="634.0" layoutY="556.0" mnemonicParsing="false" onAction="#loadTeamInfo" text="Load Team Info"/>
-        <Button layoutX="758.0" layoutY="556.0" mnemonicParsing="false" text="Confirm Score Input"/>
+        <Button layoutX="758.0" layoutY="556.0" mnemonicParsing="false" onAction="#nextRound"
+                text="Confirm Score Input"/>
         <Button layoutX="909.0" layoutY="556.0" mnemonicParsing="false" onAction="#exit" text="Exit"/>
     </children>
 </AnchorPane>
