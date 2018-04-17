@@ -19,6 +19,8 @@ public class Tournament {
 
     private List<Team> teamList = new ArrayList<>();
 
+    private Team[][] teamInGame;
+    
     @FXML
     private void loadTeamInfo(ActionEvent event) {
         pane.getChildren().clear();
@@ -27,13 +29,23 @@ public class Tournament {
         List<String> lines = loadFile();
         int size = lines.size();
 
-        for (int i = 0; i < size / 2; i++) {
-            teamList.add(new Team(lines.get(i)));
-            teamList.add(new Team(lines.get(size - 1 - i)));
+//        for (int i = 0; i < size; i++)
+//            teamList.add(new Team(lines.get(i)));
+        
+        teamInGame = new Team[(int)(Math.log(size)/Math.log(2))+1][];
+        for(int i = 0; i < teamInGame.length; i++) {
+        	teamInGame[teamInGame.length - i - 1] = new Team[(int)Math.pow(2, i)];
+        }
+        
+        for(int i = 0; i < teamInGame[0].length; i++) {
+        	if(i%2 == 0) 
+        		teamInGame[0][i] = new Team(lines.get(i));
+        	else
+        		teamInGame[0][teamInGame[0].length-i] = new Team(lines.get(i));
         }
 
         for (int i = 0; i < size; i++) {
-            Team team = new Team(teamList.get(i).getName());
+            Team team = new Team(teamInGame[0][i].getName());
             team.setLayoutX(50 + ((i < size / 2) ? 0 : 750));
             team.setLayoutY(30 + 60 * (i % (size / 2)));
             team.setOnMouseClicked(e -> {
