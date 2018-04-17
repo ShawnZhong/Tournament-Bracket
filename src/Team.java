@@ -1,13 +1,16 @@
-public class Team {
+import javafx.scene.control.Button;
+
+public class Team extends Button {
     private String name;
-    private int score;
+    private Integer score;
 
     public Team(String name) {
+        super(name);
         this.name = name;
-        this.score = -1;
     }
 
     public Team(String name, int score) {
+        super(name);
         this.name = name;
         this.score = score;
     }

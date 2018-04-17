@@ -1,6 +1,5 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -16,7 +15,6 @@ public class Tournament {
     private Pane pane;
 
     private List<Team> teamList = new ArrayList<>();
-    private List<Button> buttonList = new ArrayList<>();
 
     @FXML
     private void loadTeamInfo(ActionEvent event) {
@@ -33,10 +31,13 @@ public class Tournament {
             }
 
             for (int i = 0; i < size; i++) {
-                Button bt = new Button(teamList.get(i).getName());
-                bt.setLayoutX(50 + ((i < size / 2) ? 0 : 750));
-                bt.setLayoutY(30 + 60 * (i % (size / 2)));
-                pane.getChildren().add(bt);
+                Team team = new Team(teamList.get(i).getName());
+                team.setLayoutX(50 + ((i < size / 2) ? 0 : 750));
+                team.setLayoutY(30 + 60 * (i % (size / 2)));
+                team.setOnMouseClicked(e -> {
+                    ((Team) e.getTarget()).getText();
+                });
+                pane.getChildren().add(team);
             }
 
         } catch (IOException e) {
