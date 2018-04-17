@@ -2,7 +2,6 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -16,50 +15,37 @@ import java.util.List;
 public class Tournament {
     @FXML
     private Pane pane;
-
-    private int size;
-
-    private List<List<Team>> round = new ArrayList<>();
+    
+    private int round = 0;
+    private List<List<Team>> data = new ArrayList<>();
 
     @FXML
     private void loadTeamInfo(ActionEvent event) {
-        pane.getChildren().clear();
+    	pane.getChildren().clear();
         initialize(loadFile());
-        render();
+        render(round);
     }
 
     private void initialize(List<String> lines) {
-        size = lines.size();
+        int teamSize = lines.size();
 
-        for (int i = 0; i < Math.log(size)/Math.log(2)+1; i++)
-            round.add(new ArrayList<>());
+        for (int i = 0; i < Math.log(teamSize)/Math.log(2)+1; i++)
+            data.add(new ArrayList<>());
 
-        List<Team> firstRound = round.get(0);
-
-        for (int i = 0; i < size; i++) {
-            firstRound.add(new Team(lines.get(i)));
-            firstRound.add(new Team(lines.get(size - 1 - i)));
+        for (int i = 0; i < teamSize/2; i++) {
+            data.get(0).add(new Team(lines.get(i)));
+            data.get(0).add(new Team(lines.get(teamSize - 1 - i)));
         }
     }
 
-    private void render() {
-    //	for(int j = 0; j < round.size(); j++) {
-    		//int tempSize = round.get(j).size();
-    		//System.out.println(round.size() + tempSize);
-	        for (int i = 0; i < round.get(0).size(); i++) {
-	            Team team = new Team(round.get(0).get(i).getName());
-	            team.setLayoutX(50 + ((i < size / 2) ? 0 : 750));
-	            team.setLayoutY(30 + 60 * (i % (size / 2)));
-	            team.setOnMouseClicked(e -> {
-	                Team t = (Team) e.getSource();
-	                TextInputDialog dialog = new TextInputDialog();
-	                dialog.setTitle("Input Score");
-	                dialog.setContentText("Score for " + t.getText() + ":");
-	                dialog.showAndWait().ifPresent(s -> t.setScore(Integer.parseInt(s)));
-	            });
-	            pane.getChildren().add(team);
-	        }
-    	//}
+    private void render(int round) {
+    	int size = data.get(round).size();
+        for (int i = 0; i < size ; i++) {
+            Team team =data.get(round).get(i);
+            team.setLayoutX(50 + ((i < size / 2) ? 0 : 750));
+            team.setLayoutY(30 + 60 * (i % (size / 2)));
+            pane.getChildren().add(team);
+        }
     }
 
     private List<String> loadFile() {
@@ -77,8 +63,15 @@ public class Tournament {
     private void nextRound() {
 
         // Add code for comparison
-    	
-        render();
+    	List<Team> curRound = data.get(round++);
+    	System.out.println(data.toString());
+    	for(int i = 0; i < curRound.size()/2; i++) {
+    		if(curRound.get(2*i).compareTo(curRound.get(2*i+1)) > 0) 
+    			data.get(round).add(new Team(curRound.get(2*i).getText()));
+    		else
+    			data.get(round).add(new Team(curRound.get(2*i+1).getText()));
+    	}
+        render(round);
     }
 
     @FXML

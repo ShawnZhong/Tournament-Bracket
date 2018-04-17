@@ -1,28 +1,35 @@
 package application;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 
-public class Team extends Button {
+public class Team extends Button implements Comparable<Team> {
     private String name;
     private Integer score;
 
+    
     public Team(String name) {
         super(name);
+
+        setOnMouseClicked(e -> {
+            Team t = (Team) e.getSource();
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Input Score");
+            dialog.setContentText("Score for " + t.getText() + ":");
+            dialog.showAndWait().ifPresent(s -> t.setScore(Integer.parseInt(s)));
+        });
+
         this.name = name;
     }
 
-    public Team(String name, Integer score) {
-        super(name);
-        this.name = name;
-        this.score = score;
+    public Team(String name, int x, int y) {
+        this(name);
+        setLayoutX(x);
+        setLayoutY(y);
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Integer getScore() {
@@ -37,5 +44,10 @@ public class Team extends Button {
     @Override
     public String toString() {
         return "Team{" + "name='" + name + '\'' + ", score=" + score + '}';
+    }
+    
+    @Override
+    public int compareTo(Team other) {
+    	return score - other.score;
     }
 }
