@@ -18,30 +18,36 @@ public class Tournament {
 
     @FXML
     private void loadTeamInfo(ActionEvent event) {
-        try {
-            FileChooser fc = new FileChooser();
-            fc.setTitle("Choose Team Info File");
-            fc.setInitialDirectory(new File("."));
-            List<String> lines = Files.readAllLines(fc.showOpenDialog(new Stage()).toPath());
-            int size = lines.size();
+        pane.getChildren().clear();
+        teamList.clear();
 
-            for (int i = 0; i < size / 2; i++) {
-                teamList.add(new Team(lines.get(i)));
-                teamList.add(new Team(lines.get(size - 1 - i)));
-            }
+        List<String> lines = loadFile();
+        int size = lines.size();
 
-            for (int i = 0; i < size; i++) {
-                Team team = new Team(teamList.get(i).getName());
-                team.setLayoutX(50 + ((i < size / 2) ? 0 : 750));
-                team.setLayoutY(30 + 60 * (i % (size / 2)));
-                team.setOnMouseClicked(e -> {
-                    ((Team) e.getTarget()).getText();
-                });
-                pane.getChildren().add(team);
-            }
+        for (int i = 0; i < size / 2; i++) {
+            teamList.add(new Team(lines.get(i)));
+            teamList.add(new Team(lines.get(size - 1 - i)));
+        }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (int i = 0; i < size; i++) {
+            Team team = new Team(teamList.get(i).getName());
+            team.setLayoutX(50 + ((i < size / 2) ? 0 : 750));
+            team.setLayoutY(30 + 60 * (i % (size / 2)));
+            team.setOnMouseClicked(e -> {
+                ((Team) e.getTarget()).getText();
+            });
+            pane.getChildren().add(team);
+        }
+    }
+
+    private List<String> loadFile() {
+        while (true) {
+            try {
+                FileChooser fc = new FileChooser();
+                fc.setTitle("Choose Team Info File");
+                fc.setInitialDirectory(new File("."));
+                return Files.readAllLines(fc.showOpenDialog(new Stage()).toPath());
+            } catch (IOException e) { }
         }
     }
 
