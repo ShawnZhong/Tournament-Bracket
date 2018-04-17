@@ -2,7 +2,6 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -48,13 +47,6 @@ public class Tournament {
             Team team = new Team(round.get(0).get(i).getName());
             team.setLayoutX(50 + ((i < size / 2) ? 0 : 750));
             team.setLayoutY(30 + 60 * (i % (size / 2)));
-            team.setOnMouseClicked(e -> {
-                Team t = (Team) e.getSource();
-                TextInputDialog dialog = new TextInputDialog();
-                dialog.setTitle("Input Score");
-                dialog.setContentText("Score for " + t.getText() + ":");
-                dialog.showAndWait().ifPresent(s -> t.setScore(Integer.parseInt(s)));
-            });
             pane.getChildren().add(team);
         }
     }
