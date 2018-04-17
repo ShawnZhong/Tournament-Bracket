@@ -31,6 +31,7 @@ public class Team extends Button {
 
     public void setScore(int score) {
         this.score = score;
+        setText(name + ": " + score);
     }
 
     @Override
