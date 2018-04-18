@@ -29,16 +29,21 @@ public class Tournament {
 
     private void initialize(List<String> lines) {
         int teamSize = lines.size();
+        int totalRound = (int)(Math.log(teamSize) / Math.log(2));
 
-        for (int i = 0; i < Math.log(teamSize) / Math.log(2) + 1; i++)
+        for (int i = 0; i < totalRound+1; i++)
             data.add(new ArrayList<>());
 
-        for (int i = 0; i < teamSize; i++) {
-        	if(i%2 == 0) 
-        		data.get(0).add(new Team(lines.get(i)));
-        	else
-        		data.get(0).add(new Team(lines.get(teamSize - i)));
-        }
+        for (int i = 0; i < teamSize; ++i)
+        	data.get(0).add(new Team(lines.get(arrange(totalRound, i)-1)));
+    }
+    
+    private int arrange(int n, int k) {
+    	if(n == 0) return 1;
+    	if(k%2 == 1)
+			return (int)Math.pow(2,n)+1 - arrange(n-1, k/2);
+		else
+			return arrange(n-1, k/2);
     }
 
     private void render(int round) {
