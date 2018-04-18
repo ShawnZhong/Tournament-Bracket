@@ -53,4 +53,8 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
     public int compareTo(Team other) {
         return score - other.score;
     }
+    
+    public Integer getScore() {
+    	return score;
+    }
 }
