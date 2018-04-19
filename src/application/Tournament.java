@@ -120,7 +120,9 @@ public class Tournament {
         FileChooser fc = new FileChooser();
         fc.setTitle("Choose Team Info File");
         fc.setInitialDirectory(new File("."));
-        initialize(fc.showOpenDialog(new Stage()).getPath());
+        try {
+        	initialize(fc.showOpenDialog(new Stage()).getPath());
+        }catch(Exception e) {}
     }
 
     @FXML
