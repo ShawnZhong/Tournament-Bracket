@@ -6,6 +6,7 @@ import javafx.scene.control.TextInputDialog;
 public class Team extends Button implements Comparable<Team>, Cloneable {
     private String name;
     private Integer score;
+    private boolean completeRound = false;
 
 
     public Team(String name) {
@@ -14,18 +15,18 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
         this.name = name;
 
         setOnMouseClicked(e -> {
-            Team t = (Team) e.getSource();
-            TextInputDialog dialog = new TextInputDialog();
-            dialog.setTitle("Input Score");
-            dialog.setContentText("Score for " + t.getText() + ":");
-            while (true) {
-                try {
-                    dialog.showAndWait().ifPresent(s -> t.setScore(Integer.parseInt(s)));
-
-                    break;
-                } catch (Exception exc) { }
+            if (!completeRound) {
+                Team t = (Team) e.getSource();
+                TextInputDialog dialog = new TextInputDialog();
+                dialog.setTitle("Input Score");
+                dialog.setContentText("Score for " + t.getText() + ":");
+                while (true) {
+                    try {
+                        dialog.showAndWait().ifPresent(s -> t.setScore(Integer.parseInt(s)));
+                        break;
+                    } catch (Exception exc) { }
+                }
             }
-
         });
     }
 
@@ -40,11 +41,6 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
         return new Team(this.name);
     }
 
-    private void setScore(int score) {
-        this.score = score;
-        setText(name + ": " + score);
-    }
-
     @Override
     public String toString() {
         return "Team{" + "name='" + name + '\'' + ", score=" + score + '}';
@@ -54,8 +50,17 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
     public int compareTo(Team other) {
         return score - other.score;
     }
-    
+
     public Integer getScore() {
-    	return score;
+        return score;
+    }
+
+    private void setScore(int score) {
+        this.score = score;
+        setText(name + ": " + score);
+    }
+
+    public void completeRound() {
+        completeRound = true;
     }
 }

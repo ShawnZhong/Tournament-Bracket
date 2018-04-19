@@ -113,8 +113,11 @@ public class Tournament {
                 if (data.get(i).get(j) != null) continue;
                 Team t1 = data.get(i - 1).get(2 * j);
                 Team t2 = data.get(i - 1).get(2 * j + 1);
-                if (t1 == null || t2 == null || t1.getScore() == null || t2.getScore() == null) continue;
+                if (t1 == null || t2 == null || t1.getScore() == null || t2.getScore() == null || 
+                		t1.getScore() == t2.getScore()) continue;
                 data.get(i).set(j, t1.compareTo(t2) > 0 ? t1.clone() : t2.clone());
+                t1.completeRound();
+                t2.completeRound();
             }
         }
         render();
