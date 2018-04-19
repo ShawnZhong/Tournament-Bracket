@@ -10,42 +10,42 @@
         <Pane fx:id="pane" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
               style="-fx-border-color:black;-fx-border-width:1px;">
             <children>
-                <Team layoutX="40" layoutY="30"/>
-                <Team layoutX="40" layoutY="90"/>
-                <Team layoutX="40" layoutY="150"/>
-                <Team layoutX="40" layoutY="210"/>
-                <Team layoutX="40" layoutY="270"/>
-                <Team layoutX="40" layoutY="330"/>
-                <Team layoutX="40" layoutY="390"/>
-                <Team layoutX="40" layoutY="450"/>
-                <Team layoutX="800" layoutY="32"/>
-                <Team layoutX="800" layoutY="90"/>
-                <Team layoutX="800" layoutY="150"/>
-                <Team layoutX="800" layoutY="210"/>
-                <Team layoutX="800" layoutY="270"/>
-                <Team layoutX="800" layoutY="330"/>
-                <Team layoutX="800" layoutY="390"/>
-                <Team layoutX="800" layoutY="450"/>
+                <Team layoutX="40" layoutY="30" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="90" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="150" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="210" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="270" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="330" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="390" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="450" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="32" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="90" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="150" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="210" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="270" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="330" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="390" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="450" onAction="#handleTeam"/>
 
 
-                <Team layoutX="135" layoutY="60"/>
-                <Team layoutX="135" layoutY="180"/>
-                <Team layoutX="135" layoutY="300"/>
-                <Team layoutX="135" layoutY="420"/>
-                <Team layoutX="705" layoutY="32"/>
-                <Team layoutX="705" layoutY="180"/>
-                <Team layoutX="705" layoutY="300"/>
-                <Team layoutX="705" layoutY="420"/>
+                <Team layoutX="135" layoutY="60" onAction="#handleTeam"/>
+                <Team layoutX="135" layoutY="180" onAction="#handleTeam"/>
+                <Team layoutX="135" layoutY="300" onAction="#handleTeam"/>
+                <Team layoutX="135" layoutY="420" onAction="#handleTeam"/>
+                <Team layoutX="705" layoutY="60" onAction="#handleTeam"/>
+                <Team layoutX="705" layoutY="180" onAction="#handleTeam"/>
+                <Team layoutX="705" layoutY="300" onAction="#handleTeam"/>
+                <Team layoutX="705" layoutY="420" onAction="#handleTeam"/>
 
 
-                <Team layoutX="230" layoutY="120"/>
-                <Team layoutX="230" layoutY="360"/>
-                <Team layoutX="610" layoutY="120"/>
-                <Team layoutX="610" layoutY="360"/>
+                <Team layoutX="230" layoutY="120" onAction="#handleTeam"/>
+                <Team layoutX="230" layoutY="360" onAction="#handleTeam"/>
+                <Team layoutX="610" layoutY="120" onAction="#handleTeam"/>
+                <Team layoutX="610" layoutY="360" onAction="#handleTeam"/>
 
 
-                <Team layoutX="325" layoutY="240"/>
-                <Team layoutX="515" layoutY="240"/>
+                <Team layoutX="325" layoutY="240" onAction="#handleTeam"/>
+                <Team layoutX="515" layoutY="240" onAction="#handleTeam"/>
             </children>
         </Pane>
         <Button layoutX="795.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleLoad" text="Load New File"/>

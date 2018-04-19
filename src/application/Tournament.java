@@ -3,6 +3,7 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
@@ -89,17 +90,47 @@ public class Tournament {
                 if (team == null) continue;
 
                 Team old = (Team) pane.getChildren().get(index - 1);
+                old.setName(team.getName());
+                old.setDisable(false);
 
-                team.setLayoutX(old.getLayoutX());
-                team.setLayoutY(old.getLayoutY());
-
-                pane.getChildren().set(index - 1, team);
+                pane.getChildren().set(index - 1, old);
                 System.out.println((index - 1) + team.toString());
             }
         }
     }
 
-    public void handleInput() {
+
+    @FXML
+    private void handleLoad(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Choose Team Info File");
+        fc.setInitialDirectory(new File("."));
+        initialize(fc.showOpenDialog(new Stage()).getPath());
+    }
+
+    @FXML
+    private void handleExit(ActionEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    public void handleTeam(ActionEvent event) {
+        Team t = (Team) event.getSource();
+        //if (!t.completeRound) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Input Score");
+        dialog.setContentText("Score for " + t.getText() + ":");
+        while (true) {
+            try {
+                dialog.showAndWait().ifPresent(s -> t.setScore(Integer.parseInt(s)));
+                handleInput();
+                break;
+            } catch (Exception exc) { }
+        }
+        //}
+    }
+
+    private void handleInput() {
         for (int i = 1; i < data.size(); i++) {
             for (int j = 0; j < data.get(i).size(); j++) {
                 if (data.get(i).get(j) != null) continue;
@@ -113,18 +144,5 @@ public class Tournament {
             }
         }
         render();
-    }
-
-    @FXML
-    private void handleLoad(ActionEvent event) {
-        FileChooser fc = new FileChooser();
-        fc.setTitle("Choose Team Info File");
-        fc.setInitialDirectory(new File("."));
-        initialize(fc.showOpenDialog(new Stage()).getPath());
-    }
-
-    @FXML
-    private void handleExit(ActionEvent event) {
-        System.exit(0);
     }
 }

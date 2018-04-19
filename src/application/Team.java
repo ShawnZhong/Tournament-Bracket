@@ -1,16 +1,16 @@
 package application;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.TextInputDialog;
 
 public class Team extends Button implements Comparable<Team>, Cloneable {
+    public boolean completeRound;
     private String name;
     private Integer score;
-    private boolean completeRound;
 
     public Team() {
         this("Team");
-        setVisible(false);
+        setDisable(true);
+        //setVisible(true);
     }
 
     public Team(String name) {
@@ -19,19 +19,7 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
         this.name = name;
 
         setOnMouseClicked(e -> {
-            if (!completeRound) {
-                Team t = (Team) e.getSource();
-                TextInputDialog dialog = new TextInputDialog();
-                dialog.setTitle("Input Score");
-                dialog.setContentText("Score for " + t.getText() + ":");
-                while (true) {
-                    try {
-                        dialog.showAndWait().ifPresent(s -> t.setScore(Integer.parseInt(s)));
-                        Tournament.getController().handleInput();
-                        break;
-                    } catch (Exception exc) { }
-                }
-            }
+
         });
     }
 
@@ -39,13 +27,14 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
         return new Team(this.name);
     }
 
-    public Team clone(String name) {
-        this.name = name;
-        return this;
-    }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+        setText(name);
     }
 
     @Override
@@ -62,7 +51,7 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
         return score;
     }
 
-    private void setScore(int score) {
+    public void setScore(int score) {
         this.score = score;
         setText(name + ": " + score);
     }
