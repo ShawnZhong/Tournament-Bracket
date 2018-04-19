@@ -21,6 +21,7 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
             while (true) {
                 try {
                     dialog.showAndWait().ifPresent(s -> t.setScore(Integer.parseInt(s)));
+
                     break;
                 } catch (Exception exc) { }
             }

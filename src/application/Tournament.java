@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -29,9 +30,18 @@ public class Tournament {
         List<String> lines = loadFile(filePath);
         teamSize = lines.size();
         totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
-        initializePane();
         initializeData(lines);
+        initializePane();
         render();
+    }
+
+    private List<String> loadFile(String filepath) {
+        try {
+            return Files.readAllLines(Paths.get(filepath));
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.WARNING, "File not found, use demo data instead").showAndWait();
+            return IntStream.range(1, 17).mapToObj(i -> "team " + i).collect(Collectors.toList());
+        }
     }
 
     private void initializeData(List<String> lines) {
@@ -51,16 +61,9 @@ public class Tournament {
         return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
     }
 
-    private List<String> loadFile(String filepath) {
-        try {
-            return Files.readAllLines(Paths.get(filepath));
-        } catch (IOException e) {
-            new Alert(Alert.AlertType.WARNING, "File not found, use demo data instead").showAndWait();
-            return IntStream.range(1, 17).mapToObj(i -> "team " + i).collect(Collectors.toList());
-        }
-    }
-
     private void initializePane() {
+        pane.getChildren().clear();
+
         pane.setBackground(new Background(new BackgroundImage(
                 new Image(teamSize + ".jpg"),
                 BackgroundRepeat.NO_REPEAT,
@@ -68,17 +71,36 @@ public class Tournament {
                 BackgroundPosition.CENTER,
                 new BackgroundSize(900, 600, false, false, false, false)
         )));
+
+        int col = totalRound * 2 + 1;
+        for (int i = 0; i < col; i++) {
+            int round = i <= totalRound ? i : totalRound * 2 - i;
+            System.out.println(round);
+            VBox vBox = new VBox();
+            vBox.setLayoutX(40 + 95 * i);
+            vBox.setLayoutY(25 + 7 << round);
+            vBox.setSpacing(32 + round * 60);
+            IntStream.range(0, data.get(round).size()).mapToObj(e -> new Text("")).forEach(vBox.getChildren()::add);
+            pane.getChildren().add(vBox);
+        }
     }
 
     private void render() {
-        pane.getChildren().clear();
+        int col = totalRound * 2 + 1;
+
         for (int i = 0; i < data.size(); i++) {
-            int size = data.get(i).size();
-            for (int j = 0; j < size; j++) {
-                if (data.get(i).get(j) == null) continue;
-                int x = 450 + (((j < size / 2) ? -400 + i * 100 : 350 - i * 100));
-                int y = 30 + (60) * (j % (size / 2));
-                pane.getChildren().add(data.get(i).get(j).setLoc(x, y));
+            List<Team> curRound = data.get(i);
+            int curRoundSize = curRound.size();
+
+            for (int j = 0; j < curRoundSize; j++) {
+                Team team = curRound.get(j);
+                if (team == null) continue;
+
+                int x = (j < curRoundSize / 2) ? i : col - i - 1;
+                int y = j % (curRoundSize / 2);
+
+                VBox vBox = (VBox) pane.getChildren().get(x);
+                vBox.getChildren().set(y, team);
             }
         }
     }
