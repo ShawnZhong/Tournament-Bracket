@@ -32,13 +32,7 @@ public class Tournament {
 
         int teamSize = lines.size();
         int totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
-        pane.setBackground(new Background(new BackgroundImage(
-                new Image(teamSize + ".jpg"),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(900, 600, false, false, false, false)
-        )));
+        setBackground(teamSize);
 
         for (int i = 0; i < totalRound + 1; i++)
             data.add(new ArrayList<>());
@@ -47,9 +41,8 @@ public class Tournament {
             data.get(0).add(new Team(lines.get(arrange(totalRound, i) - 1)));
 
         for (int i = 1; i < totalRound + 1; i++)
-            for (int j = 0; j < (int) Math.pow(2, totalRound - i); j++)
+            for (int j = 0; j < (1 << (totalRound - i)); j++)
                 data.get(i).add(null);
-
 
         render(round);
     }
@@ -61,6 +54,16 @@ public class Tournament {
             new Alert(Alert.AlertType.WARNING, "File not found, use demo data").showAndWait();
             return IntStream.range(1, 17).mapToObj(i -> "team " + i).collect(Collectors.toList());
         }
+    }
+
+    private void setBackground(int teamSize) {
+        pane.setBackground(new Background(new BackgroundImage(
+                new Image(teamSize + ".jpg"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(900, 600, false, false, false, false)
+        )));
     }
 
     private int arrange(int n, int k) {
@@ -106,7 +109,7 @@ public class Tournament {
 
 
     @FXML
-    private void nextRound() {
+    private void handleNextRound() {
 //Option 1: Do not show everything util all teams' scores are entered
         try {
             for (int i = 0; i < data.get(round).size() / 2; i++) {
@@ -153,7 +156,7 @@ public class Tournament {
 
 
     @FXML
-    private void loadTeamInfo(ActionEvent event) {
+    private void handleLoad(ActionEvent event) {
         FileChooser fc = new FileChooser();
         fc.setTitle("Choose Team Info File");
         fc.setInitialDirectory(new File("."));
@@ -161,7 +164,7 @@ public class Tournament {
     }
 
     @FXML
-    private void exit(ActionEvent event) {
+    private void handleExit(ActionEvent event) {
         System.exit(0);
     }
 }

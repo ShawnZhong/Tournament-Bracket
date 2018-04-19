@@ -8,9 +8,9 @@
     <children>
         <Pane fx:id="pane" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
               style="-fx-border-color:black;-fx-border-width:1px;-fx-background-color:white"/>
-        <Button layoutX="637.0" layoutY="556.0" mnemonicParsing="false" onAction="#loadTeamInfo" text="Load New File"/>
-        <Button layoutX="758.0" layoutY="556.0" mnemonicParsing="false" onAction="#nextRound"
+        <Button layoutX="637.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleLoad" text="Load New File"/>
+        <Button layoutX="758.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleNextRound"
                 text="Confirm Score Input"/>
-        <Button layoutX="909.0" layoutY="556.0" mnemonicParsing="false" onAction="#exit" text="Exit"/>
+        <Button layoutX="909.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleExit" text="Exit"/>
     </children>
 </AnchorPane>
