@@ -109,7 +109,7 @@ public class Tournament {
 
 
     @FXML
-    private void handleNextRound() {
+    private void handleNextRound(ActionEvent event) {
 //Option 1: Do not show everything util all teams' scores are entered
         try {
             for (int i = 0; i < data.get(round).size() / 2; i++) {
