@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>application.Team</OriginalElement>
+  <nodes>
+    <node x="204.91666666666663" y="0.0">javafx.scene.control.Button</node>
+    <node x="430.0" y="715.0">application.Tournament</node>
+    <node x="747.9166666666666" y="166.5">java.lang.Cloneable</node>
+    <node x="252.0" y="1093.0">application.Main</node>
+    <node x="20.0" y="670.0">javafx.application.Application</node>
+    <node x="457.0" y="433.0">application.Team</node>
+    <node x="550.9166666666666" y="155.5">java.lang.Comparable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="javafx.scene.control.Button" target="javafx.scene.control.Button">
+      <point x="-108.66666666666669" y="181.5" />
+      <point x="259.24999999999994" y="383.0" />
+      <point x="184.91666666666663" y="383.0" />
+      <point x="184.91666666666663" y="181.5" />
+      <point x="-163.0" y="-0.0" />
+    </edge>
+    <edge source="application.Team" target="java.lang.Cloneable">
+      <point x="75.75" y="-93.5" />
+      <point x="633.75" y="413.0" />
+      <point x="802.9166666666666" y="413.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javafx.application.Application" target="javafx.application.Application">
+      <point x="-130.0" y="181.5" />
+      <point x="85.0" y="1053.0" />
+      <point x="0.0" y="1053.0" />
+      <point x="0.0" y="851.5" />
+      <point x="-195.0" y="-0.0" />
+    </edge>
+    <edge source="application.Tournament" target="application.Team">
+      <point x="-85.33333333333331" y="-136.5" />
+      <point x="472.6666666666667" y="645.0" />
+      <point x="490.6666666666667" y="645.0" />
+      <point x="-67.33333333333331" y="93.5" />
+    </edge>
+    <edge source="application.Team" target="javafx.scene.control.Button">
+      <point x="-75.75" y="-93.5" />
+      <point x="482.25" y="413.0" />
+      <point x="367.91666666666663" y="413.0" />
+      <point x="0.0" y="181.5" />
+    </edge>
+    <edge source="application.Main" target="javafx.application.Application">
+      <point x="-62.0" y="-48.5" />
+      <point x="283.0" y="1073.0" />
+      <point x="215.0" y="1073.0" />
+      <point x="0.0" y="181.5" />
+    </edge>
+    <edge source="application.Team" target="java.lang.Comparable">
+      <point x="25.25" y="-93.5" />
+      <point x="583.25" y="403.0" />
+      <point x="639.4166666666666" y="403.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="application.Main" target="application.Tournament">
+      <point x="62.0" y="-48.5" />
+      <point x="407.0" y="1073.0" />
+      <point x="558.0" y="1073.0" />
+      <point x="0.0" y="136.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.701681314056776" x="422.22071612670925" y="576.5682626640097" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
