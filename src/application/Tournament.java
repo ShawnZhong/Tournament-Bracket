@@ -4,20 +4,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Tournament {
     @FXML
@@ -26,38 +24,47 @@ public class Tournament {
     private int round = 0;
     private List<List<Team>> data = new ArrayList<>();
 
-    @FXML
-    private void loadTeamInfo(ActionEvent event) {
+    public void initialize(String filePath) {
         pane.getChildren().clear();
-        initialize(loadFile());
-        render(round);
-        //render();
-        //render(round);
-    }
+        data.clear();
 
-    private void initialize(List<String> lines) {
+        List<String> lines = loadFile(filePath);
+
         int teamSize = lines.size();
-        int totalRound = (int)(Math.log(teamSize) / Math.log(2));
-        pane.setBackground(new Background(new BackgroundImage(new Image(teamSize + ".jpg"), BackgroundRepeat.NO_REPEAT, 
-        	BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,new BackgroundSize(900,600,false,false,false,false))));
-        for (int i = 0; i < totalRound+1; i++)
+        int totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
+        pane.setBackground(new Background(new BackgroundImage(
+                new Image(teamSize + ".jpg"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(900, 600, false, false, false, false)
+        )));
+
+        for (int i = 0; i < totalRound + 1; i++)
             data.add(new ArrayList<>());
 
-        for (int i = 0; i < teamSize; ++i)
-        	data.get(0).add(new Team(lines.get(arrange(totalRound, i)-1)));
-        
-        for(int i = 1; i < totalRound+1; i++) {
-        	for(int j = 0; j < (int)Math.pow(2, totalRound-i); j++)
-        		data.get(i).add(null);
+        for (int i = 0; i < teamSize; i++)
+            data.get(0).add(new Team(lines.get(arrange(totalRound, i) - 1)));
+
+        for (int i = 1; i < totalRound + 1; i++)
+            for (int j = 0; j < (int) Math.pow(2, totalRound - i); j++)
+                data.get(i).add(null);
+
+
+        render(round);
+    }
+
+    private List<String> loadFile(String filepath) {
+        try {
+            return Files.readAllLines(Paths.get(filepath));
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.WARNING, "File not found, use demo data").showAndWait();
+            return IntStream.range(1, 17).mapToObj(i -> "team " + i).collect(Collectors.toList());
         }
     }
-    
+
     private int arrange(int n, int k) {
-    	if(n == 0) return 1;
-    	if(k%2 == 1)
-			return (int)Math.pow(2,n)+1 - arrange(n-1, k/2);
-		else
-			return arrange(n-1, k/2);
+        return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - arrange(n - 1, k / 2) : arrange(n - 1, k / 2);
     }
 
     //Option 1: Do not show everything util all teams' scores are entered
@@ -69,7 +76,7 @@ public class Tournament {
             pane.getChildren().add(data.get(round).get(i).setLoc(x, y));
         }
     }
-    
+
 //Option 2: Compute and show everything entered
 //    private void render() {
 //    	pane.getChildren().clear();
@@ -97,16 +104,6 @@ public class Tournament {
 //	    }
 //    }
 
-    private List<String> loadFile() {
-        while (true)
-            try {
-                FileChooser fc = new FileChooser();
-                fc.setTitle("Choose Team Info File");
-                fc.setInitialDirectory(new File("."));
-                return Files.readAllLines(fc.showOpenDialog(new Stage()).toPath());
-            } catch (IOException e) { }
-    }
-
 
     @FXML
     private void nextRound() {
@@ -118,11 +115,10 @@ public class Tournament {
                 data.get(round + 1).add(t1.compareTo(t2) > 0 ? t1.clone() : t2.clone());
             }
         } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Balabala");	//Change message here
-            alert.showAndWait();
+            new Alert(Alert.AlertType.WARNING, "Balabala").showAndWait();    //Change message here
         }
         render(++round);
-    	
+
 //Option 2: Compute and show everything entered
 //    	for(int i = 1; i < data.size(); i++) {
 //    		for(int j = 0; j < data.get(i).size(); j++) {
@@ -134,7 +130,7 @@ public class Tournament {
 //    		}
 //    	}
 //    	render();
-    	
+
 //Option 3: Show everything in the current round
 //    	boolean complete = true;
 //    	List<Team> curRound = data.get(round);
@@ -153,6 +149,15 @@ public class Tournament {
 //    		render(round--);
 //    	else
 //    		render(round);
+    }
+
+
+    @FXML
+    private void loadTeamInfo(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Choose Team Info File");
+        fc.setInitialDirectory(new File("."));
+        initialize(fc.showOpenDialog(new Stage()).getPath());
     }
 
     @FXML

@@ -8,7 +8,7 @@
     <children>
         <Pane fx:id="pane" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
               style="-fx-border-color:black;-fx-border-width:1px;-fx-background-color:white"/>
-        <Button layoutX="634.0" layoutY="556.0" mnemonicParsing="false" onAction="#loadTeamInfo" text="Load Team Info"/>
+        <Button layoutX="637.0" layoutY="556.0" mnemonicParsing="false" onAction="#loadTeamInfo" text="Load New File"/>
         <Button layoutX="758.0" layoutY="556.0" mnemonicParsing="false" onAction="#nextRound"
                 text="Confirm Score Input"/>
         <Button layoutX="909.0" layoutY="556.0" mnemonicParsing="false" onAction="#exit" text="Exit"/>
