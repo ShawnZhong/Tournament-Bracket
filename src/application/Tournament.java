@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -19,12 +18,20 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Tournament {
+    private static Tournament self = null;
     @FXML
     private Pane pane;
-
     private int teamSize = 0;
     private int totalRound = 0;
     private List<List<Team>> data = new ArrayList<>();
+
+    public Tournament() {
+        self = this;
+    }
+
+    public static Tournament getController() {
+        return self;
+    }
 
     public void initialize(String filePath) {
         List<String> lines = loadFile(filePath);
@@ -62,7 +69,6 @@ public class Tournament {
     }
 
     private void initializePane() {
-        pane.getChildren().clear();
 
         pane.setBackground(new Background(new BackgroundImage(
                 new Image(teamSize + ".jpg"),
@@ -71,50 +77,36 @@ public class Tournament {
                 BackgroundPosition.CENTER,
                 new BackgroundSize(900, 600, false, false, false, false)
         )));
-
-        int col = totalRound * 2 + 1;
-        for (int i = 0; i < col; i++) {
-            int round = i <= totalRound ? i : totalRound * 2 - i;
-            System.out.println(round);
-            VBox vBox = new VBox();
-            vBox.setLayoutX(40 + 95 * i);
-            vBox.setLayoutY(25 + 7 << round);
-            vBox.setSpacing(32 + round * 60);
-            IntStream.range(0, data.get(round).size()).mapToObj(e -> new Text("")).forEach(vBox.getChildren()::add);
-            pane.getChildren().add(vBox);
-        }
     }
 
+
     private void render() {
-        int col = totalRound * 2 + 1;
-
+        int index = 0;
         for (int i = 0; i < data.size(); i++) {
-            List<Team> curRound = data.get(i);
-            int curRoundSize = curRound.size();
-
-            for (int j = 0; j < curRoundSize; j++) {
-                Team team = curRound.get(j);
+            for (int j = 0; j < data.get(i).size(); j++) {
+                Team team = data.get(i).get(j);
+                index++;
                 if (team == null) continue;
 
-                int x = (j < curRoundSize / 2) ? i : col - i - 1;
-                int y = j % (curRoundSize / 2);
+                Team old = (Team) pane.getChildren().get(index - 1);
 
-                VBox vBox = (VBox) pane.getChildren().get(x);
-                vBox.getChildren().set(y, team);
+                team.setLayoutX(old.getLayoutX());
+                team.setLayoutY(old.getLayoutY());
+
+                pane.getChildren().set(index - 1, team);
+                System.out.println((index - 1) + team.toString());
             }
         }
     }
 
-
-    @FXML
-    private void handleNextRound(ActionEvent event) {
+    public void handleInput() {
         for (int i = 1; i < data.size(); i++) {
             for (int j = 0; j < data.get(i).size(); j++) {
                 if (data.get(i).get(j) != null) continue;
                 Team t1 = data.get(i - 1).get(2 * j);
                 Team t2 = data.get(i - 1).get(2 * j + 1);
-                if (t1 == null || t2 == null || t1.getScore() == null || t2.getScore() == null || 
-                		t1.getScore() == t2.getScore()) continue;
+                if (t1 == null || t2 == null || t1.getScore() == null || t2.getScore() == null ||
+                        t1.getScore().equals(t2.getScore())) continue;
                 data.get(i).set(j, t1.compareTo(t2) > 0 ? t1.clone() : t2.clone());
                 t1.completeRound();
                 t2.completeRound();
@@ -122,7 +114,6 @@ public class Tournament {
         }
         render();
     }
-
 
     @FXML
     private void handleLoad(ActionEvent event) {

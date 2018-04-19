@@ -6,8 +6,12 @@ import javafx.scene.control.TextInputDialog;
 public class Team extends Button implements Comparable<Team>, Cloneable {
     private String name;
     private Integer score;
-    private boolean completeRound = false;
+    private boolean completeRound;
 
+    public Team() {
+        this("Team");
+        setVisible(false);
+    }
 
     public Team(String name) {
         super(name);
@@ -23,6 +27,7 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
                 while (true) {
                     try {
                         dialog.showAndWait().ifPresent(s -> t.setScore(Integer.parseInt(s)));
+                        Tournament.getController().handleInput();
                         break;
                     } catch (Exception exc) { }
                 }
@@ -30,15 +35,17 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
         });
     }
 
+    public Team clone() {
+        return new Team(this.name);
+    }
 
-    public Team setLoc(int x, int y) {
-        setLayoutX(x);
-        setLayoutY(y);
+    public Team clone(String name) {
+        this.name = name;
         return this;
     }
 
-    public Team clone() {
-        return new Team(this.name);
+    public String getName() {
+        return name;
     }
 
     @Override
