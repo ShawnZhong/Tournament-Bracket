@@ -5,8 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -20,11 +19,14 @@ import java.util.stream.IntStream;
 
 public class Tournament {
     private Pane pane;
-
     @FXML
     private Pane pane16;
     @FXML
     private Pane pane8;
+    @FXML
+    private Pane pane4;
+    @FXML
+    private Pane pane2;
 
     public void initialize(String filePath) {
         List<String> lines = loadFile(filePath);
@@ -38,19 +40,28 @@ public class Tournament {
             case (8):
                 pane = pane8;
                 break;
+            case (4):
+                pane = pane4;
+                break;
+            case (2):
+                pane = pane2;
+                break;
+            case (1):
+                //TODO: FIXME
+                break;
+            default:
+                pane = pane16;
+                teamSize = 16;
+                new Alert(Alert.AlertType.WARNING, "Teamsize not supported").showAndWait();
+                break;
         }
         pane.setVisible(true);
-        pane.setBackground(new Background(new BackgroundImage(
-                new Image(teamSize + ".jpg"),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(900, 600, false, false, false, false)
-        )));
 
         for (Node node : pane.getChildren()) {
-            node.setVisible(false);
-            node.setDisable(false);
+            Team team = (Team) node;
+            team.setVisible(false);
+            team.setDisable(false);
+            team.setCompleteRound(false);
         }
 
         for (int i = 0; i < teamSize; i++) {
@@ -78,32 +89,32 @@ public class Tournament {
     @FXML
     public void handleTeam(ActionEvent event) {
         Team team1 = (Team) event.getSource();
-        //if (!t.completeRound) {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Input Score");
-        dialog.setContentText("Score for " + team1.getText() + ":");
-        // while (true) {
-        try {
-            dialog.showAndWait().ifPresent(s -> {
-                team1.setScore(Integer.parseInt(s));
-                int index1 = pane.getChildren().indexOf(team1);
-                int index2 = (index1 % 2 == 0) ? index1 - 1 : index1 + 1;
-                Team team2 = getTeam(index2);
-                if (team2.getScore() != null) { // TODO:FIXME
-                    Team parent = getTeam((index1 - 1) / 2);
-                    team1.setDisable(true);
-                    team2.setDisable(true);
-                    Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
-                    parent.setName(winner.getName());
-                    parent.setVisible(true);
+        if (!team1.isCompleteRound()) {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Input Score");
+            dialog.setContentText("Score for " + team1.getText() + ":");
+            while (true) {
+                try {
+                    dialog.showAndWait().ifPresent(s -> {
+                        team1.setScore(Integer.parseInt(s));
+                        int index1 = pane.getChildren().indexOf(team1);
+                        int index2 = (index1 % 2 == 0) ? index1 - 1 : index1 + 1;
+                        Team team2 = getTeam(index2);
+                        if (team2.getScore() != null) { // TODO:FIXME
+                            Team parent = getTeam((index1 - 1) / 2);
+                            team1.setCompleteRound(true);
+                            team2.setCompleteRound(true);
+                            Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
+                            parent.setName(winner.getName());
+                            parent.setVisible(true);
+                        }
+                    });
+                    break;
+                } catch (Exception exc) {
+                    new Alert(Alert.AlertType.WARNING, "Invalid input, please try again").showAndWait();
                 }
-
-
-            });
-            // break;
-        } catch (Exception exc) { }
-        //}
-        //}
+            }
+        }
     }
 
     private Team getTeam(int index) {
