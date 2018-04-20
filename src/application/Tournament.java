@@ -71,7 +71,7 @@ public class Tournament {
             lines = Files.readAllLines(Paths.get(filepath));
         } catch (Exception e) {
             if (filepath != null) // Used for demo
-                new Alert(Alert.AlertType.WARNING, "File not found. Use demo data instead").showAndWait();
+                showWarn("File not found. Use demo data instead");
             ChoiceDialog<Integer> dialog = new ChoiceDialog<>(teamSize, 1, 2, 4, 8, 16);
             dialog.setTitle("Choose team size");
             dialog.setHeaderText("Demo mode");
@@ -85,23 +85,19 @@ public class Tournament {
 
     private void initializePane() {
         if (teamSize != 1 && teamSize != 2 && teamSize != 4 && teamSize != 8 && teamSize != 16) {
-            new Alert(Alert.AlertType.WARNING, "Team size " + teamSize + " not supported").showAndWait();
+            showWarn("Team size " + teamSize + " not supported");
             teamSize = 16;
             initialize(null); // Demo mode
             return;
         }
 
-        for (Node node : panes.getChildren()) {
-            Pane pane = (Pane) node;
-            pane.setVisible(false);
-        }
+        panes.getChildren().forEach(node -> node.setVisible(false));
         pane = (Pane) panes.getChildren().get(totalRound);
         pane.setVisible(true);
     }
 
     private void initializeTeam() {
-        for (Node node : pane.getChildren())
-            ((Team) node).reset();
+        pane.getChildren().forEach(node -> ((Team) node).reset());
 
         for (int i = 0; i < teamSize; i++)
             getTeam(teamSize - 1 + i).setName(lines.get(shuffle(totalRound, i) - 1));
@@ -127,11 +123,11 @@ public class Tournament {
 
 
     @FXML
-    private void handleInput(ActionEvent event) {
+    private void handleTeamEvent(ActionEvent event) {
         Team team = (Team) event.getSource();
 
         if (team.equals(getTeam(0))) {
-            new Alert(Alert.AlertType.INFORMATION, team + " wins!!!").showAndWait();
+            showInfo(team + " wins!!!");
             return;
         }
 
@@ -150,17 +146,14 @@ public class Tournament {
         while (true) {
             try {
                 Optional<String> str = dialog.showAndWait();
-                if (str.isPresent()) {
-                    Double score = Double.valueOf(str.get());
-                    if (score < 0) throw new InputMismatchException();
-                    return score;
-                }
-                break;
+                if (!str.isPresent()) throw new InputMismatchException();
+                Double score = Double.valueOf(str.get());
+                if (score < 0) throw new InputMismatchException();
+                return score;
             } catch (Exception e) {
-                new Alert(Alert.AlertType.WARNING, "Invalid input. Please try again.").showAndWait();
+                showWarn("Invalid input. Please try again.");
             }
         }
-        return 0d;
     }
 
     private void compareScore(Team team1) {
@@ -170,8 +163,7 @@ public class Tournament {
             return;
 
         if (team1.compareTo(team2) == 0) {
-            new Alert(Alert.AlertType.WARNING, team1 + " and " + team2 + " tie!"
-                    + "\r\nStart another game! ").showAndWait();
+            showWarn(team1 + " and " + team2 + " tie!" + "\r\nStart another game! ");
             team1.setScore(null);
             team2.setScore(null);
             return;
@@ -182,7 +174,7 @@ public class Tournament {
         team1.setCompleteRound(true);
         team2.setCompleteRound(true);
         if (parent.equals(getTeam(0)))
-            new Alert(Alert.AlertType.INFORMATION, parent + " wins!!!").showAndWait();
+            showInfo(parent + " wins!!!");
 
     }
 
@@ -204,4 +196,8 @@ public class Tournament {
 
     @FXML
     private void handleReset(ActionEvent event) { initializeTeam(); }
+
+    private void showInfo(String str) {new Alert(Alert.AlertType.INFORMATION, str).showAndWait();}
+
+    private void showWarn(String str) {new Alert(Alert.AlertType.WARNING, str).showAndWait();}
 }
