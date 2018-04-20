@@ -20,7 +20,6 @@ package application;
 import com.sun.istack.internal.Nullable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TextInputDialog;
@@ -136,7 +135,6 @@ public class Tournament {
 
         team.setScore(promptInput(team.getName()));
         compareScore(team);
-
     }
 
     private Double promptInput(String teamName) {
