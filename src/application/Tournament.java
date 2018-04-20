@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -90,30 +91,27 @@ public class Tournament {
 
     @FXML
     public void handleTeam(ActionEvent event) {
-        Team teram = (Team) event.getSource();
+        Team team = (Team) event.getSource();
 
-        if (getTeamIndex(teram) == 0) {
-            new Alert(Alert.AlertType.WARNING, teram.getName() + " wins!!!").showAndWait();
+        if (getTeamIndex(team) == 0) {
+            new Alert(Alert.AlertType.WARNING, team.getName() + " wins!!!").showAndWait();
             return;
         }
 
-        if (!teram.isCompleteRound()) {
+        if (!team.isCompleteRound()) {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Input Score");
-            dialog.setContentText("Score for " + teram.getText() + ":");
+            dialog.setContentText("Score for " + team.getName() + ": ");
             while (true) {
                 try {
                     dialog.showAndWait().ifPresent(s -> {
                         int score = Integer.parseInt(s);
-                        if (score < 0) {
-                            new Alert(Alert.AlertType.WARNING, "Invalid input, please try again").showAndWait();
-                            return;
-                        }
-                        teram.setScore(score);
-                        compareScore(teram);
+                        if (score < 0) throw new InputMismatchException();
+                        team.setScore(score);
+                        compareScore(team);
                     });
                     break;
-                } catch (Exception exc) {
+                } catch (Exception e) {
                     new Alert(Alert.AlertType.WARNING, "Invalid input, please try again").showAndWait();
                 }
             }
@@ -137,13 +135,10 @@ public class Tournament {
 
             team1.setCompleteRound(true);
             team2.setCompleteRound(true);
-            Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
-            parent.setName(winner.getName());
+            parent.setName(team1.compareTo(team2) > 0 ? team1.getName() : team2.getName());
             parent.setVisible(true);
-            if (getTeamIndex(parent) == 0) {
+            if (getTeamIndex(parent) == 0)
                 new Alert(Alert.AlertType.WARNING, parent.getName() + " wins!!!").showAndWait();
-                return;
-            }
         }
     }
 
