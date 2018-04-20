@@ -2,15 +2,13 @@ package application;
 
 import javafx.scene.control.Button;
 
-public class Team extends Button implements Comparable<Team>, Cloneable {
-    public boolean completeRound;
+public class Team extends Button implements Comparable<Team> {
+    private boolean completeRound;
     private String name;
     private Integer score;
 
     public Team() {
-        this("Team");
-        setDisable(true);
-        //setVisible(true);
+        super();
     }
 
     public Team(String name) {
@@ -18,24 +16,17 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
 
         this.name = name;
 
-        setOnMouseClicked(e -> {
-
-        });
     }
-
-    public Team clone() {
-        return new Team(this.name);
-    }
-
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
         setText(name);
+        this.name = name;
     }
+
 
     @Override
     public String toString() {
@@ -51,12 +42,16 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
-        setText(name + ": " + score);
+        setText(score == null ? name : name + ": " + score);
     }
 
-    public void completeRound() {
-        completeRound = true;
+    public boolean isCompleteRound() {
+        return completeRound;
+    }
+
+    public void setCompleteRound(boolean completeRound) {
+        this.completeRound = completeRound;
     }
 }
