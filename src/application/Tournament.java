@@ -144,7 +144,7 @@ public class Tournament {
         while (true) {
             try {
                 Optional<String> str = dialog.showAndWait();
-                if (!str.isPresent()) throw new InputMismatchException();
+                if (!str.isPresent()) return null;
                 Double score = Double.valueOf(str.get());
                 if (score < 0) throw new InputMismatchException();
                 return score;
