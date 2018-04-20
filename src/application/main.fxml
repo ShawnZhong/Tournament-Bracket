@@ -1,102 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import application.Team?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
+<?import application.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
     <Pane fx:id="panes">
-        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0" style="-fx-border-color:black;-fx-border-width:1px;-fx-background-color:white;" visible="false">
-            <Team layoutX="400" layoutY="300" onAction="#handleTeamEvent" />
+        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
+              style="-fx-border-color:black;-fx-border-width:1px;-fx-background-color:white;" visible="false">
+            <Team layoutX="400" layoutY="300" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0" style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('2.jpg');-fx-background-size:900 600;-fx-background-position:center center;" visible="false">
-            <Team layoutX="400" layoutY="300" onAction="#handleTeamEvent" />
+        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
+              style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('2.jpg');-fx-background-size:900 600;-fx-background-position:center center;"
+              visible="false">
+            <Team layoutX="400" layoutY="300" onAction="#handleTeamEvent"/>
 
-            <Team layoutX="100" layoutY="245" onAction="#handleTeamEvent" />
-            <Team layoutX="750" layoutY="245" onAction="#handleTeamEvent" />
+            <Team layoutX="100" layoutY="245" onAction="#handleTeamEvent"/>
+            <Team layoutX="750" layoutY="245" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0" style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('4.jpg');-fx-background-size:900 600;-fx-background-position:center center;" visible="false">
-            <Team layoutX="400" layoutY="300" onAction="#handleTeamEvent" />
+        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
+              style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('4.jpg');-fx-background-size:900 600;-fx-background-position:center center;"
+              visible="false">
+            <Team layoutX="400" layoutY="300" onAction="#handleTeamEvent"/>
 
-            <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent" />
-            <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent" />
+            <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent"/>
+            <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent"/>
 
-            <Team layoutX="20" layoutY="150" onAction="#handleTeamEvent" />
-            <Team layoutX="20" layoutY="325" onAction="#handleTeamEvent" />
-            <Team layoutX="820" layoutY="150" onAction="#handleTeamEvent" />
-            <Team layoutX="820" layoutY="325" onAction="#handleTeamEvent" />
+            <Team layoutX="20" layoutY="150" onAction="#handleTeamEvent"/>
+            <Team layoutX="20" layoutY="325" onAction="#handleTeamEvent"/>
+            <Team layoutX="820" layoutY="150" onAction="#handleTeamEvent"/>
+            <Team layoutX="820" layoutY="325" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0" style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('8.jpg');-fx-background-size:900 600;-fx-background-position:center center;" visible="false">
-            <Team layoutX="400" layoutY="300" onAction="#handleTeamEvent" />
+        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
+              style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('8.jpg');-fx-background-size:900 600;-fx-background-position:center center;"
+              visible="false">
+            <Team layoutX="400" layoutY="300" onAction="#handleTeamEvent"/>
 
-            <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent" />
-            <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent" />
+            <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent"/>
+            <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent"/>
 
-            <Team layoutX="230" layoutY="120" onAction="#handleTeamEvent" />
-            <Team layoutX="230" layoutY="360" onAction="#handleTeamEvent" />
-            <Team layoutX="610" layoutY="120" onAction="#handleTeamEvent" />
-            <Team layoutX="610" layoutY="360" onAction="#handleTeamEvent" />
+            <Team layoutX="230" layoutY="120" onAction="#handleTeamEvent"/>
+            <Team layoutX="230" layoutY="360" onAction="#handleTeamEvent"/>
+            <Team layoutX="610" layoutY="120" onAction="#handleTeamEvent"/>
+            <Team layoutX="610" layoutY="360" onAction="#handleTeamEvent"/>
 
-            <Team layoutX="30" layoutY="75" onAction="#handleTeamEvent" />
-            <Team layoutX="30" layoutY="185" onAction="#handleTeamEvent" />
-            <Team layoutX="30" layoutY="290" onAction="#handleTeamEvent" />
-            <Team layoutX="30" layoutY="395" onAction="#handleTeamEvent" />
-            <Team layoutX="805" layoutY="75" onAction="#handleTeamEvent" />
-            <Team layoutX="805" layoutY="185" onAction="#handleTeamEvent" />
-            <Team layoutX="805" layoutY="290" onAction="#handleTeamEvent" />
-            <Team layoutX="805" layoutY="395" onAction="#handleTeamEvent" />
+            <Team layoutX="30" layoutY="75" onAction="#handleTeamEvent"/>
+            <Team layoutX="30" layoutY="185" onAction="#handleTeamEvent"/>
+            <Team layoutX="30" layoutY="290" onAction="#handleTeamEvent"/>
+            <Team layoutX="30" layoutY="395" onAction="#handleTeamEvent"/>
+            <Team layoutX="805" layoutY="75" onAction="#handleTeamEvent"/>
+            <Team layoutX="805" layoutY="185" onAction="#handleTeamEvent"/>
+            <Team layoutX="805" layoutY="290" onAction="#handleTeamEvent"/>
+            <Team layoutX="805" layoutY="395" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0" style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('16.jpg');-fx-background-size:900 600;-fx-background-position:center center;" visible="false">
-            <Team layoutX="440" layoutY="300" onAction="#handleTeam"/>
+        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
+              style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('16.jpg');-fx-background-size:900 600;-fx-background-position:center center;"
+              visible="false">
+            <Team layoutX="440" layoutY="300" onAction="#handleTeamEvent"/>
 
-            <Team layoutX="350" layoutY="240" onAction="#handleTeam"/>
-            <Team layoutX="490" layoutY="240" onAction="#handleTeam"/>
+            <Team layoutX="350" layoutY="240" onAction="#handleTeamEvent"/>
+            <Team layoutX="490" layoutY="240" onAction="#handleTeamEvent"/>
 
-            <Team layoutX="280" layoutY="120" onAction="#handleTeam"/>
-            <Team layoutX="280" layoutY="360" onAction="#handleTeam"/>
-            <Team layoutX="560" layoutY="120" onAction="#handleTeam"/>
-            <Team layoutX="560" layoutY="360" onAction="#handleTeam"/>
-
-
-            <Team layoutX="190" layoutY="60" onAction="#handleTeam"/>
-            <Team layoutX="190" layoutY="180" onAction="#handleTeam"/>
-            <Team layoutX="190" layoutY="300" onAction="#handleTeam"/>
-            <Team layoutX="190" layoutY="420" onAction="#handleTeam"/>
-            <Team layoutX="650" layoutY="60" onAction="#handleTeam"/>
-            <Team layoutX="650" layoutY="180" onAction="#handleTeam"/>
-            <Team layoutX="650" layoutY="300" onAction="#handleTeam"/>
-            <Team layoutX="650" layoutY="420" onAction="#handleTeam"/>
+            <Team layoutX="280" layoutY="120" onAction="#handleTeamEvent"/>
+            <Team layoutX="280" layoutY="360" onAction="#handleTeamEvent"/>
+            <Team layoutX="560" layoutY="120" onAction="#handleTeamEvent"/>
+            <Team layoutX="560" layoutY="360" onAction="#handleTeamEvent"/>
 
 
-            <Team layoutX="40" layoutY="30" onAction="#handleTeamEvent" />
-            <Team layoutX="40" layoutY="90" onAction="#handleTeamEvent" />
-            <Team layoutX="40" layoutY="150" onAction="#handleTeamEvent" />
-            <Team layoutX="40" layoutY="210" onAction="#handleTeamEvent" />
-            <Team layoutX="40" layoutY="270" onAction="#handleTeamEvent" />
-            <Team layoutX="40" layoutY="330" onAction="#handleTeamEvent" />
-            <Team layoutX="40" layoutY="390" onAction="#handleTeamEvent" />
-            <Team layoutX="40" layoutY="450" onAction="#handleTeamEvent" />
-            <Team layoutX="800" layoutY="32" onAction="#handleTeamEvent" />
-            <Team layoutX="800" layoutY="90" onAction="#handleTeamEvent" />
-            <Team layoutX="800" layoutY="150" onAction="#handleTeamEvent" />
-            <Team layoutX="800" layoutY="210" onAction="#handleTeamEvent" />
-            <Team layoutX="800" layoutY="270" onAction="#handleTeamEvent" />
-            <Team layoutX="800" layoutY="330" onAction="#handleTeamEvent" />
-            <Team layoutX="800" layoutY="390" onAction="#handleTeamEvent" />
-            <Team layoutX="800" layoutY="450" onAction="#handleTeamEvent" />
+            <Team layoutX="190" layoutY="60" onAction="#handleTeamEvent"/>
+            <Team layoutX="190" layoutY="180" onAction="#handleTeamEvent"/>
+            <Team layoutX="190" layoutY="300" onAction="#handleTeamEvent"/>
+            <Team layoutX="190" layoutY="420" onAction="#handleTeamEvent"/>
+            <Team layoutX="650" layoutY="60" onAction="#handleTeamEvent"/>
+            <Team layoutX="650" layoutY="180" onAction="#handleTeamEvent"/>
+            <Team layoutX="650" layoutY="300" onAction="#handleTeamEvent"/>
+            <Team layoutX="650" layoutY="420" onAction="#handleTeamEvent"/>
+
+
+            <Team layoutX="40" layoutY="30" onAction="#handleTeamEvent"/>
+            <Team layoutX="40" layoutY="90" onAction="#handleTeamEvent"/>
+            <Team layoutX="40" layoutY="150" onAction="#handleTeamEvent"/>
+            <Team layoutX="40" layoutY="210" onAction="#handleTeamEvent"/>
+            <Team layoutX="40" layoutY="270" onAction="#handleTeamEvent"/>
+            <Team layoutX="40" layoutY="330" onAction="#handleTeamEvent"/>
+            <Team layoutX="40" layoutY="390" onAction="#handleTeamEvent"/>
+            <Team layoutX="40" layoutY="450" onAction="#handleTeamEvent"/>
+            <Team layoutX="800" layoutY="32" onAction="#handleTeamEvent"/>
+            <Team layoutX="800" layoutY="90" onAction="#handleTeamEvent"/>
+            <Team layoutX="800" layoutY="150" onAction="#handleTeamEvent"/>
+            <Team layoutX="800" layoutY="210" onAction="#handleTeamEvent"/>
+            <Team layoutX="800" layoutY="270" onAction="#handleTeamEvent"/>
+            <Team layoutX="800" layoutY="330" onAction="#handleTeamEvent"/>
+            <Team layoutX="800" layoutY="390" onAction="#handleTeamEvent"/>
+            <Team layoutX="800" layoutY="450" onAction="#handleTeamEvent"/>
         </Pane>
     </Pane>
-    <Button layoutX="50.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleDemo" text="Demo Data" />
-    <Button layoutX="671.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleLoad" text="Load New File" />
-    <Button layoutX="784.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleReset" text="Reset All Scores" />
-    <Button layoutX="909.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleExit" text="Exit" />
-   <Label layoutX="155.0" layoutY="561.0" text="Note: You can use arraw keys to choose the team, and space key to enter scores." />
+    <Button layoutX="50.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleDemo" text="Demo Data"/>
+    <Button layoutX="671.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleLoad" text="Load New File"/>
+    <Button layoutX="784.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleReset" text="Reset All Scores"/>
+    <Button layoutX="909.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleExit" text="Exit"/>
+    <Label layoutX="155.0" layoutY="561.0"
+           text="Note: You can use arraw keys to choose the team, and space key to enter scores."/>
 
 
 </AnchorPane>
