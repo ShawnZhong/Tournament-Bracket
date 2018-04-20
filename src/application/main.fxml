@@ -53,25 +53,25 @@
         </Pane>
 
         <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0" style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('16.jpg');-fx-background-size:900 600;-fx-background-position:center center;" visible="false">
-            <Team layoutX="400" layoutY="300" onAction="#handleTeamEvent" />
+            <Team layoutX="440" layoutY="300" onAction="#handleTeam"/>
 
-            <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent" />
-            <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent" />
+            <Team layoutX="350" layoutY="240" onAction="#handleTeam"/>
+            <Team layoutX="490" layoutY="240" onAction="#handleTeam"/>
 
-            <Team layoutX="230" layoutY="120" onAction="#handleTeamEvent" />
-            <Team layoutX="230" layoutY="360" onAction="#handleTeamEvent" />
-            <Team layoutX="610" layoutY="120" onAction="#handleTeamEvent" />
-            <Team layoutX="610" layoutY="360" onAction="#handleTeamEvent" />
+            <Team layoutX="280" layoutY="120" onAction="#handleTeam"/>
+            <Team layoutX="280" layoutY="360" onAction="#handleTeam"/>
+            <Team layoutX="560" layoutY="120" onAction="#handleTeam"/>
+            <Team layoutX="560" layoutY="360" onAction="#handleTeam"/>
 
 
-            <Team layoutX="135" layoutY="60" onAction="#handleTeamEvent" />
-            <Team layoutX="135" layoutY="180" onAction="#handleTeamEvent" />
-            <Team layoutX="135" layoutY="300" onAction="#handleTeamEvent" />
-            <Team layoutX="135" layoutY="420" onAction="#handleTeamEvent" />
-            <Team layoutX="705" layoutY="60" onAction="#handleTeamEvent" />
-            <Team layoutX="705" layoutY="180" onAction="#handleTeamEvent" />
-            <Team layoutX="705" layoutY="300" onAction="#handleTeamEvent" />
-            <Team layoutX="705" layoutY="420" onAction="#handleTeamEvent" />
+            <Team layoutX="190" layoutY="60" onAction="#handleTeam"/>
+            <Team layoutX="190" layoutY="180" onAction="#handleTeam"/>
+            <Team layoutX="190" layoutY="300" onAction="#handleTeam"/>
+            <Team layoutX="190" layoutY="420" onAction="#handleTeam"/>
+            <Team layoutX="650" layoutY="60" onAction="#handleTeam"/>
+            <Team layoutX="650" layoutY="180" onAction="#handleTeam"/>
+            <Team layoutX="650" layoutY="300" onAction="#handleTeam"/>
+            <Team layoutX="650" layoutY="420" onAction="#handleTeam"/>
 
 
             <Team layoutX="40" layoutY="30" onAction="#handleTeamEvent" />
