@@ -33,6 +33,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -101,7 +102,7 @@ public class Tournament {
     private void initializeTeam() {
         for (Node node : pane.getChildren())
             ((Team) node).reset();
-        
+
         for (int i = 0; i < teamSize; i++)
             getTeam(teamSize - 1 + i).setName(lines.get(shuffle(totalRound, i) - 1));
     }
@@ -137,23 +138,29 @@ public class Tournament {
         if (team.isCompleteRound())
             return;
 
+        team.setScore(promptInput(team.getName()));
+        compareScore(team);
+
+    }
+
+    private Double promptInput(String teamName) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Input Score");
-        dialog.setContentText("Score for " + team + ": ");
+        dialog.setContentText("Score for " + teamName + ": ");
         while (true) {
             try {
-                dialog.showAndWait().ifPresent(s -> {
-                    Double score = Double.valueOf(s);
+                Optional<String> str = dialog.showAndWait();
+                if (str.isPresent()) {
+                    Double score = Double.valueOf(str.get());
                     if (score < 0) throw new InputMismatchException();
-                    team.setScore(score);
-                    compareScore(team);
-                });
+                    return score;
+                }
                 break;
             } catch (Exception e) {
                 new Alert(Alert.AlertType.WARNING, "Invalid input. Please try again.").showAndWait();
             }
         }
-
+        return 0d;
     }
 
     private void compareScore(Team team1) {
