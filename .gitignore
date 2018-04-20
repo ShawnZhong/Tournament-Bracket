@@ -31,4 +31,4 @@ build.fxbuild
 .project
 bin
 .idea
-.iml
+*.iml
