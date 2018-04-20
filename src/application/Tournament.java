@@ -33,7 +33,6 @@ public class Tournament {
     public void initialize(String filePath) {
         List<String> lines = loadFile(filePath);
         int teamSize = lines.size();
-        int totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
 
         switch (teamSize) {
             case (16):
@@ -66,6 +65,7 @@ public class Tournament {
             team.setCompleteRound(false);
         }
 
+        int totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
         for (int i = 0; i < teamSize; i++) {
             Team team = getTeam(teamSize - 1 + i);
             team.setName(lines.get(shuffle(totalRound, i) - 1));
@@ -104,24 +104,24 @@ public class Tournament {
             while (true) {
                 try {
                     dialog.showAndWait().ifPresent(s -> {
-                    	int score = Integer.parseInt(s);
-                    	if(score < 0) {
+                        int score = Integer.parseInt(s);
+                        if (score < 0) {
                             new Alert(Alert.AlertType.WARNING, "Invalid input, please try again").showAndWait();
                             return;
-                    	}
+                        }
                         team1.setScore(score);
                         int index1 = getTeamIndex(team1);
                         int index2 = (index1 % 2 == 0) ? index1 - 1 : index1 + 1;
                         Team team2 = getTeam(index2);
                         if (team2 != null && team2.getScore() != null) {
                             Team parent = getTeam((index1 - 1) / 2);
-                            
-                            if(team1.compareTo(team2) == 0) {
-                            	new Alert(Alert.AlertType.WARNING, team1.getName() + " and " + team2.getName() + " tie!"
-                            			+ "\r\nStart another game! ").showAndWait();
-                            	team1.setScore(null);
-                            	team2.setScore(null);
-                            	return;
+
+                            if (team1.compareTo(team2) == 0) {
+                                new Alert(Alert.AlertType.WARNING, team1.getName() + " and " + team2.getName() + " tie!"
+                                        + "\r\nStart another game! ").showAndWait();
+                                team1.setScore(null);
+                                team2.setScore(null);
+                                return;
                             }
 
                             team1.setCompleteRound(true);
@@ -143,26 +143,18 @@ public class Tournament {
         }
     }
 
-    private Team getTeam(int index) {
-        return (Team) pane.getChildren().get(index);
-    }
+    private Team getTeam(int index) { return (Team) pane.getChildren().get(index); }
 
-    private int getTeamIndex(Team team) {
-        return pane.getChildren().indexOf(team);
-    }
+    private int getTeamIndex(Team team) { return pane.getChildren().indexOf(team); }
 
     @FXML
     private void handleLoad(ActionEvent event) {
         FileChooser fc = new FileChooser();
         fc.setTitle("Choose Team Info File");
         fc.setInitialDirectory(new File("."));
-        try {
-        	initialize(fc.showOpenDialog(new Stage()).getPath());
-        }catch(Exception e) {}
+        initialize(fc.showOpenDialog(new Stage()).getPath());
     }
 
     @FXML
-    private void handleExit(ActionEvent event) {
-        System.exit(0);
-    }
+    private void handleExit(ActionEvent event) { System.exit(0); }
 }
