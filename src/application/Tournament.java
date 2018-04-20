@@ -52,7 +52,7 @@ public class Tournament {
             default:
                 pane = pane16;
                 teamSize = 16;
-                new Alert(Alert.AlertType.WARNING, "Teamsize not supported").showAndWait();
+                new Alert(Alert.AlertType.WARNING, "Team size not supported").showAndWait();
                 break;
         }
         pane.setVisible(true);
