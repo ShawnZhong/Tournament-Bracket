@@ -93,6 +93,17 @@ public class Tournament {
     }
 
     /**
+     * This method matches which two teams to compete with each other.
+     *
+     * @param n
+     * @param k
+     * @return a list of strings that contains the list of the teams.
+     */
+    private int shuffle(int n, int k) {
+        return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
+    }
+
+    /**
      * This method loads file by the path, throws IOException if file not found.
      *
      * @param filepath the path of the file to be read.
@@ -113,17 +124,6 @@ public class Tournament {
         }
         teamSize = lines.size();
         totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);// calculate the total rounds of the competition
-    }
-
-    /**
-     * This method matches which two teams to compete with each other.
-     *
-     * @param n
-     * @param k
-     * @return a list of strings that contains the list of the teams.
-     */
-    private int shuffle(int n, int k) {
-        return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
     }
 
 
