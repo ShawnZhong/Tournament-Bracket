@@ -90,17 +90,17 @@ public class Tournament {
 
     @FXML
     public void handleTeam(ActionEvent event) {
-        Team team1 = (Team) event.getSource();
+        Team teram = (Team) event.getSource();
 
-        if (getTeamIndex(team1) == 0) {
-            new Alert(Alert.AlertType.WARNING, team1.getName() + " wins!!!").showAndWait();
+        if (getTeamIndex(teram) == 0) {
+            new Alert(Alert.AlertType.WARNING, teram.getName() + " wins!!!").showAndWait();
             return;
         }
 
-        if (!team1.isCompleteRound()) {
+        if (!teram.isCompleteRound()) {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Input Score");
-            dialog.setContentText("Score for " + team1.getText() + ":");
+            dialog.setContentText("Score for " + teram.getText() + ":");
             while (true) {
                 try {
                     dialog.showAndWait().ifPresent(s -> {
@@ -109,36 +109,40 @@ public class Tournament {
                             new Alert(Alert.AlertType.WARNING, "Invalid input, please try again").showAndWait();
                             return;
                         }
-                        team1.setScore(score);
-                        int index1 = getTeamIndex(team1);
-                        int index2 = (index1 % 2 == 0) ? index1 - 1 : index1 + 1;
-                        Team team2 = getTeam(index2);
-                        if (team2 != null && team2.getScore() != null) {
-                            Team parent = getTeam((index1 - 1) / 2);
-
-                            if (team1.compareTo(team2) == 0) {
-                                new Alert(Alert.AlertType.WARNING, team1.getName() + " and " + team2.getName() + " tie!"
-                                        + "\r\nStart another game! ").showAndWait();
-                                team1.setScore(null);
-                                team2.setScore(null);
-                                return;
-                            }
-
-                            team1.setCompleteRound(true);
-                            team2.setCompleteRound(true);
-                            Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
-                            parent.setName(winner.getName());
-                            parent.setVisible(true);
-                            if (getTeamIndex(parent) == 0) {
-                                new Alert(Alert.AlertType.WARNING, parent.getName() + " wins!!!").showAndWait();
-                                return;
-                            }
-                        }
+                        teram.setScore(score);
+                        compareScore(teram);
                     });
                     break;
                 } catch (Exception exc) {
                     new Alert(Alert.AlertType.WARNING, "Invalid input, please try again").showAndWait();
                 }
+            }
+        }
+    }
+
+    private void compareScore(Team team1) {
+        int index1 = getTeamIndex(team1);
+        int index2 = (index1 % 2 == 0) ? index1 - 1 : index1 + 1;
+        Team team2 = getTeam(index2);
+        if (team2 != null && team2.getScore() != null) {
+            Team parent = getTeam((index1 - 1) / 2);
+
+            if (team1.compareTo(team2) == 0) {
+                new Alert(Alert.AlertType.WARNING, team1.getName() + " and " + team2.getName() + " tie!"
+                        + "\r\nStart another game! ").showAndWait();
+                team1.setScore(null);
+                team2.setScore(null);
+                return;
+            }
+
+            team1.setCompleteRound(true);
+            team2.setCompleteRound(true);
+            Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
+            parent.setName(winner.getName());
+            parent.setVisible(true);
+            if (getTeamIndex(parent) == 0) {
+                new Alert(Alert.AlertType.WARNING, parent.getName() + " wins!!!").showAndWait();
+                return;
             }
         }
     }
