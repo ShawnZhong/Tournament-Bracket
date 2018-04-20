@@ -1,21 +1,4 @@
 package application;
-/////////////////////////////////////////////////////////////////////////////
-//Semester:         CS400 Spring 2018
-//PROJECT:          cs400_p4_201804
-//FILES:            Tournament.java 
-//                  Team.java
-//                  Main.java
-//
-//USER:             Han Cao,
-//                  Suyan Qu,
-//                  Wanxiang Zhong
-//                  Yujie Guo
-//                  Yuhan Liu
-//Instructor:       Deb Deppeler (deppeler@cs.wisc.edu)
-//Bugs:             no known bugs
-//
-//2018 Mar 28, 2018  Tournament.java 
-////////////////////////////80 columns wide //////////////////////////////////
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,14 +13,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-/**
- * This Tournament class contains methods that loads the file of teamList and
- * match different teams to compete with each other.
- */
 public class Tournament {
     private Pane pane;
     @FXML
@@ -51,12 +31,6 @@ public class Tournament {
     @FXML
     private Pane pane1;
 
-    /**
-     * This method initializes the GUI by creating team objects
-     * and matching teams together.
-     *
-     * @param filePath the path of the teamList file.
-     */
     public void initialize(String filePath) {
         List<String> lines = loadFile(filePath);
         initializePane(lines.size());
@@ -85,8 +59,6 @@ public class Tournament {
         }
 
         int teamSize = lines.size();
-
-        //calculate the total rounds of the competition
         int totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
         for (int i = 0; i < teamSize; i++) {
             Team team = getTeam(teamSize - 1 + i);
@@ -118,48 +90,6 @@ public class Tournament {
                 break;
         }
         pane.setVisible(true);
-
-        //set all the visibility of the teams to false
-        for (Node node : pane.getChildren()) {
-            Team team = (Team) node;
-            team.setVisible(false);
-            team.setDisable(false);
-            team.setCompleteRound(false);
-        }
-
-        //match teams to compete with the shuffle method,and display them
-        for (int i = 0; i < teamSize; i++) {
-            Team team = getTeam(teamSize - 1 + i);
-            team.setName(lines.get(shuffle(totalRound, i) - 1));
-            team.setVisible(true);
-        }
-    }
-
-    /**
-     * This method loads file by the path, throws IOException if file not found.
-     *
-     * @param filepath the path of the file to be read.
-     * @return a list of strings that contains the list of the teams.
-     */
-    private List<String> loadFile(String filepath) {
-        try {
-            return Files.readAllLines(Paths.get(filepath));
-        } catch (IOException e) {
-            new Alert(Alert.AlertType.WARNING, "File not found, use demo data instead").showAndWait();
-            return IntStream.range(1, 17).mapToObj(i -> "team " + i).collect(Collectors.toList());
-        }
-    }
-
-
-    /**
-     * This method matches which two teams to compete with each other.
-     *
-     * @param n
-     * @param k
-     * @return a list of strings that contains the list of the teams.
-     */
-    private int shuffle(int n, int k) {
-        return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
     }
 
 
