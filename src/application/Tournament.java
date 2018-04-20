@@ -54,7 +54,7 @@ public class Tournament {
      *
      * @param filePath the path of the teamList file.
      */
-    void initialize(@Nullable String filePath) {
+    public void initialize(@Nullable String filePath) {
         initializeData(filePath);
         initializePane();
         initializeTeam();
