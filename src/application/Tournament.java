@@ -78,12 +78,11 @@ public class Tournament {
     private void initializeTeam() {
         for (Node node : pane.getChildren()) {
             Team team = (Team) node;
+            team.setScore(null);
             team.setVisible(false);
             team.setDisable(false);
             team.setCompleteRound(false);
         }
-
-        int teamSize = lines.size();
 
         for (int i = 0; i < teamSize; i++) {
             Team team = getTeam(teamSize - 1 + i);
@@ -193,4 +192,7 @@ public class Tournament {
 
     @FXML
     private void handleDemo(ActionEvent event) { initialize(null); }
+
+    @FXML
+    private void handleReset(ActionEvent event) { initializeTeam(); }
 }
