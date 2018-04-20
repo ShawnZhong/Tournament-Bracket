@@ -99,19 +99,11 @@ public class Tournament {
     }
 
     private void initializeTeam() {
-        for (Node node : pane.getChildren()) {
-            Team team = (Team) node;
-            team.setScore(null);
-            team.setVisible(false);
-            team.setDisable(false);
-            team.setCompleteRound(false);
-        }
-
-        for (int i = 0; i < teamSize; i++) {
-            Team team = getTeam(teamSize - 1 + i);
-            team.setName(lines.get(shuffle(totalRound, i) - 1));
-            team.setVisible(true);
-        }
+        for (Node node : pane.getChildren())
+            ((Team) node).reset();
+        
+        for (int i = 0; i < teamSize; i++)
+            getTeam(teamSize - 1 + i).setName(lines.get(shuffle(totalRound, i) - 1));
     }
 
     /**
@@ -138,7 +130,7 @@ public class Tournament {
         Team team = (Team) event.getSource();
 
         if (team.equals(getTeam(0))) {
-            new Alert(Alert.AlertType.INFORMATION, team.getName() + " wins!!!").showAndWait();
+            new Alert(Alert.AlertType.INFORMATION, team + " wins!!!").showAndWait();
             return;
         }
 
@@ -147,7 +139,7 @@ public class Tournament {
 
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Input Score");
-        dialog.setContentText("Score for " + team.getName() + ": ");
+        dialog.setContentText("Score for " + team + ": ");
         while (true) {
             try {
                 dialog.showAndWait().ifPresent(s -> {
@@ -171,7 +163,7 @@ public class Tournament {
             return;
 
         if (team1.compareTo(team2) == 0) {
-            new Alert(Alert.AlertType.WARNING, team1.getName() + " and " + team2.getName() + " tie!"
+            new Alert(Alert.AlertType.WARNING, team1 + " and " + team2 + " tie!"
                     + "\r\nStart another game! ").showAndWait();
             team1.setScore(null);
             team2.setScore(null);
@@ -180,11 +172,10 @@ public class Tournament {
 
         Team parent = getTeam((index - 1) / 2);
         parent.setName(team1.compareTo(team2) > 0 ? team1.getName() : team2.getName());
-        parent.setVisible(true);
         team1.setCompleteRound(true);
         team2.setCompleteRound(true);
         if (parent.equals(getTeam(0)))
-            new Alert(Alert.AlertType.INFORMATION, parent.getName() + " wins!!!").showAndWait();
+            new Alert(Alert.AlertType.INFORMATION, parent + " wins!!!").showAndWait();
 
     }
 

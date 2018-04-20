@@ -1,5 +1,6 @@
 package application;
 
+import com.sun.istack.internal.Nullable;
 import javafx.scene.control.Button;
 
 import java.text.DecimalFormat;
@@ -17,20 +18,28 @@ public class Team extends Button implements Comparable<Team> {
 
     public void setName(String name) {
         this.name = name;
+        setVisible(true);
         update();
     }
 
     public Double getScore() { return score; }
 
-    public void setScore(Double score) {
+    public void setScore(@Nullable Double score) {
         this.score = score;
         update();
     }
 
     private void update() {setText(score == null ? name : name + ": " + formatter.format(score));}
 
+    public void reset() {
+        setScore(null);
+        setVisible(false);
+        setDisable(false);
+        setCompleteRound(false);
+    }
+
     @Override
-    public String toString() { return "Team{" + "name='" + name + '\'' + ", score=" + score + '}'; }
+    public String toString() { return name; }
 
     public int compareTo(Team other) { return score.compareTo(other.score); }
 
