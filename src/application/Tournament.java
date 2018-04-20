@@ -93,7 +93,7 @@ public class Tournament {
     public void handleTeam(ActionEvent event) {
         Team team = (Team) event.getSource();
 
-        if (getTeamIndex(team) == 0) {
+        if (team.equals(getTeam(0))) {
             new Alert(Alert.AlertType.WARNING, team.getName() + " wins!!!").showAndWait();
             return;
         }
@@ -122,8 +122,7 @@ public class Tournament {
         int index1 = pane.getChildren().indexOf(team1);
         Team team2 = getTeam((index1 % 2 == 0) ? index1 - 1 : index1 + 1);
         if (team2 != null && team2.getScore() != null) {
-            int parentIndex = (index1 - 1) / 2;
-            Team parent = getTeam(parentIndex);
+            Team parent = getTeam((index1 - 1) / 2);
 
             if (team1.compareTo(team2) == 0) {
                 new Alert(Alert.AlertType.WARNING, team1.getName() + " and " + team2.getName() + " tie!"
@@ -132,12 +131,12 @@ public class Tournament {
                 team2.setScore(null);
                 return;
             }
-            
+
             parent.setName(team1.compareTo(team2) > 0 ? team1.getName() : team2.getName());
             parent.setVisible(true);
             team1.setCompleteRound(true);
             team2.setCompleteRound(true);
-            if (parentIndex == 0)
+            if (parent.equals(getTeam(0)))
                 new Alert(Alert.AlertType.WARNING, parent.getName() + " wins!!!").showAndWait();
         }
     }
