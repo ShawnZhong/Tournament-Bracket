@@ -156,7 +156,7 @@ public class Tournament {
         Team team = (Team) event.getSource();
 
         if (team.equals(getTeam(0))) {
-            new Alert(Alert.AlertType.WARNING, team.getName() + " wins!!!").showAndWait();
+            new Alert(Alert.AlertType.INFORMATION, team.getName() + " wins!!!").showAndWait();
             return;
         }
 
@@ -198,7 +198,7 @@ public class Tournament {
             team1.setCompleteRound(true);
             team2.setCompleteRound(true);
             if (parent.equals(getTeam(0)))
-                new Alert(Alert.AlertType.WARNING, parent.getName() + " wins!!!").showAndWait();
+                new Alert(Alert.AlertType.INFORMATION, parent.getName() + " wins!!!").showAndWait();
         }
     }
 
