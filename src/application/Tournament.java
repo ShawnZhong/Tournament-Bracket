@@ -105,6 +105,12 @@ public class Tournament {
                 try {
                     dialog.showAndWait().ifPresent(s -> {
                         team1.setScore(Integer.parseInt(s));
+                        if (team1.getScore()<0) try {
+                            throw new Exception();
+                        } catch (Exception e) {
+                            new Alert(Alert.AlertType.WARNING, "Invalid input, please try again").showAndWait();
+                            team1.setScore(null);
+                        }
                         int index1 = getTeamIndex(team1);
                         int index2 = (index1 % 2 == 0) ? index1 - 1 : index1 + 1;
                         Team team2 = getTeam(index2);
