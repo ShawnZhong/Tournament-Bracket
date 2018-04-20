@@ -8,7 +8,7 @@
     <children>
         <Pane visible="false" fx:id="pane16" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
               style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('16.jpg');-fx-background-size:900 600;-fx-background-position:center center;">
-            <children>
+<children>
                 <Team layoutX="400" layoutY="300" onAction="#handleTeam"/>
 
                 <Team layoutX="325" layoutY="240" onAction="#handleTeam"/>
@@ -38,13 +38,13 @@
                 <Team layoutX="40" layoutY="330" onAction="#handleTeam"/>
                 <Team layoutX="40" layoutY="390" onAction="#handleTeam"/>
                 <Team layoutX="40" layoutY="450" onAction="#handleTeam"/>
-                <Team layoutX="800" layoutY="32" onAction="#handleTeam"/>
+                <Team layoutX="805" layoutY="32" onAction="#handleTeam"/>
                 <Team layoutX="800" layoutY="90" onAction="#handleTeam"/>
-                <Team layoutX="800" layoutY="150" onAction="#handleTeam"/>
+                <Team layoutX="805" layoutY="150" onAction="#handleTeam"/>
                 <Team layoutX="800" layoutY="210" onAction="#handleTeam"/>
-                <Team layoutX="800" layoutY="270" onAction="#handleTeam"/>
+                <Team layoutX="805" layoutY="270" onAction="#handleTeam"/>
                 <Team layoutX="800" layoutY="330" onAction="#handleTeam"/>
-                <Team layoutX="800" layoutY="390" onAction="#handleTeam"/>
+                <Team layoutX="805" layoutY="390" onAction="#handleTeam"/>
                 <Team layoutX="800" layoutY="450" onAction="#handleTeam"/>
 
 
@@ -64,14 +64,14 @@
                 <Team layoutX="610" layoutY="360" onAction="#handleTeam"/>
 
 
-                <Team layoutX="135" layoutY="60" onAction="#handleTeam"/>
-                <Team layoutX="135" layoutY="180" onAction="#handleTeam"/>
-                <Team layoutX="135" layoutY="300" onAction="#handleTeam"/>
-                <Team layoutX="135" layoutY="420" onAction="#handleTeam"/>
-                <Team layoutX="705" layoutY="60" onAction="#handleTeam"/>
-                <Team layoutX="705" layoutY="180" onAction="#handleTeam"/>
-                <Team layoutX="705" layoutY="300" onAction="#handleTeam"/>
-                <Team layoutX="705" layoutY="420" onAction="#handleTeam"/>
+                <Team layoutX="30" layoutY="75" onAction="#handleTeam"/>
+                <Team layoutX="30" layoutY="185" onAction="#handleTeam"/>
+                <Team layoutX="30" layoutY="290" onAction="#handleTeam"/>
+                <Team layoutX="30" layoutY="395" onAction="#handleTeam"/>
+                <Team layoutX="805" layoutY="75" onAction="#handleTeam"/>
+                <Team layoutX="805" layoutY="185" onAction="#handleTeam"/>
+                <Team layoutX="805" layoutY="290" onAction="#handleTeam"/>
+                <Team layoutX="805" layoutY="395" onAction="#handleTeam"/>
             </children>
         </Pane>
 
@@ -83,10 +83,10 @@
                 <Team layoutX="325" layoutY="240" onAction="#handleTeam"/>
                 <Team layoutX="515" layoutY="240" onAction="#handleTeam"/>
 
-                <Team layoutX="230" layoutY="120" onAction="#handleTeam"/>
-                <Team layoutX="230" layoutY="360" onAction="#handleTeam"/>
-                <Team layoutX="610" layoutY="120" onAction="#handleTeam"/>
-                <Team layoutX="610" layoutY="360" onAction="#handleTeam"/>
+                <Team layoutX="20" layoutY="150" onAction="#handleTeam"/>
+                <Team layoutX="20" layoutY="325" onAction="#handleTeam"/>
+                <Team layoutX="820" layoutY="150" onAction="#handleTeam"/>
+                <Team layoutX="820" layoutY="325" onAction="#handleTeam"/>
             </children>
         </Pane>
         <Pane visible="false" fx:id="pane2" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"

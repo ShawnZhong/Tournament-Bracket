@@ -30,3 +30,5 @@ out
 build.fxbuild
 .project
 bin
+.idea
+*.iml
