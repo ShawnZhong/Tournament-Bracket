@@ -21,17 +21,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -40,7 +41,7 @@ import java.util.stream.IntStream;
  * match different teams to compete with each other.
  */
 public class Tournament {
-    private Pane pane;
+
     @FXML
     private Pane pane16;
     @FXML
@@ -51,6 +52,8 @@ public class Tournament {
     private Pane pane2;
     @FXML
     private Pane pane1;
+    private Pane pane;
+    private int teamSize;
 
     /**
      * This method initializes the GUI by creating team objects
@@ -60,30 +63,17 @@ public class Tournament {
      */
     public void initialize(String filePath) {
         List<String> lines = loadFile(filePath);
-        initializePane(lines.size());
+        teamSize = lines.size();
+        initializePane();
         initializeTeam(lines);
     }
 
-    private void initializeTeam(List<String> lines) {
-        for (Node node : pane.getChildren()) {
-            Team team = (Team) node;
-            team.setVisible(false);
-            team.setDisable(false);
-            team.setCompleteRound(false);
-        }
-
-        int teamSize = lines.size();
-
-        //calculate the total rounds of the competition
-        int totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
-        for (int i = 0; i < teamSize; i++) {
-            Team team = getTeam(teamSize - 1 + i);
-            team.setName(lines.get(shuffle(totalRound, i) - 1));
-            team.setVisible(true);
-        }
-    }
-
-    private void initializePane(int teamSize) {
+    private void initializePane() {
+        pane1.setVisible(false);
+        pane2.setVisible(false);
+        pane4.setVisible(false);
+        pane8.setVisible(false);
+        pane16.setVisible(false);
         switch (teamSize) {
             case (16):
                 pane = pane16;
@@ -108,6 +98,25 @@ public class Tournament {
         pane.setVisible(true);
     }
 
+    private void initializeTeam(List<String> lines) {
+        for (Node node : pane.getChildren()) {
+            Team team = (Team) node;
+            team.setVisible(false);
+            team.setDisable(false);
+            team.setCompleteRound(false);
+        }
+
+        int teamSize = lines.size();
+
+        //calculate the total rounds of the competition
+        int totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
+        for (int i = 0; i < teamSize; i++) {
+            Team team = getTeam(teamSize - 1 + i);
+            team.setName(lines.get(shuffle(totalRound, i) - 1));
+            team.setVisible(true);
+        }
+    }
+
     /**
      * This method loads file by the path, throws IOException if file not found.
      *
@@ -117,9 +126,15 @@ public class Tournament {
     private List<String> loadFile(String filepath) {
         try {
             return Files.readAllLines(Paths.get(filepath));
-        } catch (IOException e) {
-            new Alert(Alert.AlertType.WARNING, "File not found, use demo data instead").showAndWait();
-            return IntStream.range(1, 17).mapToObj(i -> "team " + i).collect(Collectors.toList());
+        } catch (Exception e) {
+            if (!filepath.equals("")) // Used for demo
+                new Alert(Alert.AlertType.WARNING, "File not found. Use demo data instead").showAndWait();
+            ChoiceDialog<Integer> dialog = new ChoiceDialog<>(teamSize, 1, 2, 4, 8, 16);
+            dialog.setTitle("Choose team size");
+            dialog.setContentText("Choose your team size:");
+            Optional<Integer> result = dialog.showAndWait();
+            result.ifPresent(integer -> teamSize = integer);
+            return IntStream.range(1, teamSize + 1).mapToObj(i -> "Team " + String.format("%02d", i)).collect(Collectors.toList());
         }
     }
 
@@ -188,6 +203,11 @@ public class Tournament {
     }
 
     private Team getTeam(int index) { return (Team) pane.getChildren().get(index); }
+
+    @FXML
+    private void handleDemo(ActionEvent event) {
+        initialize("");
+    }
 
     @FXML
     private void handleLoad(ActionEvent event) {
