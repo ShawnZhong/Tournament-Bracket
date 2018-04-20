@@ -89,6 +89,12 @@ public class Tournament {
     @FXML
     public void handleTeam(ActionEvent event) {
         Team team1 = (Team) event.getSource();
+
+        if (getTeamIndex(team1) == 0) {
+            new Alert(Alert.AlertType.WARNING, team1.getName() + " wins!!!").showAndWait();
+            return;
+        }
+
         if (!team1.isCompleteRound()) {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Input Score");
@@ -97,11 +103,17 @@ public class Tournament {
                 try {
                     dialog.showAndWait().ifPresent(s -> {
                         team1.setScore(Integer.parseInt(s));
-                        int index1 = pane.getChildren().indexOf(team1);
+                        int index1 = getTeamIndex(team1);
                         int index2 = (index1 % 2 == 0) ? index1 - 1 : index1 + 1;
                         Team team2 = getTeam(index2);
                         if (team2.getScore() != null) { // TODO:FIXME
                             Team parent = getTeam((index1 - 1) / 2);
+
+                            if (getTeamIndex(parent) == 0) {
+                                new Alert(Alert.AlertType.WARNING, team1.getName() + " wins!!!").showAndWait();
+                                return;
+                            }
+
                             team1.setCompleteRound(true);
                             team2.setCompleteRound(true);
                             Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
@@ -119,6 +131,10 @@ public class Tournament {
 
     private Team getTeam(int index) {
         return (Team) pane.getChildren().get(index);
+    }
+
+    private int getTeamIndex(Team team) {
+        return pane.getChildren().indexOf(team);
     }
 
     @FXML
