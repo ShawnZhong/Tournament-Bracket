@@ -19,28 +19,24 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Tournament {
-    private static Tournament self = null;
     @FXML
     private Pane pane;
     private int teamSize = 0;
     private int totalRound = 0;
     private List<List<Team>> data = new ArrayList<>();
 
-    public Tournament() {
-        self = this;
-    }
-
-    public static Tournament getController() {
-        return self;
-    }
 
     public void initialize(String filePath) {
         List<String> lines = loadFile(filePath);
         teamSize = lines.size();
         totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
-        initializeData(lines);
+        for (int i = 0; i < teamSize; i++) {
+            Team team = getTeam(teamSize - 1 + i);
+            team.setName(lines.get(shuffle(totalRound, i) - 1));
+            team.setVisible(true);
+
+        }
         initializePane();
-        render();
     }
 
     private List<String> loadFile(String filepath) {
@@ -52,18 +48,6 @@ public class Tournament {
         }
     }
 
-    private void initializeData(List<String> lines) {
-        data.clear();
-        for (int i = 0; i < totalRound + 1; i++)
-            data.add(new ArrayList<>());
-
-        for (int i = 0; i < teamSize; i++)
-            data.get(0).add(new Team(lines.get(shuffle(totalRound, i) - 1)));
-
-        for (int i = 1; i < totalRound + 1; i++)
-            for (int j = 0; j < (1 << (totalRound - i)); j++)
-                data.get(i).add(null);
-    }
 
     private int shuffle(int n, int k) {
         return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
@@ -78,25 +62,6 @@ public class Tournament {
                 BackgroundPosition.CENTER,
                 new BackgroundSize(900, 600, false, false, false, false)
         )));
-    }
-
-
-    private void render() {
-        int index = 0;
-        for (int i = 0; i < data.size(); i++) {
-            for (int j = 0; j < data.get(i).size(); j++) {
-                Team team = data.get(i).get(j);
-                index++;
-                if (team == null) continue;
-
-                Team old = (Team) pane.getChildren().get(index - 1);
-                old.setName(team.getName());
-                old.setDisable(false);
-
-                pane.getChildren().set(index - 1, old);
-                System.out.println((index - 1) + team.toString());
-            }
-        }
     }
 
 
@@ -120,29 +85,30 @@ public class Tournament {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Input Score");
         dialog.setContentText("Score for " + t.getText() + ":");
-        while (true) {
-            try {
-                dialog.showAndWait().ifPresent(s -> t.setScore(Integer.parseInt(s)));
-                handleInput();
-                break;
-            } catch (Exception exc) { }
-        }
+        // while (true) {
+        try {
+            dialog.showAndWait().ifPresent(s -> {
+                t.setScore(Integer.parseInt(s));
+                int index1 = pane.getChildren().indexOf(t);
+                int index2 = (index1 % 2 == 0) ? index1 - 1 : index1 + 1;
+                Team another = getTeam(index2);
+                if (another.getScore() != null) { // TODO:FIXME
+                    Team parent = getTeam((index1 - 1) / 2);
+                    Team winner = t.compareTo(another) > 0 ? t : another;
+                    parent.setName(winner.getName());
+                    parent.setVisible(true);
+                }
+
+
+            });
+            // break;
+        } catch (Exception exc) { }
+        //}
         //}
     }
 
-    private void handleInput() {
-        for (int i = 1; i < data.size(); i++) {
-            for (int j = 0; j < data.get(i).size(); j++) {
-                if (data.get(i).get(j) != null) continue;
-                Team t1 = data.get(i - 1).get(2 * j);
-                Team t2 = data.get(i - 1).get(2 * j + 1);
-                if (t1 == null || t2 == null || t1.getScore() == null || t2.getScore() == null ||
-                        t1.getScore().equals(t2.getScore())) continue;
-                data.get(i).set(j, t1.compareTo(t2) > 0 ? t1.clone() : t2.clone());
-                t1.completeRound();
-                t2.completeRound();
-            }
-        }
-        render();
+    private Team getTeam(int index) {
+        return (Team) pane.getChildren().get(index);
     }
+
 }

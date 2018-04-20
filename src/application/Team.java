@@ -9,8 +9,7 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
 
     public Team() {
         this("Team");
-        setDisable(true);
-        //setVisible(true);
+        setVisible(false);
     }
 
     public Team(String name) {
@@ -18,24 +17,21 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
 
         this.name = name;
 
-        setOnMouseClicked(e -> {
-
-        });
     }
-
-    public Team clone() {
-        return new Team(this.name);
-    }
-
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
         setText(name);
+        this.name = name;
     }
+
+    public Team clone() {
+        return new Team(this.name);
+    }
+
 
     @Override
     public String toString() {
@@ -51,9 +47,9 @@ public class Team extends Button implements Comparable<Team>, Cloneable {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
-        setText(name + ": " + score);
+        setText(score == null ? name : name + ": " + score);
     }
 
     public void completeRound() {

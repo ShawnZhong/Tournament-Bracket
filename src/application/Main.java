@@ -15,11 +15,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+
         primaryStage.setTitle("Tournament Bracket");
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("main.fxml")), 1000, 600));
+        primaryStage.setScene(new Scene(loader.load(), 1000, 600));
         primaryStage.show();
 
-        Tournament.getController().initialize(filePath);
+        Tournament controller = loader.getController();
+        controller.initialize(filePath);
     }
 
 
