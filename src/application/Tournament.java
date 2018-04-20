@@ -33,8 +33,41 @@ public class Tournament {
 
     public void initialize(String filePath) {
         List<String> lines = loadFile(filePath);
-        int teamSize = lines.size();
+        initializePane(lines.size());
+        initializeTeam(lines);
+    }
 
+    private List<String> loadFile(String filepath) {
+        try {
+            return Files.readAllLines(Paths.get(filepath));
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.WARNING, "File not found. Use demo data instead.").showAndWait();
+            return IntStream.range(1, 17).mapToObj(i -> "team " + i).collect(Collectors.toList());
+        }
+    }
+
+    private int shuffle(int n, int k) {
+        return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
+    }
+
+    private void initializeTeam(List<String> lines) {
+        for (Node node : pane.getChildren()) {
+            Team team = (Team) node;
+            team.setVisible(false);
+            team.setDisable(false);
+            team.setCompleteRound(false);
+        }
+
+        int teamSize = lines.size();
+        int totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
+        for (int i = 0; i < teamSize; i++) {
+            Team team = getTeam(teamSize - 1 + i);
+            team.setName(lines.get(shuffle(totalRound, i) - 1));
+            team.setVisible(true);
+        }
+    }
+
+    private void initializePane(int teamSize) {
         switch (teamSize) {
             case (16):
                 pane = pane16;
@@ -53,44 +86,15 @@ public class Tournament {
                 break;
             default:
                 pane = pane16;
-                teamSize = 16;
                 new Alert(Alert.AlertType.WARNING, "Team size not supported").showAndWait();
                 break;
         }
         pane.setVisible(true);
-
-        for (Node node : pane.getChildren()) {
-            Team team = (Team) node;
-            team.setVisible(false);
-            team.setDisable(false);
-            team.setCompleteRound(false);
-        }
-
-        int totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
-        for (int i = 0; i < teamSize; i++) {
-            Team team = getTeam(teamSize - 1 + i);
-            team.setName(lines.get(shuffle(totalRound, i) - 1));
-            team.setVisible(true);
-        }
-    }
-
-    private List<String> loadFile(String filepath) {
-        try {
-            return Files.readAllLines(Paths.get(filepath));
-        } catch (IOException e) {
-            new Alert(Alert.AlertType.WARNING, "File not found, use demo data instead").showAndWait();
-            return IntStream.range(1, 17).mapToObj(i -> "team " + i).collect(Collectors.toList());
-        }
-    }
-
-
-    private int shuffle(int n, int k) {
-        return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
     }
 
 
     @FXML
-    public void handleTeam(ActionEvent event) {
+    private void handleInput(ActionEvent event) {
         Team team = (Team) event.getSource();
 
         if (team.equals(getTeam(0))) {
@@ -105,25 +109,23 @@ public class Tournament {
             while (true) {
                 try {
                     dialog.showAndWait().ifPresent(s -> {
-                        double score = Double.parseDouble(s);
+                        Double score = Double.valueOf(s);
                         if (score < 0) throw new InputMismatchException();
                         team.setScore(score);
                         compareScore(team);
                     });
                     break;
                 } catch (Exception e) {
-                    new Alert(Alert.AlertType.WARNING, "Invalid input, please try again").showAndWait();
+                    new Alert(Alert.AlertType.WARNING, "Invalid input. Please try again.").showAndWait();
                 }
             }
         }
     }
 
     private void compareScore(Team team1) {
-        int index1 = pane.getChildren().indexOf(team1);
-        Team team2 = getTeam((index1 % 2 == 0) ? index1 - 1 : index1 + 1);
+        int index = pane.getChildren().indexOf(team1);
+        Team team2 = getTeam((index % 2 == 0) ? index - 1 : index + 1);
         if (team2 != null && team2.getScore() != null) {
-            Team parent = getTeam((index1 - 1) / 2);
-
             if (team1.compareTo(team2) == 0) {
                 new Alert(Alert.AlertType.WARNING, team1.getName() + " and " + team2.getName() + " tie!"
                         + "\r\nStart another game! ").showAndWait();
@@ -132,6 +134,7 @@ public class Tournament {
                 return;
             }
 
+            Team parent = getTeam((index - 1) / 2);
             parent.setName(team1.compareTo(team2) > 0 ? team1.getName() : team2.getName());
             parent.setVisible(true);
             team1.setCompleteRound(true);
@@ -146,7 +149,7 @@ public class Tournament {
     @FXML
     private void handleLoad(ActionEvent event) {
         FileChooser fc = new FileChooser();
-        fc.setTitle("Choose Team Info File");
+        fc.setTitle("Please choose team name file");
         fc.setInitialDirectory(new File("."));
         initialize(fc.showOpenDialog(new Stage()).getPath());
     }

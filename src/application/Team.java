@@ -2,7 +2,11 @@ package application;
 
 import javafx.scene.control.Button;
 
+import java.text.DecimalFormat;
+
 public class Team extends Button implements Comparable<Team> {
+    private static final DecimalFormat formatter = new DecimalFormat("0.#");
+
     private boolean completeRound;
     private String name;
     private Double score;
@@ -23,7 +27,7 @@ public class Team extends Button implements Comparable<Team> {
         update();
     }
 
-    private void update() {setText(score == null ? name : name + ": " + score);}
+    private void update() {setText(score == null ? name : name + ": " + formatter.format(score));}
 
     @Override
     public String toString() { return "Team{" + "name='" + name + '\'' + ", score=" + score + '}'; }
