@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 public class Team extends Button implements Comparable<Team> {
     private boolean completeRound;
     private String name;
-    private Integer score;
+    private Double score;
 
     public Team() { super(); }
 
@@ -16,9 +16,9 @@ public class Team extends Button implements Comparable<Team> {
         update();
     }
 
-    public Integer getScore() { return score; }
+    public Double getScore() { return score; }
 
-    public void setScore(Integer score) {
+    public void setScore(Double score) {
         this.score = score;
         update();
     }
@@ -28,9 +28,7 @@ public class Team extends Button implements Comparable<Team> {
     @Override
     public String toString() { return "Team{" + "name='" + name + '\'' + ", score=" + score + '}'; }
 
-    @Override
-    public int compareTo(Team other) { return score - other.score; }
-
+    public int compareTo(Team other) { return score.compareTo(other.score); }
 
     public boolean isCompleteRound() { return completeRound; }
 

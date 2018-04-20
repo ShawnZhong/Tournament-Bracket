@@ -105,7 +105,7 @@ public class Tournament {
             while (true) {
                 try {
                     dialog.showAndWait().ifPresent(s -> {
-                        int score = Integer.parseInt(s);
+                        double score = Double.parseDouble(s);
                         if (score < 0) throw new InputMismatchException();
                         team.setScore(score);
                         compareScore(team);
