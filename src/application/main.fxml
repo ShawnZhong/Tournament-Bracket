@@ -94,8 +94,8 @@
             <children>
                 <Team layoutX="400" layoutY="300" onAction="#handleTeam"/>
 
-                <Team layoutX="325" layoutY="240" onAction="#handleTeam"/>
-                <Team layoutX="515" layoutY="240" onAction="#handleTeam"/>
+                <Team layoutX="100" layoutY="245" onAction="#handleTeam"/>
+                <Team layoutX="750" layoutY="245" onAction="#handleTeam"/>
             </children>
         </Pane>
          <Pane visible="false" fx:id="pane1" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
