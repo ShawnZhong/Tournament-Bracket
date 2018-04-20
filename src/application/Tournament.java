@@ -2,6 +2,7 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
@@ -13,30 +14,50 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Tournament {
-    @FXML
     private Pane pane;
-    private int teamSize = 0;
-    private int totalRound = 0;
-    private List<List<Team>> data = new ArrayList<>();
 
+    @FXML
+    private Pane pane16;
+    @FXML
+    private Pane pane8;
 
     public void initialize(String filePath) {
         List<String> lines = loadFile(filePath);
-        teamSize = lines.size();
-        totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
+        int teamSize = lines.size();
+        int totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
+
+        switch (teamSize) {
+            case (16):
+                pane = pane16;
+                break;
+            case (8):
+                pane = pane8;
+                break;
+        }
+        pane.setVisible(true);
+        pane.setBackground(new Background(new BackgroundImage(
+                new Image(teamSize + ".jpg"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(900, 600, false, false, false, false)
+        )));
+
+        for (Node node : pane.getChildren()) {
+            node.setVisible(false);
+            node.setDisable(false);
+        }
+
         for (int i = 0; i < teamSize; i++) {
             Team team = getTeam(teamSize - 1 + i);
             team.setName(lines.get(shuffle(totalRound, i) - 1));
             team.setVisible(true);
-
         }
-        initializePane();
     }
 
     private List<String> loadFile(String filepath) {
@@ -53,48 +74,26 @@ public class Tournament {
         return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
     }
 
-    private void initializePane() {
-
-        pane.setBackground(new Background(new BackgroundImage(
-                new Image(teamSize + ".jpg"),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(900, 600, false, false, false, false)
-        )));
-    }
-
-
-    @FXML
-    private void handleLoad(ActionEvent event) {
-        FileChooser fc = new FileChooser();
-        fc.setTitle("Choose Team Info File");
-        fc.setInitialDirectory(new File("."));
-        initialize(fc.showOpenDialog(new Stage()).getPath());
-    }
-
-    @FXML
-    private void handleExit(ActionEvent event) {
-        System.exit(0);
-    }
 
     @FXML
     public void handleTeam(ActionEvent event) {
-        Team t = (Team) event.getSource();
+        Team team1 = (Team) event.getSource();
         //if (!t.completeRound) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Input Score");
-        dialog.setContentText("Score for " + t.getText() + ":");
+        dialog.setContentText("Score for " + team1.getText() + ":");
         // while (true) {
         try {
             dialog.showAndWait().ifPresent(s -> {
-                t.setScore(Integer.parseInt(s));
-                int index1 = pane.getChildren().indexOf(t);
+                team1.setScore(Integer.parseInt(s));
+                int index1 = pane.getChildren().indexOf(team1);
                 int index2 = (index1 % 2 == 0) ? index1 - 1 : index1 + 1;
-                Team another = getTeam(index2);
-                if (another.getScore() != null) { // TODO:FIXME
+                Team team2 = getTeam(index2);
+                if (team2.getScore() != null) { // TODO:FIXME
                     Team parent = getTeam((index1 - 1) / 2);
-                    Team winner = t.compareTo(another) > 0 ? t : another;
+                    team1.setDisable(true);
+                    team2.setDisable(true);
+                    Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
                     parent.setName(winner.getName());
                     parent.setVisible(true);
                 }
@@ -111,4 +110,16 @@ public class Tournament {
         return (Team) pane.getChildren().get(index);
     }
 
+    @FXML
+    private void handleLoad(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Choose Team Info File");
+        fc.setInitialDirectory(new File("."));
+        initialize(fc.showOpenDialog(new Stage()).getPath());
+    }
+
+    @FXML
+    private void handleExit(ActionEvent event) {
+        System.exit(0);
+    }
 }
