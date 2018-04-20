@@ -38,13 +38,13 @@
                 <Team layoutX="40" layoutY="330" onAction="#handleTeam"/>
                 <Team layoutX="40" layoutY="390" onAction="#handleTeam"/>
                 <Team layoutX="40" layoutY="450" onAction="#handleTeam"/>
-                <Team layoutX="805" layoutY="32" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="32" onAction="#handleTeam"/>
                 <Team layoutX="800" layoutY="90" onAction="#handleTeam"/>
-                <Team layoutX="805" layoutY="150" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="150" onAction="#handleTeam"/>
                 <Team layoutX="800" layoutY="210" onAction="#handleTeam"/>
-                <Team layoutX="805" layoutY="270" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="270" onAction="#handleTeam"/>
                 <Team layoutX="800" layoutY="330" onAction="#handleTeam"/>
-                <Team layoutX="805" layoutY="390" onAction="#handleTeam"/>
+                <Team layoutX="800" layoutY="390" onAction="#handleTeam"/>
                 <Team layoutX="800" layoutY="450" onAction="#handleTeam"/>
 
 
