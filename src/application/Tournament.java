@@ -119,11 +119,11 @@ public class Tournament {
     }
 
     private void compareScore(Team team1) {
-        int index1 = getTeamIndex(team1);
-        int index2 = (index1 % 2 == 0) ? index1 - 1 : index1 + 1;
-        Team team2 = getTeam(index2);
+        int index1 = pane.getChildren().indexOf(team1);
+        Team team2 = getTeam((index1 % 2 == 0) ? index1 - 1 : index1 + 1);
         if (team2 != null && team2.getScore() != null) {
-            Team parent = getTeam((index1 - 1) / 2);
+            int parentIndex = (index1 - 1) / 2;
+            Team parent = getTeam(parentIndex);
 
             if (team1.compareTo(team2) == 0) {
                 new Alert(Alert.AlertType.WARNING, team1.getName() + " and " + team2.getName() + " tie!"
@@ -132,19 +132,17 @@ public class Tournament {
                 team2.setScore(null);
                 return;
             }
-
-            team1.setCompleteRound(true);
-            team2.setCompleteRound(true);
+            
             parent.setName(team1.compareTo(team2) > 0 ? team1.getName() : team2.getName());
             parent.setVisible(true);
-            if (getTeamIndex(parent) == 0)
+            team1.setCompleteRound(true);
+            team2.setCompleteRound(true);
+            if (parentIndex == 0)
                 new Alert(Alert.AlertType.WARNING, parent.getName() + " wins!!!").showAndWait();
         }
     }
 
     private Team getTeam(int index) { return (Team) pane.getChildren().get(index); }
-
-    private int getTeamIndex(Team team) { return pane.getChildren().indexOf(team); }
 
     @FXML
     private void handleLoad(ActionEvent event) {
