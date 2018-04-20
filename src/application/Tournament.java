@@ -17,7 +17,6 @@ package application;
 //2018 Mar 28, 2018  Tournament.java 
 ////////////////////////////80 columns wide //////////////////////////////////
 
-import com.sun.istack.internal.Nullable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -54,7 +53,7 @@ public class Tournament {
      *
      * @param filePath the path of the teamList file.
      */
-    public void initialize(@Nullable String filePath) {
+    public void initialize(String filePath) {
         initializeData(filePath);
         initializePane();
         initializeTeam();
@@ -183,7 +182,9 @@ public class Tournament {
         FileChooser fc = new FileChooser();
         fc.setTitle("Please choose team name file");
         fc.setInitialDirectory(new File("."));
-        initialize(fc.showOpenDialog(new Stage()).getPath());
+        try {
+        	initialize(fc.showOpenDialog(new Stage()).getPath());
+        }catch(NullPointerException e) { }
     }
 
     @FXML

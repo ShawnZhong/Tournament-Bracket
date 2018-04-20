@@ -103,7 +103,7 @@
     <Button layoutX="671.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleLoad" text="Load New File"/>
     <Button layoutX="784.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleReset" text="Reset All Scores"/>
     <Button layoutX="909.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleExit" text="Exit"/>
-    <Label layoutX="155.0" layoutY="561.0"
+    <Label layoutX="50.0" layoutY="20.0"
            text="Note: You can use arraw keys to choose the team, and space key to enter scores."/>
 
 

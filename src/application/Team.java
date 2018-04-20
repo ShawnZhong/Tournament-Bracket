@@ -1,6 +1,5 @@
 package application;
 
-import com.sun.istack.internal.Nullable;
 import javafx.scene.control.Button;
 
 import java.text.DecimalFormat;
@@ -24,7 +23,7 @@ public class Team extends Button implements Comparable<Team> {
 
     public Double getScore() { return score; }
 
-    public void setScore(@Nullable Double score) {
+    public void setScore(Double score) {
         this.score = score;
         update();
     }
