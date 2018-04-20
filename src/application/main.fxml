@@ -96,11 +96,6 @@
 
                 <Team layoutX="325" layoutY="240" onAction="#handleTeam"/>
                 <Team layoutX="515" layoutY="240" onAction="#handleTeam"/>
-
-                <Team layoutX="230" layoutY="120" onAction="#handleTeam"/>
-                <Team layoutX="230" layoutY="360" onAction="#handleTeam"/>
-                <Team layoutX="610" layoutY="120" onAction="#handleTeam"/>
-                <Team layoutX="610" layoutY="360" onAction="#handleTeam"/>
             </children>
         </Pane>
         <Button layoutX="795.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleLoad" text="Load New File"/>
