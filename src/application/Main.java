@@ -21,6 +21,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(loader.load(), 1000, 600));
         primaryStage.show();
 
-        loader.getController().initialize(filePath);
+        Tournament tournament = loader.getController();
+        tournament.initialize(filePath);
     }
 }
