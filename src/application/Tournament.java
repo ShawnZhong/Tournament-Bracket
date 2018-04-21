@@ -112,7 +112,7 @@ public class Tournament {
      * 1, 16, 8, 9, 4, 13, 5, 12, 2, 15, 7, 10, 3, 14, 6, 11;
      *
      * @param n Total number of teams.
-     * @param k The index of the current position. 
+     * @param k The index of the current position.
      * @return a list of strings that contains the list of the teams.
      */
     private int shuffle(int n, int k) {
@@ -139,19 +139,19 @@ public class Tournament {
     private Double promptInput(String teamName) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Input Score");
+        dialog.setContentText("Input Score");
         dialog.setContentText("Score for " + teamName + ": ");
-        while (true) {
-            try {
-                Optional<String> str = dialog.showAndWait();
-                if (!str.isPresent()) return null;
-                Double score = Double.valueOf(str.get());
-                if (score < 0) throw new InputMismatchException();
-                return score;
-            } catch (Exception e) {
-                showWarn("Invalid input. Please try again.");
-            }
+        while (true) try {
+            Optional<String> str = dialog.showAndWait();
+            if (!str.isPresent()) return null;
+            Double score = Double.valueOf(str.get());
+            if (score < 0) throw new InputMismatchException();
+            return score;
+        } catch (Exception e) {
+            showWarn("Invalid input. Please try again.");
         }
     }
+
 
     private void compareScore(Team team1) {
         int index = pane.getChildren().indexOf(team1);
@@ -172,7 +172,6 @@ public class Tournament {
         team2.setCompleteRound(true);
         if (parent.equals(getTeam(0)))
             showInfo(parent + " wins!!!");
-
     }
 
     private Team getTeam(int index) { return (Team) pane.getChildren().get(index); }
@@ -182,9 +181,9 @@ public class Tournament {
         FileChooser fc = new FileChooser();
         fc.setTitle("Please choose team name file");
         fc.setInitialDirectory(new File("."));
-        try {
-        	initialize(fc.showOpenDialog(new Stage()).getPath());
-        }catch(NullPointerException e) { }
+        File file = fc.showOpenDialog(new Stage());
+        if (file != null)
+            initialize(file.getPath());
     }
 
     @FXML

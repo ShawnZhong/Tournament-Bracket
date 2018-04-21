@@ -11,8 +11,6 @@ public class Team extends Button implements Comparable<Team> {
     private String name;
     private Double score;
 
-    public Team() { super(); }
-
     public String getName() { return name; }
 
     public void setName(String name) {
@@ -33,7 +31,6 @@ public class Team extends Button implements Comparable<Team> {
     public void reset() {
         setScore(null);
         setVisible(false);
-        setDisable(false);
         setCompleteRound(false);
     }
 

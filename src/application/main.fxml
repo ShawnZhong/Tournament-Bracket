@@ -30,8 +30,8 @@
 
             <Team layoutX="20" layoutY="150" onAction="#handleTeamEvent"/>
             <Team layoutX="20" layoutY="325" onAction="#handleTeamEvent"/>
-            <Team layoutX="820" layoutY="150" onAction="#handleTeamEvent"/>
-            <Team layoutX="820" layoutY="325" onAction="#handleTeamEvent"/>
+            <Team layoutX="760" layoutY="150" onAction="#handleTeamEvent"/>
+            <Team layoutX="760" layoutY="325" onAction="#handleTeamEvent"/>
         </Pane>
 
         <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
@@ -51,10 +51,10 @@
             <Team layoutX="30" layoutY="185" onAction="#handleTeamEvent"/>
             <Team layoutX="30" layoutY="290" onAction="#handleTeamEvent"/>
             <Team layoutX="30" layoutY="395" onAction="#handleTeamEvent"/>
-            <Team layoutX="805" layoutY="75" onAction="#handleTeamEvent"/>
-            <Team layoutX="805" layoutY="185" onAction="#handleTeamEvent"/>
-            <Team layoutX="805" layoutY="290" onAction="#handleTeamEvent"/>
-            <Team layoutX="805" layoutY="395" onAction="#handleTeamEvent"/>
+            <Team layoutX="780" layoutY="75" onAction="#handleTeamEvent"/>
+            <Team layoutX="780" layoutY="185" onAction="#handleTeamEvent"/>
+            <Team layoutX="780" layoutY="290" onAction="#handleTeamEvent"/>
+            <Team layoutX="780" layoutY="395" onAction="#handleTeamEvent"/>
         </Pane>
 
         <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
@@ -89,22 +89,21 @@
             <Team layoutX="40" layoutY="330" onAction="#handleTeamEvent"/>
             <Team layoutX="40" layoutY="390" onAction="#handleTeamEvent"/>
             <Team layoutX="40" layoutY="450" onAction="#handleTeamEvent"/>
-            <Team layoutX="800" layoutY="32" onAction="#handleTeamEvent"/>
-            <Team layoutX="800" layoutY="90" onAction="#handleTeamEvent"/>
-            <Team layoutX="800" layoutY="150" onAction="#handleTeamEvent"/>
-            <Team layoutX="800" layoutY="210" onAction="#handleTeamEvent"/>
-            <Team layoutX="800" layoutY="270" onAction="#handleTeamEvent"/>
-            <Team layoutX="800" layoutY="330" onAction="#handleTeamEvent"/>
-            <Team layoutX="800" layoutY="390" onAction="#handleTeamEvent"/>
-            <Team layoutX="800" layoutY="450" onAction="#handleTeamEvent"/>
+            <Team layoutX="790" layoutY="32" onAction="#handleTeamEvent"/>
+            <Team layoutX="790" layoutY="90" onAction="#handleTeamEvent"/>
+            <Team layoutX="790" layoutY="150" onAction="#handleTeamEvent"/>
+            <Team layoutX="790" layoutY="210" onAction="#handleTeamEvent"/>
+            <Team layoutX="790" layoutY="270" onAction="#handleTeamEvent"/>
+            <Team layoutX="790" layoutY="330" onAction="#handleTeamEvent"/>
+            <Team layoutX="790" layoutY="390" onAction="#handleTeamEvent"/>
+            <Team layoutX="790" layoutY="450" onAction="#handleTeamEvent"/>
         </Pane>
     </Pane>
+
+    <Label layoutX="50.0" layoutY="20.0"
+           text="Note: You can use arrow keys to select team, and space key to enter score."/>
     <Button layoutX="50.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleDemo" text="Demo Data"/>
     <Button layoutX="671.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleLoad" text="Load New File"/>
     <Button layoutX="784.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleReset" text="Reset All Scores"/>
     <Button layoutX="909.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleExit" text="Exit"/>
-    <Label layoutX="50.0" layoutY="20.0"
-           text="Note: You can use arraw keys to choose the team, and space key to enter scores."/>
-
-
 </AnchorPane>
