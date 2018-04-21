@@ -9,7 +9,7 @@ public class Main extends Application {
     private static String filePath;
 
     public static void main(String[] args) {
-        filePath = args[0];
+        filePath = args.length == 0 ? "" : args[0];
         launch(args);
     }
 

@@ -70,7 +70,7 @@ public class Tournament {
         } catch (Exception e) {
             if (filepath != null) // Used for demo
                 showWarn("File not found. Use demo data instead");
-            ChoiceDialog<Integer> dialog = new ChoiceDialog<>(teamSize, 1, 2, 4, 8, 16);
+            ChoiceDialog<Integer> dialog = new ChoiceDialog<>(16, 1, 2, 4, 8, 16);
             dialog.setTitle("Choose team size");
             dialog.setHeaderText("Demo mode");
             dialog.setContentText("Choose your team size:");
