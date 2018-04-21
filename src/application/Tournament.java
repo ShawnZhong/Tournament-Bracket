@@ -111,8 +111,8 @@ public class Tournament {
      * 1,  8, 4, 5, 2,  7, 3,  6;
      * 1, 16, 8, 9, 4, 13, 5, 12, 2, 15, 7, 10, 3, 14, 6, 11;
      *
-     * @param n
-     * @param k
+     * @param n Total number of teams.
+     * @param k The index of the current position. 
      * @return a list of strings that contains the list of the teams.
      */
     private int shuffle(int n, int k) {
