@@ -25,6 +25,10 @@ public class Team extends Button implements Comparable<Team> {
 
     public void setScore(Double score) {
         this.score = score;
+        if (score == null) {
+            setStatus(Status.NO_SCORE);
+            return;
+        }
         setText(name + ": " + formatter.format(score));
         setStatus(Status.ROUND_NOT_FINISHED);
     }
