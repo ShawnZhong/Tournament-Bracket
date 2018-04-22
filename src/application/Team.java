@@ -6,7 +6,6 @@ import java.text.DecimalFormat;
 
 public class Team extends Button implements Comparable<Team> {
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
-
     private boolean completeRound;
     private String name;
     private Double score;

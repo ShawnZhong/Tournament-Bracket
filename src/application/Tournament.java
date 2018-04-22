@@ -43,7 +43,7 @@ public class Tournament {
     @FXML
     private Pane panes;
     private Pane pane;
-    private int teamSize;
+    private int teamSize = 16;
     private int totalRound;
     private List<String> lines;
 
@@ -132,6 +132,7 @@ public class Tournament {
         if (team.isCompleteRound())
             return;
 
+
         team.setScore(promptInput(team.getName()));
         compareScore(team);
     }
@@ -143,9 +144,11 @@ public class Tournament {
         dialog.setContentText("Score for " + teamName + ": ");
         while (true) try {
             Optional<String> str = dialog.showAndWait();
-            if (!str.isPresent()) return null;
+            if (!str.isPresent())
+                return null;
             Double score = Double.valueOf(str.get());
-            if (score < 0) throw new InputMismatchException();
+            if (score < 0)
+                throw new InputMismatchException();
             return score;
         } catch (Exception e) {
             showWarn("Invalid input. Please try again.");
