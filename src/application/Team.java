@@ -9,11 +9,10 @@ enum Status {LOSE, WIN, NO_SCORE, ROUND_NOT_FINISHED}
 
 public class Team extends Button implements Comparable<Team> {
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
-    //    private boolean completeRound;
+
     private Status status = Status.NO_SCORE;
     private String name;
     private Double score;
-
 
     public String getName() { return name; }
 
