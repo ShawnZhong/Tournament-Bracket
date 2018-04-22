@@ -82,7 +82,12 @@ public class Tournament {
     }
 
     private void initializePane() {
-        if (teamSize != 1 && teamSize != 2 && teamSize != 4 && teamSize != 8 && teamSize != 16) {
+        if (teamSize == 0) {
+            showWarn("No challengers, no games, and no champion.");
+            totalRound = 0;
+        }
+
+        if (teamSize != 0 && teamSize != 1 && teamSize != 2 && teamSize != 4 && teamSize != 8 && teamSize != 16) {
             showWarn("Team size " + teamSize + " not supported");
             teamSize = 16;
             initialize(null); // Demo mode
@@ -129,7 +134,7 @@ public class Tournament {
             return;
         }
 
-        if (team.isCompleteRound())
+        if (team.getStatus().equals(Status.LOSE) || team.getStatus().equals(Status.WIN))
             return;
 
 
@@ -159,20 +164,25 @@ public class Tournament {
     private void compareScore(Team team1) {
         int index = pane.getChildren().indexOf(team1);
         Team team2 = getTeam((index % 2 == 0) ? index - 1 : index + 1);
-        if (team2 == null || team2.getScore() == null)
+
+        if (team2.getStatus().equals(Status.NO_SCORE))
             return;
 
         if (team1.compareTo(team2) == 0) {
             showWarn(team1 + " and " + team2 + " tie!" + "\r\nStart another game! ");
-            team1.setScore(null);
-            team2.setScore(null);
+            team1.setStatus(Status.NO_SCORE);
+            team2.setStatus(Status.NO_SCORE);
             return;
         }
 
         Team parent = getTeam((index - 1) / 2);
-        parent.setName(team1.compareTo(team2) > 0 ? team1.getName() : team2.getName());
-        team1.setCompleteRound(true);
-        team2.setCompleteRound(true);
+        Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
+        Team loser = team1.compareTo(team2) < 0 ? team1 : team2;
+        winner.setStatus(Status.WIN);
+        loser.setStatus(Status.LOSE);
+
+        parent.setName(winner.getName());
+
         if (parent.equals(getTeam(0)))
             showInfo(parent + " wins!!!");
     }
