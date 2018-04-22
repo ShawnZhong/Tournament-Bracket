@@ -24,7 +24,7 @@
               style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('4.jpg');-fx-background-size:900 600;-fx-background-position:center center;"
               visible="false">
             <Team layoutX="420" layoutY="280" onAction="#handleTeamEvent"/>
-            
+
             <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent"/>
             <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent"/>
 

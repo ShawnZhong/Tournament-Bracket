@@ -1,16 +1,20 @@
 package application;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.paint.Color;
 
 import java.text.DecimalFormat;
+import java.util.InputMismatchException;
+import java.util.Optional;
 
-enum Status {LOSE, WIN, NO_SCORE, ROUND_NOT_FINISHED}
+enum Status {HIDDEN, NO_SCORE, LOSE, WIN, ROUND_NOT_FINISHED}
 
 public class Team extends Button implements Comparable<Team> {
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
 
-    private Status status = Status.NO_SCORE;
+    private Status status;
     private String name;
     private Double score;
 
@@ -18,28 +22,13 @@ public class Team extends Button implements Comparable<Team> {
 
     public void setName(String name) {
         this.name = name;
-        setVisible(true);
-        setText(name);
+        setStatus(Status.NO_SCORE);
     }
 
-    public void setScore(Double score) {
-        this.score = score;
-        if (score == null) {
-            setStatus(Status.NO_SCORE);
-            return;
-        }
-        setText(name + ": " + formatter.format(score));
-        setStatus(Status.ROUND_NOT_FINISHED);
-    }
-
-    public Status getStatus() {
-        return status;
-    }
+    public Status getStatus() { return status; }
 
     public void setStatus(Status status) {
-        this.status = status;
-
-        switch (status) {
+        switch (this.status = status) {
             case WIN:
                 setUnderline(true);
                 break;
@@ -51,15 +40,40 @@ public class Team extends Button implements Comparable<Team> {
                 setUnderline(false);
                 setTextFill(Color.BLACK);
                 setText(name);
+                setVisible(true);
+                break;
+            case HIDDEN:
+                this.score = null;
+                setUnderline(false);
+                setTextFill(Color.BLACK);
+                setText(name);
+                setVisible(false);
                 break;
             case ROUND_NOT_FINISHED:
+                setText(name + ": " + formatter.format(score));
                 break;
         }
     }
 
-    public void reset() {
-        setStatus(Status.NO_SCORE);
-        setVisible(false);
+    public void setScore() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Input Score");
+        dialog.setContentText("Input Score");
+        dialog.setContentText("Score for " + name + ": ");
+        while (true) try {
+            Optional<String> str = dialog.showAndWait();
+            if (!str.isPresent())
+                return;
+            Double score = Double.valueOf(str.get());
+            if (score < 0)
+                throw new InputMismatchException();
+            this.score = score;
+
+            setStatus(Status.ROUND_NOT_FINISHED);
+            return;
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.WARNING, "Invalid input. Please try again.").showAndWait();
+        }
     }
 
     @Override

@@ -21,7 +21,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -29,9 +28,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -100,7 +97,7 @@ public class Tournament {
     }
 
     private void initializeTeam() {
-        pane.getChildren().forEach(node -> ((Team) node).reset());
+        pane.getChildren().forEach(node -> ((Team) node).setStatus(Status.HIDDEN));
 
         for (int i = 0; i < teamSize; i++)
             getTeam(teamSize - 1 + i).setName(lines.get(shuffle(totalRound, i) - 1));
@@ -137,27 +134,8 @@ public class Tournament {
         if (team.getStatus().equals(Status.LOSE) || team.getStatus().equals(Status.WIN))
             return;
 
-
-        team.setScore(promptInput(team.getName()));
+        team.setScore();
         compareScore(team);
-    }
-
-    private Double promptInput(String teamName) {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Input Score");
-        dialog.setContentText("Input Score");
-        dialog.setContentText("Score for " + teamName + ": ");
-        while (true) try {
-            Optional<String> str = dialog.showAndWait();
-            if (!str.isPresent())
-                return null;
-            Double score = Double.valueOf(str.get());
-            if (score < 0)
-                throw new InputMismatchException();
-            return score;
-        } catch (Exception e) {
-            showWarn("Invalid input. Please try again.");
-        }
     }
 
 
