@@ -9,50 +9,21 @@ import java.text.DecimalFormat;
 import java.util.InputMismatchException;
 import java.util.Optional;
 
-enum Status {HIDDEN, NO_SCORE, LOSE, WIN, ROUND_NOT_FINISHED}
+enum Status {HIDDEN, NOT_STARTED, IN_PROGRESS, LOSE, WIN}
 
 public class Team extends Button implements Comparable<Team> {
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
 
-    private Status status;
+
     private String name;
     private Double score;
+    private Status status;
 
     public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
-        setStatus(Status.NO_SCORE);
-    }
-
-    public Status getStatus() { return status; }
-
-    public void setStatus(Status status) {
-        switch (this.status = status) {
-            case WIN:
-                setUnderline(true);
-                break;
-            case LOSE:
-                setTextFill(Color.DARKGRAY);
-                break;
-            case NO_SCORE:
-                this.score = null;
-                setUnderline(false);
-                setTextFill(Color.BLACK);
-                setText(name);
-                setVisible(true);
-                break;
-            case HIDDEN:
-                this.score = null;
-                setUnderline(false);
-                setTextFill(Color.BLACK);
-                setText(name);
-                setVisible(false);
-                break;
-            case ROUND_NOT_FINISHED:
-                setText(name + ": " + formatter.format(score));
-                break;
-        }
+        setStatus(Status.NOT_STARTED);
     }
 
     public void setScore() {
@@ -69,12 +40,42 @@ public class Team extends Button implements Comparable<Team> {
                 throw new InputMismatchException();
             this.score = score;
 
-            setStatus(Status.ROUND_NOT_FINISHED);
+            setStatus(Status.IN_PROGRESS);
             return;
         } catch (Exception e) {
             new Alert(Alert.AlertType.WARNING, "Invalid input. Please try again.").showAndWait();
         }
     }
+
+    public Status getStatus() { return status; }
+
+
+    public void setStatus(Status status) {
+        switch (this.status = status) {
+            case HIDDEN:
+                this.score = null;
+                setUnderline(false);
+                setTextFill(Color.BLACK);
+                setText(name);
+                setVisible(false);
+                break;
+            case NOT_STARTED:
+                this.score = null;
+                setText(name);
+                setVisible(true);
+                break;
+            case IN_PROGRESS:
+                setText(name + ": " + formatter.format(score));
+                break;
+            case WIN:
+                setUnderline(true);
+                break;
+            case LOSE:
+                setTextFill(Color.DARKGRAY);
+                break;
+        }
+    }
+
 
     @Override
     public String toString() { return name; }

@@ -65,9 +65,9 @@ public class Tournament {
         try {
             lines = Files.readAllLines(Paths.get(filepath));
         } catch (Exception e) {
-            if (filepath != null) // Used for demo
-                showWarn("File not found. Use demo data instead");
-            ChoiceDialog<Integer> dialog = new ChoiceDialog<>(16, 1, 2, 4, 8, 16);
+            if (filepath != null) // if not in demo mode
+                showWarn("File not found. Entering demo mode...");
+            ChoiceDialog<Integer> dialog = new ChoiceDialog<>(16, 0, 1, 2, 4, 8, 16);
             dialog.setTitle("Choose team size");
             dialog.setHeaderText("Demo mode");
             dialog.setContentText("Choose your team size:");
@@ -84,8 +84,8 @@ public class Tournament {
             totalRound = 0;
         }
 
-        if (teamSize != 0 && teamSize != 1 && teamSize != 2 && teamSize != 4 && teamSize != 8 && teamSize != 16) {
-            showWarn("Team size " + teamSize + " not supported");
+        if ((teamSize & (teamSize - 1)) != 0 || teamSize > 16) { // not power of 2 or larger than 16
+            showWarn("Team size " + teamSize + " not supported. Use demo data instead.");
             teamSize = 16;
             initialize(null); // Demo mode
             return;
@@ -100,7 +100,7 @@ public class Tournament {
         pane.getChildren().forEach(node -> ((Team) node).setStatus(Status.HIDDEN));
 
         for (int i = 0; i < teamSize; i++)
-            getTeam(teamSize - 1 + i).setName(lines.get(shuffle(totalRound, i) - 1));
+            ((Team) pane.getChildren().get(teamSize - 1 + i)).setName(lines.get(shuffle(totalRound, i) - 1));
     }
 
     /**
@@ -126,13 +126,15 @@ public class Tournament {
     private void handleTeamEvent(ActionEvent event) {
         Team team = (Team) event.getSource();
 
-        if (team.equals(getTeam(0))) {
-            showInfo(team + " wins!!!");
+        if (team.getStatus().equals(Status.WIN)) {
+            showInfo(team + " is the winner.");
             return;
         }
 
-        if (team.getStatus().equals(Status.LOSE) || team.getStatus().equals(Status.WIN))
+        if (team.getStatus().equals(Status.LOSE)) {
+            showInfo(team + " loses the game.");
             return;
+        }
 
         team.setScore();
         compareScore(team);
@@ -141,31 +143,31 @@ public class Tournament {
 
     private void compareScore(Team team1) {
         int index = pane.getChildren().indexOf(team1);
-        Team team2 = getTeam((index % 2 == 0) ? index - 1 : index + 1);
+        int index2 = (index % 2 == 0) ? index - 1 : index + 1;
+        Team team2 = (Team) pane.getChildren().get(index2);
 
-        if (team2.getStatus().equals(Status.NO_SCORE))
+        if (team2.getStatus().equals(Status.NOT_STARTED) || team2.getStatus().equals(Status.HIDDEN))
             return;
 
         if (team1.compareTo(team2) == 0) {
             showWarn(team1 + " and " + team2 + " tie!" + "\r\nStart another game! ");
-            team1.setStatus(Status.NO_SCORE);
-            team2.setStatus(Status.NO_SCORE);
+            team1.setStatus(Status.NOT_STARTED);
+            team2.setStatus(Status.NOT_STARTED);
             return;
         }
 
-        Team parent = getTeam((index - 1) / 2);
         Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
         Team loser = team1.compareTo(team2) < 0 ? team1 : team2;
         winner.setStatus(Status.WIN);
         loser.setStatus(Status.LOSE);
 
+        int parentIndex = (index - 1) / 2;
+        Team parent = (Team) pane.getChildren().get(parentIndex);
         parent.setName(winner.getName());
 
-        if (parent.equals(getTeam(0)))
-            showInfo(parent + " wins!!!");
+        if (parentIndex == 1)
+            showInfo(parent + " wins the game!!!");
     }
-
-    private Team getTeam(int index) { return (Team) pane.getChildren().get(index); }
 
     @FXML
     private void handleLoad(ActionEvent event) {
