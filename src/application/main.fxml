@@ -3,16 +3,15 @@
 <?import application.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121"
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
     <Pane fx:id="panes">
-        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
-              style="-fx-border-color:black;-fx-border-width:1px;-fx-background-color:white;" visible="false">
+        <Pane styleClass="pane" fx:id="pane1" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
+              visible="false">
             <Team layoutX="420" layoutY="300" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
-              style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('2.jpg');-fx-background-size:900 600;-fx-background-position:center center;"
+        <Pane styleClass="pane" fx:id="pane2" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
               visible="false">
             <Team layoutX="420" layoutY="360" onAction="#handleTeamEvent"/>
 
@@ -20,8 +19,8 @@
             <Team layoutX="750" layoutY="245" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
-              style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('4.jpg');-fx-background-size:900 600;-fx-background-position:center center;"
+        <Pane styleClass="pane" fx:id="pane4" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
+
               visible="false">
             <Team layoutX="420" layoutY="280" onAction="#handleTeamEvent"/>
 
@@ -34,8 +33,7 @@
             <Team layoutX="760" layoutY="325" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
-              style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('8.jpg');-fx-background-size:900 600;-fx-background-position:center center;"
+        <Pane styleClass="pane" fx:id="pane8" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
               visible="false">
             <Team layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
 
@@ -57,8 +55,7 @@
             <Team layoutX="780" layoutY="395" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
-              style="-fx-border-color:black;-fx-border-width:1px;-fx-background-image: url('16.jpg');-fx-background-size:900 600;-fx-background-position:center center;"
+        <Pane styleClass="pane" fx:id="pane16" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="900.0"
               visible="false">
 
 
