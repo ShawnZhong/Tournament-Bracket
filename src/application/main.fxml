@@ -20,7 +20,8 @@
             <Team layoutX="750" layoutY="245" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane styleClass="pane" id="pane4" layoutX="50.0" layoutY="50.0">
+        <Pane styleClass="pane" id="pane4" layoutX="50.0" layoutY="50.0"
+        >
             <Team layoutX="420" layoutY="280" onAction="#handleTeamEvent"/>
 
             <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent"/>
