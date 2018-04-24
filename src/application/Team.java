@@ -3,7 +3,6 @@ package application;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.paint.Color;
 
 import java.text.DecimalFormat;
 import java.util.InputMismatchException;
@@ -53,9 +52,12 @@ public class Team extends Button implements Comparable<Team> {
     public void setStatus(Status status) {
         switch (this.status = status) {
             case HIDDEN:
+                getStyleClass().clear();
+                getStyleClass().add("button");
+
                 this.score = null;
-                setUnderline(false);
-                setTextFill(Color.BLACK);
+//                setUnderline(false);
+//                setTextFill(Color.BLACK);
                 setText(name);
                 setVisible(false);
                 break;
@@ -68,10 +70,10 @@ public class Team extends Button implements Comparable<Team> {
                 setText(name + ": " + formatter.format(score));
                 break;
             case WIN:
-                setUnderline(true);
+                getStyleClass().add("winner");
                 break;
             case LOSE:
-                setTextFill(Color.DARKGRAY);
+                getStyleClass().add("loser");
                 break;
         }
     }
