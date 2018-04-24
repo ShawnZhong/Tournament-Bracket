@@ -53,6 +53,7 @@ public class Team extends Button implements Comparable<Team> {
     public void setStatus(Status status) {
         switch (this.status = status) {
             case HIDDEN:
+                getStyleClass().clear();
                 this.score = null;
                 setUnderline(false);
                 setTextFill(Color.BLACK);
@@ -60,6 +61,7 @@ public class Team extends Button implements Comparable<Team> {
                 setVisible(false);
                 break;
             case NOT_STARTED:
+                getStyleClass().clear();
                 this.score = null;
                 setText(name);
                 setVisible(true);
@@ -68,10 +70,10 @@ public class Team extends Button implements Comparable<Team> {
                 setText(name + ": " + formatter.format(score));
                 break;
             case WIN:
-                setUnderline(true);
+                getStyleClass().add("winner");
                 break;
             case LOSE:
-                setTextFill(Color.DARKGRAY);
+                getStyleClass().add("loser");
                 break;
         }
     }
