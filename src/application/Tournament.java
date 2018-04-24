@@ -6,8 +6,8 @@ package application;
 //                  Team.java
 //                  Main.java
 //
-//USER:             Han Cao,
-//                  Suyan Qu,
+//USER:             Han Cao
+//                  Suyan Qu
 //                  Wanxiang Zhong
 //                  Yujie Guo
 //                  Yuhan Liu
@@ -34,7 +34,7 @@ import java.util.stream.IntStream;
 
 /**
  * This Tournament class contains methods that loads the file of teamList and
- * match different teams to compete with each other.
+ * matches different teams to compete with each other.
  */
 public class Tournament {
     @FXML
@@ -46,7 +46,7 @@ public class Tournament {
 
     /**
      * This method initializes the GUI by creating team objects
-     * and matching teams together.
+     * and matching teams altogether.
      *
      * @param filePath the path of the teamList file.
      */
@@ -57,7 +57,7 @@ public class Tournament {
     }
 
     /**
-     * This method loads file by the path
+     * This method loads file through its path
      *
      * @param filepath the path of the file to be read.
      */
@@ -104,7 +104,7 @@ public class Tournament {
     }
 
     /**
-     * This method matches which two teams to compete with each other.
+     * This method matches up two teams to compete with each other in the optimal way.
      * See https://oeis.org/A208569
      * Example:
      * 1;
