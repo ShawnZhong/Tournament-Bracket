@@ -39,13 +39,13 @@
               visible="false">
             <Team layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
 
-            <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent"/>
-            <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent"/>
+            <Team layoutX="330" layoutY="240" onAction="#handleTeamEvent"/>
+            <Team layoutX="500" layoutY="240" onAction="#handleTeamEvent"/>
 
-            <Team layoutX="230" layoutY="120" onAction="#handleTeamEvent"/>
-            <Team layoutX="230" layoutY="360" onAction="#handleTeamEvent"/>
-            <Team layoutX="610" layoutY="120" onAction="#handleTeamEvent"/>
-            <Team layoutX="610" layoutY="360" onAction="#handleTeamEvent"/>
+            <Team layoutX="240" layoutY="140" onAction="#handleTeamEvent"/>
+            <Team layoutX="240" layoutY="350" onAction="#handleTeamEvent"/>
+            <Team layoutX="600" layoutY="140" onAction="#handleTeamEvent"/>
+            <Team layoutX="600" layoutY="350" onAction="#handleTeamEvent"/>
 
             <Team layoutX="30" layoutY="75" onAction="#handleTeamEvent"/>
             <Team layoutX="30" layoutY="185" onAction="#handleTeamEvent"/>
