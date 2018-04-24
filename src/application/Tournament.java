@@ -99,13 +99,20 @@ public class Tournament {
         }
 
         panes.getChildren().forEach(node -> node.setVisible(false));
-        pane = (Pane) panes.getChildren().get(totalRound); 
+        pane = (Pane) panes.getChildren().get(totalRound); // define pane before displaying it 
         pane.setVisible(true); // display the pane
     }
 
+    /**
+     * This method matches teams to compete with each other. 
+     *
+     * @param nothing.
+     * @return nothing. 
+     */
     private void initializeTeam() {
         pane.getChildren().forEach(node -> ((Team) node).setStatus(Status.HIDDEN));
 
+        //matches each team with team to compete with using the shuffle method
         for (int i = 0; i < teamSize; i++)
             ((Team) pane.getChildren().get(teamSize - 1 + i)).setName(lines.get(shuffle(totalRound, i) - 1));
     }
@@ -129,6 +136,12 @@ public class Tournament {
     }
 
 
+    /**
+     * This method displays the result of the competition for each team. 
+     *
+     * @param nothing.
+     * @return nothing. 
+     */
     @FXML
     private void handleTeamEvent(ActionEvent event) {
         Team team = (Team) event.getSource();
@@ -148,14 +161,22 @@ public class Tournament {
     }
 
 
+    /**
+     * This method compares the scores of two teams and set their winning status. 
+     *
+     * @param team1 the team to be compared with its paired team.
+     * @return nothing. 
+     */
     private void compareScore(Team team1) {
-        int index = pane.getChildren().indexOf(team1);
-        int index2 = (index % 2 == 0) ? index - 1 : index + 1;
-        Team team2 = (Team) pane.getChildren().get(index2);
+        int index = pane.getChildren().indexOf(team1); //the index of the team
+        int index2 = (index % 2 == 0) ? index - 1 : index + 1; // calculate the index of the team to be compared
+        Team team2 = (Team) pane.getChildren().get(index2); // get the team to be compared with team1
 
+        // if team2 has not start playing 
         if (team2.getStatus().equals(Status.NOT_STARTED) || team2.getStatus().equals(Status.HIDDEN))
             return;
 
+        // if two teams have the same score 
         if (team1.compareTo(team2) == 0) {
             showWarn(team1 + " and " + team2 + " tie!" + "\r\nStart another game! ");
             team1.setStatus(Status.NOT_STARTED);
@@ -163,11 +184,13 @@ public class Tournament {
             return;
         }
 
+        // decide the winner of the game 
         Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
         Team loser = team1.compareTo(team2) < 0 ? team1 : team2;
         winner.setStatus(Status.WIN);
         loser.setStatus(Status.LOSE);
 
+        // decide the player of the next round 
         int parentIndex = (index - 1) / 2;
         Team parent = (Team) pane.getChildren().get(parentIndex);
         parent.setName(winner.getName());
@@ -175,6 +198,8 @@ public class Tournament {
         if (parentIndex == 1)
             showInfo(parent + " wins the game!!!");
     }
+
+    
 
     @FXML
     private void handleLoad(ActionEvent event) {
