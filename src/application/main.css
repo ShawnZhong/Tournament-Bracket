@@ -1,4 +1,7 @@
 .pane {
+    visible: false;
+    -fx-pref-height: 500;
+    -fx-pref-width: 900;
     -fx-border-color: black;
     -fx-border-width: 1px;
     -fx-background-color: white;
