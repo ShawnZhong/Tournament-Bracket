@@ -78,7 +78,14 @@ public class Tournament {
         totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);// calculate the total rounds of the competition
     }
 
+     /**
+     * This method displays teams to the pane. 
+     *
+     * @param nothing.
+     * @return nothing. 
+     */
     private void initializePane() {
+        // if there are no teams at all
         if (teamSize == 0) {
             showWarn("No challengers, no games, and no champion.");
             totalRound = 0;
@@ -86,14 +93,14 @@ public class Tournament {
 
         if ((teamSize & (teamSize - 1)) != 0 || teamSize > 16) { // not power of 2 or larger than 16
             showWarn("Team size " + teamSize + " not supported. Use demo data instead.");
-            teamSize = 16;
+            teamSize = 16; // set the default value to be 16
             initialize(null); // Demo mode
             return;
         }
 
         panes.getChildren().forEach(node -> node.setVisible(false));
-        pane = (Pane) panes.getChildren().get(totalRound);
-        pane.setVisible(true);
+        pane = (Pane) panes.getChildren().get(totalRound); 
+        pane.setVisible(true); // display the pane
     }
 
     private void initializeTeam() {
