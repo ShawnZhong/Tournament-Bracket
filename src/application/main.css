@@ -1,4 +1,4 @@
-.pane {
+#panes > Pane {
     visible: false;
     -fx-pref-height: 500;
     -fx-pref-width: 900;
@@ -9,7 +9,7 @@
     -fx-background-position: center center;
 }
 
-#pane1 {
+#panes {
 
 }
 
@@ -27,4 +27,12 @@
 
 #pane16 {
     -fx-background-image: url('16.jpg');
+}
+
+.winner {
+
+}
+
+.loser {
+
 }

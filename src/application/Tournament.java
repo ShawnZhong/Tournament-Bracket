@@ -79,10 +79,7 @@ public class Tournament {
     }
 
      /**
-     * This method displays teams to the pane. 
-     *
-     * @param nothing.
-     * @return nothing. 
+      * This method displays teams to the pane.
      */
     private void initializePane() {
         // if there are no teams at all
@@ -104,10 +101,7 @@ public class Tournament {
     }
 
     /**
-     * This method matches teams to compete with each other. 
-     *
-     * @param nothing.
-     * @return nothing. 
+     * This method matches teams to compete with each other.
      */
     private void initializeTeam() {
         pane.getChildren().forEach(node -> ((Team) node).setStatus(Status.HIDDEN));
@@ -137,14 +131,16 @@ public class Tournament {
 
 
     /**
-     * This method displays the result of the competition for each team. 
-     *
-     * @param nothing.
-     * @return nothing. 
+     * This method displays the result of the competition for each team.
      */
     @FXML
     private void handleTeamEvent(ActionEvent event) {
         Team team = (Team) event.getSource();
+
+        if (pane.getChildren().indexOf(team) == 0) {
+            showInfo(team + " wins the game!!!");
+            return;
+        }
 
         if (team.getStatus().equals(Status.WIN)) {
             showInfo(team + " is the winner.");
@@ -195,7 +191,7 @@ public class Tournament {
         Team parent = (Team) pane.getChildren().get(parentIndex);
         parent.setName(winner.getName());
 
-        if (parentIndex == 1)
+        if (parentIndex == 0)
             showInfo(parent + " wins the game!!!");
     }
 
