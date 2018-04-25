@@ -104,11 +104,13 @@ public class Tournament {
      * This method matches teams to compete with each other.
      */
     private void initializeTeam() {
-        pane.getChildren().forEach(node -> ((Team) node).setStatus(Status.DEFAULT));
+        for (int i = 0; i < teamSize * 2 - 2; i++)
+            getTeam(i).setStatus(Status.DEFAULT);
+
 
         //matches each team with team to compete with using the shuffle method
         for (int i = 0; i < teamSize; i++)
-            ((Team) pane.getChildren().get(teamSize - 1 + i)).setName(lines.get(shuffle(totalRound, i) - 1));
+            getTeam(teamSize - 1 + i).setName(lines.get(shuffle(totalRound, i) - 1));
     }
 
     /**
@@ -187,14 +189,16 @@ public class Tournament {
 
         // decide the player of the next round 
         int parentIndex = (index - 1) / 2;
-        Team parent = (Team) pane.getChildren().get(parentIndex);
+        Team parent = getTeam(parentIndex);
         parent.setName(winner.getName());
 
         if (parentIndex == 0)
             showInfo(parent + " wins the game!!!");
     }
 
-    
+    private Team getTeam(int index) {
+        return (Team) ((Pane) pane.getChildren().get(0)).getChildren().get(index);
+    }
 
     @FXML
     private void handleLoad(ActionEvent event) {
