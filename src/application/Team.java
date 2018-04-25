@@ -56,8 +56,6 @@ public class Team extends Button implements Comparable<Team> {
                 getStyleClass().add("button");
 
                 this.score = null;
-//                setUnderline(false);
-//                setTextFill(Color.BLACK);
                 setText(name);
                 setVisible(false);
                 break;

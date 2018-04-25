@@ -1,4 +1,4 @@
-.pane {
+#panes > Pane {
     visible: false;
     -fx-pref-height: 500;
     -fx-pref-width: 900;
@@ -9,7 +9,7 @@
     -fx-background-position: center center;
 }
 
-#pane1 {
+#panes {
 
 }
 
@@ -29,10 +29,28 @@
     -fx-background-image: url('16.jpg');
 }
 
-.winner{
-    -fx-underline: true;
+Team {
+	-fx-background-color: #86ade2;
+	-fx-text-fill: #ffffff;
 }
 
-.loser{
-    -fx-color: gray;
+Team:hover{
+    -fx-background-color:#3d82df;
+}
+
+.winner{
+    -fx-background-color:#3d82df;
+    -fx-font-weight: bold;
+}
+
+.loser:hover{
+    -fx-background-color: #86ade2;
+}
+
+#panes > Pane:first-child{
+	-fx-background-color: #fdd80c;
+}
+
+#panes > Pane:first-child:hover{
+	-fx-background-color: #fdd80c;
 }

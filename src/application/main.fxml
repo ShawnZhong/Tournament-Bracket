@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import application.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
-
     <Pane fx:id="panes">
-        <Pane styleClass="pane" id="pane1" layoutX="50.0" layoutY="50.0">
-            <Team styleClass = "champ" layoutX="420" layoutY="300" onAction="#handleTeamEvent"/>
+        <Pane id="pane1" layoutX="50.0" layoutY="50.0">
+            <Team layoutX="420" layoutY="300" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane styleClass="pane" id="pane2" layoutX="50.0" layoutY="50.0">
-            <Team styleClass = "champ" layoutX="420" layoutY="360" onAction="#handleTeamEvent"/>
+        <Pane id="pane2" layoutX="50.0" layoutY="50.0">
+            <Team layoutX="420" layoutY="360" onAction="#handleTeamEvent"/>
 
             <Team layoutX="100" layoutY="245" onAction="#handleTeamEvent"/>
             <Team layoutX="750" layoutY="245" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane styleClass="pane" id="pane4" layoutX="50.0" layoutY="50.0">
-            <Team styleClass = "champ" layoutX="420" layoutY="280" onAction="#handleTeamEvent"/>
+        <Pane id="pane4" layoutX="50.0" layoutY="50.0">
+            <Team layoutX="420" layoutY="280" onAction="#handleTeamEvent"/>
 
             <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent"/>
             <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent"/>
@@ -32,8 +29,8 @@
             <Team layoutX="760" layoutY="325" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane styleClass="pane" id="pane8" layoutX="50.0" layoutY="50.0">
-            <Team styleClass = "champ" layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
+        <Pane id="pane8" layoutX="50.0" layoutY="50.0">
+            <Team layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
 
             <Team layoutX="330" layoutY="240" onAction="#handleTeamEvent"/>
             <Team layoutX="500" layoutY="240" onAction="#handleTeamEvent"/>
@@ -53,8 +50,10 @@
             <Team layoutX="780" layoutY="395" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane styleClass="pane" id="pane16" layoutX="50.0" layoutY="50.0">
-            <Team styleClass = "champ" layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
+        <Pane id="pane16" layoutX="50.0" layoutY="50.0">
+
+
+            <Team layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
 
             <Team layoutX="350" layoutY="240" onAction="#handleTeamEvent"/>
             <Team layoutX="490" layoutY="240" onAction="#handleTeamEvent"/>
@@ -100,5 +99,5 @@
     <Button layoutX="50.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleDemo" text="Demo Data"/>
     <Button layoutX="671.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleLoad" text="Load New File"/>
     <Button layoutX="784.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleReset" text="Reset All Scores"/>
-    <Button layoutX="909.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleExit" text="Exit"/>  
+    <Button layoutX="909.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleExit" text="Exit"/>
 </AnchorPane>
