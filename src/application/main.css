@@ -1,4 +1,4 @@
-#panes > Pane > Pane {
+.team_container {
     -fx-pref-height: 500;
     -fx-pref-width: 900;
     -fx-border-color: black;
@@ -8,19 +8,19 @@
     -fx-background-position: center center;
 }
 
-#panes > #pane2 > .team_container {
+#pane2 > .team_container {
     -fx-background-image: url('2.jpg');
 }
 
-#panes > #pane4 > .team_container {
+#pane4 > .team_container {
     -fx-background-image: url('4.jpg');
 }
 
-#panes > #pane8 > .team_container {
+#pane8 > .team_container {
     -fx-background-image: url('8.jpg');
 }
 
-#panes > #pane16 > .team_container {
+#pane16 > .team_container {
     -fx-background-image: url('16.jpg');
 }
 

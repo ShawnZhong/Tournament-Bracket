@@ -41,7 +41,6 @@ public class Team extends Button implements Comparable<Team> {
             if (score < 0)
                 throw new InputMismatchException();
             this.score = score;
-
             setStatus(Status.IN_PROGRESS);
             return;
         } catch (Exception e) {
