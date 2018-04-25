@@ -161,7 +161,6 @@ public class Tournament {
      * This method compares the scores of two teams and set their winning status. 
      *
      * @param team1 the team to be compared with its paired team.
-     * @return nothing. 
      */
     private void compareScore(Team team1) {
         int index = pane.getChildren().indexOf(team1); //the index of the team
