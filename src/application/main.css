@@ -28,3 +28,11 @@
 #pane16 {
     -fx-background-image: url('16.jpg');
 }
+
+.winner{
+    -fx-underline: true;
+}
+
+.loser{
+    -fx-color: gray;
+}

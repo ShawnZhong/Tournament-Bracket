@@ -10,19 +10,18 @@
 
     <Pane fx:id="panes">
         <Pane styleClass="pane" id="pane1" layoutX="50.0" layoutY="50.0">
-            <Team layoutX="420" layoutY="300" onAction="#handleTeamEvent"/>
+            <Team styleClass = "champ" layoutX="420" layoutY="300" onAction="#handleTeamEvent"/>
         </Pane>
 
         <Pane styleClass="pane" id="pane2" layoutX="50.0" layoutY="50.0">
-            <Team layoutX="420" layoutY="360" onAction="#handleTeamEvent"/>
+            <Team styleClass = "champ" layoutX="420" layoutY="360" onAction="#handleTeamEvent"/>
 
             <Team layoutX="100" layoutY="245" onAction="#handleTeamEvent"/>
             <Team layoutX="750" layoutY="245" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane styleClass="pane" id="pane4" layoutX="50.0" layoutY="50.0"
-        >
-            <Team layoutX="420" layoutY="280" onAction="#handleTeamEvent"/>
+        <Pane styleClass="pane" id="pane4" layoutX="50.0" layoutY="50.0">
+            <Team styleClass = "champ" layoutX="420" layoutY="280" onAction="#handleTeamEvent"/>
 
             <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent"/>
             <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent"/>
@@ -34,7 +33,7 @@
         </Pane>
 
         <Pane styleClass="pane" id="pane8" layoutX="50.0" layoutY="50.0">
-            <Team layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
+            <Team styleClass = "champ" layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
 
             <Team layoutX="330" layoutY="240" onAction="#handleTeamEvent"/>
             <Team layoutX="500" layoutY="240" onAction="#handleTeamEvent"/>
@@ -55,9 +54,7 @@
         </Pane>
 
         <Pane styleClass="pane" id="pane16" layoutX="50.0" layoutY="50.0">
-
-
-            <Team layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
+            <Team styleClass = "champ" layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
 
             <Team layoutX="350" layoutY="240" onAction="#handleTeamEvent"/>
             <Team layoutX="490" layoutY="240" onAction="#handleTeamEvent"/>
