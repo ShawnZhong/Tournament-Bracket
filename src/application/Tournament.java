@@ -104,7 +104,7 @@ public class Tournament {
      * This method matches teams to compete with each other.
      */
     private void initializeTeam() {
-        pane.getChildren().forEach(node -> ((Team) node).setStatus(Status.HIDDEN));
+        pane.getChildren().forEach(node -> ((Team) node).setStatus(Status.DEFAULT));
 
         //matches each team with team to compete with using the shuffle method
         for (int i = 0; i < teamSize; i++)
@@ -169,7 +169,7 @@ public class Tournament {
         Team team2 = (Team) pane.getChildren().get(index2); // get the team to be compared with team1
 
         // if team2 has not start playing 
-        if (team2.getStatus().equals(Status.NOT_STARTED) || team2.getStatus().equals(Status.HIDDEN))
+        if (team2.getStatus().equals(Status.NOT_STARTED) || team2.getStatus().equals(Status.DEFAULT))
             return;
 
         // if two teams have the same score 
