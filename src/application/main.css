@@ -1,5 +1,4 @@
 #panes > Pane {
-    visible: false;
     -fx-pref-height: 500;
     -fx-pref-width: 900;
     -fx-border-color: black;

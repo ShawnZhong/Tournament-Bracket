@@ -6,18 +6,18 @@
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
     <Pane fx:id="panes">
-        <Pane id="pane1" layoutX="50.0" layoutY="50.0">
+        <Pane visible="false" id="pane1" layoutX="50.0" layoutY="50.0">
             <Team styleClass="champion" layoutX="420" layoutY="300" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane id="pane2" layoutX="50.0" layoutY="50.0">
+        <Pane visible="false" id="pane2" layoutX="50.0" layoutY="50.0">
             <Team styleClass="champion" layoutX="420" layoutY="360" onAction="#handleTeamEvent"/>
 
             <Team layoutX="100" layoutY="245" onAction="#handleTeamEvent"/>
             <Team layoutX="750" layoutY="245" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane id="pane4" layoutX="50.0" layoutY="50.0">
+        <Pane visible="false" id="pane4" layoutX="50.0" layoutY="50.0">
             <Team styleClass="champion" layoutX="420" layoutY="280" onAction="#handleTeamEvent"/>
 
             <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent"/>
@@ -29,7 +29,7 @@
             <Team layoutX="760" layoutY="325" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane id="pane8" layoutX="50.0" layoutY="50.0">
+        <Pane visible="false" id="pane8" layoutX="50.0" layoutY="50.0">
             <Team styleClass="champion" layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
 
             <Team layoutX="330" layoutY="240" onAction="#handleTeamEvent"/>
@@ -50,7 +50,7 @@
             <Team layoutX="780" layoutY="395" onAction="#handleTeamEvent"/>
         </Pane>
 
-        <Pane id="pane16" layoutX="50.0" layoutY="50.0">
+        <Pane visible="false" id="pane16" layoutX="50.0" layoutY="50.0">
             <Team styleClass="champion" layoutX="420" layoutY="290" onAction="#handleTeamEvent"/>
 
             <Team layoutX="350" layoutY="240" onAction="#handleTeamEvent"/>
