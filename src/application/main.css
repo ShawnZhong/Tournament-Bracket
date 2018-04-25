@@ -9,10 +9,6 @@
     -fx-background-position: center center;
 }
 
-#panes {
-
-}
-
 #pane2 {
     -fx-background-image: url('2.jpg');
 }
@@ -47,10 +43,11 @@ Team:hover{
     -fx-background-color: #86ade2;
 }
 
-#panes > Pane:first-child{
+.champion {
 	-fx-background-color: #fdd80c;
 }
 
-#panes > Pane:first-child:hover{
+.champion:hover {
 	-fx-background-color: #fdd80c;
+    -fx-font-weight: bold;
 }

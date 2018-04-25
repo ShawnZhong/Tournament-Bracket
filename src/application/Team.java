@@ -52,8 +52,7 @@ public class Team extends Button implements Comparable<Team> {
     public void setStatus(Status status) {
         switch (this.status = status) {
             case DEFAULT:
-                getStyleClass().clear();
-                getStyleClass().add("button");
+                getStyleClass().removeAll("winner", "loser");
 
                 this.score = null;
                 setText(name);
