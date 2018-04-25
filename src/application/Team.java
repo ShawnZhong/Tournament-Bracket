@@ -13,10 +13,13 @@ enum Status {DEFAULT, NOT_STARTED, IN_PROGRESS, LOSE, WIN}
 public class Team extends Button implements Comparable<Team> {
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
 
-
     private String name;
     private Double score;
     private Status status;
+
+    public Team() { this("Team 00"); }
+
+    public Team(String name) {setName(name);}
 
     public String getName() { return name; }
 
