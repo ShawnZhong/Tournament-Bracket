@@ -113,7 +113,8 @@ public class Tournament {
         try {
             lines = Files.readAllLines(Paths.get(filepath));
         } catch (Exception e) {
-            if (filepath != null) // if not in demo mode, then we need to prompt error
+            // if not in demo mode, then we need to prompt error
+            if (filepath != null)
                 showWarn("File not found. Entering demo mode...");
 
             // Show prompting dialog
@@ -428,6 +429,4 @@ public class Tournament {
     private void showWarn(String str) {
         new Alert(Alert.AlertType.WARNING, str).showAndWait();
     }
-
-
 }
