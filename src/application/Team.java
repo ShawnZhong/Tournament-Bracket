@@ -33,31 +33,53 @@ enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
  * Include Name, score, status; and closure functions for editing those fields
  */
 public class Team extends Button implements Comparable<Team> {
+    /**
+     * This is a formatter for displaying the score
+     */
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
 
-    private String name; // The name of the team
-    private Double score; // The score of the team
-    private Status status; // Win or Lose?
+    /**
+     * This is the name of the team
+     */
+    private String name;
+
+    /**
+     * This is the score of the team
+     */
+    private Double score;
+
+    /**
+     * This is the current status of the team
+     *
+     * @see Status
+     */
+    private Status status;
 
     /**
      * Default constructor of Team, set name to default
      * Normally will not be called
      */
-    public Team() { this("Team 00"); }
+    public Team() {
+        this("Team 00");
+    }
 
     /**
      * Constructor, generate a team by Name
      *
      * @param name the name of team
      */
-    public Team(String name) {setName(name);}
+    public Team(String name) {
+        setName(name);
+    }
 
     /**
      * Get the name
      *
      * @return String name of the team
      */
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
     /**
      * set the name
@@ -102,9 +124,13 @@ public class Team extends Button implements Comparable<Team> {
      *  IN_PROGRESS:
      *  WIN: HighList as a Winner
      *  Lose: Set the status to a Loser
-     * @return
+     * @return the status of this team
+     *
+     * @see Status
      */
-    public Status getStatus() { return status; }
+    public Status getStatus() {
+        return status;
+    }
 
     /**
      *  HIDDEN: Hide the team from canvas
@@ -112,7 +138,9 @@ public class Team extends Button implements Comparable<Team> {
      *  IN_PROGRESS:
      *  WIN: HighList as a Winner
      *  Lose: Set the status to a Loser
-     * @param status
+     * @param status the status of a given team
+     *
+     * @see Status
      */
     public void setStatus(Status status) {
         switch (this.status = status) {
@@ -145,7 +173,9 @@ public class Team extends Button implements Comparable<Team> {
      * @return the name
      */
     @Override
-    public String toString() { return name; }
+    public String toString() {
+        return name;
+    }
 
     /**
      * Used to compare with other team in terms of scores
@@ -155,5 +185,7 @@ public class Team extends Button implements Comparable<Team> {
      * True: Win
      * False: Lost
      */
-    public int compareTo(Team other) { return score.compareTo(other.score); }
+    public int compareTo(Team other) {
+        return score.compareTo(other.score);
+    }
 }

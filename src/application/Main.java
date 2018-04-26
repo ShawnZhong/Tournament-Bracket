@@ -28,11 +28,16 @@ import javafx.stage.Stage;
  * Launch the GUI for the program
  */
 public class Main extends Application {
-    private static String filePath; // Path for the teamlist file
+    /**
+     * Path for the teamlist file
+     *
+     * @see #start(Stage)
+     */
+    private static String filePath;
 
     /**
      * Read a command line parameter of the path of teamlist file
-     * @param args String: Teamlist path
+     * @param args String: the path of team list
      */
     public static void main(String[] args) {
         filePath = args.length == 0 ? null : args[0];
@@ -41,8 +46,8 @@ public class Main extends Application {
 
     /**
      * Launch the JAVAFX GUI for the program
-     * @param primaryStage
-     * @throws Exception
+     * @param primaryStage the primary stage
+     * @throws Exception when main.fxml cannot be read
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
