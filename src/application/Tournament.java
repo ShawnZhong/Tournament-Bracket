@@ -38,16 +38,59 @@ import java.util.stream.IntStream;
  * matches different teams to compete with each other.
  */
 public class Tournament {
+    /**
+     * This variable links to 'panes' in the fxml file
+     * It is the parent of all other panes (pane16, pane8, pane4, ..., pane1)
+     *
+     * @see #initializePane()
+     */
     @FXML
     private Pane panes;
+
+    /**
+     * This is the actual pane we are using.
+     * It will store one of the pane from {pane16, ..., pane1}, depending on the team size
+     *
+     * @see #initializePane()
+     */
     private Pane pane;
+
+    /**
+     * This GridPane is used to display champions (first, second, third)
+     * It is a child of the selected pane above
+     *
+     * @see #initializePane()
+     */
+    private GridPane championBox;
+
+    /**
+     * This is the size of team
+     * Acceptable: 0,1,2,4,8,16
+     *
+     * @see #initializeTeam()
+     */
     private int teamSize = 16;
+
+    /**
+     * This is the number of total round, determined by the size of team
+     *
+     * @see #initializeData(String)
+     */
     private int totalRound;
+
+    /**
+     * This is the content of file read from filePath
+     * It consists of all team names
+     *
+     * @see #initializeData(String)
+     */
     private List<String> lines;
 
     /**
-     * This method initializes the GUI by creating team objects
-     * and matching teams altogether.
+     * This method will
+     * 1. call initializeData to initialize {@code lines}
+     * 2. call initializePane to initialize {@code pane} and {@code championBox}
+     * 3. call initializeTeam to initialize all the teams
      *
      * @param filePath the path of the teamList file.
      */
@@ -59,6 +102,10 @@ public class Tournament {
 
     /**
      * This method loads file through its path
+     * {@code lines}, {@code teamSize}, {@code totalRound} will be initialed
+     *
+     * If we there is any exception, or the {@code filepath} is null
+     * Then we will enter demo mode, and initialed lines with {Team 01, ..., Team 16}
      *
      * @param filepath the path of the file to be read.
      */
@@ -81,10 +128,6 @@ public class Tournament {
         totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);// calculate the total rounds of the competition
     }
 
-    private GridPane championBox;
-
-    { }
-
     /**
      * This method matches up two teams to compete with each other in the optimal way.
      * See https://oeis.org/A208569
@@ -104,7 +147,8 @@ public class Tournament {
     }
 
     /**
-     * This method displays teams to the pane.
+     * This method will initialize the {@code pane} variable by choosing the right pane to display
+     * It will also initialize {@code championBox} with the corresponding one
      */
     private void initializePane() {
         panes.getChildren().forEach(node -> node.setVisible(false));
@@ -128,7 +172,7 @@ public class Tournament {
     }
 
     /**
-     * This method matches teams to compete with each other.
+     * This method will initialize all the teams displayed on the pane
      */
     private void initializeTeam() {
         if (teamSize == 1) {
@@ -167,6 +211,7 @@ public class Tournament {
         team.setScore();
         compareScore(team);
     }
+
     /**
      * This method compares the scores of two teams and set their winning status.
      *
@@ -174,7 +219,7 @@ public class Tournament {
      */
     private void compareScore(Team team1) {
         int index = getTeamIndex(team1); //the index of the team
-        Team team2 = getSibling(index); // get the team to be compared with team1
+        Team team2 = getCompetitor(index); // get the team to be compared with team1
 
         // if team2 has not start playing
         if (team2.getStatus().equals(Status.DEFAULT) || team2.getStatus().equals(Status.HIDDEN))
@@ -207,6 +252,13 @@ public class Tournament {
         parent.setName(winner.getName());
     }
 
+    /**
+     * This method handle the champions
+     * It will fill championBox with correct information, and display it
+     *
+     * @param first  the first prize
+     * @param second the second prize
+     */
     private void showChampion(Team first, Team second) {
         championBox.setVisible(true);
 
@@ -230,14 +282,13 @@ public class Tournament {
     }
 
 
-    private Team getSibling(int index) { return getTeam((index % 2 == 0) ? index + 1 : index - 1); }
-
-    private Team getTeam(int index) { return (Team) ((Pane) pane.getChildren().get(0)).getChildren().get(index); }
-
-    private int getTeamIndex(Team team) { return ((Pane) pane.getChildren().get(0)).getChildren().indexOf(team); }
-
+    /**
+     * Event handler for the first prize, second prize & third prize
+     *
+     * @param event not used
+     */
     @FXML
-    public void handleChampion(ActionEvent event) {
+    public void handleTopThree(ActionEvent event) {
         Team team = (Team) event.getSource();
         int index = championBox.getChildren().indexOf(team);
 
@@ -245,6 +296,11 @@ public class Tournament {
         showInfo(team + " is " + place[index] + " place!!!");
     }
 
+    /**
+     * Event handler for the load button
+     *
+     * @param event not used
+     */
     @FXML
     private void handleLoad(ActionEvent event) {
         FileChooser fc = new FileChooser();
@@ -255,17 +311,78 @@ public class Tournament {
             initialize(file.getPath());
     }
 
+    /**
+     * Event handler for the exit button
+     *
+     * @param event not used
+     */
     @FXML
-    private void handleExit(ActionEvent event) { System.exit(0); }
+    private void handleExit(ActionEvent event) {
+        System.exit(0);
+    }
 
+
+    /**
+     * Event handler for the demo button
+     *
+     * @param event not used
+     */
     @FXML
     private void handleDemo(ActionEvent event) { initialize(null); }
 
+
+    /**
+     * Event handler for the reset button
+     *
+     * @param event not used
+     */
     @FXML
     private void handleReset(ActionEvent event) { initializeTeam(); }
 
+    /**
+     * A help method used to find the competitor of given team
+     *
+     * @param index the index of a given team
+     * @return its competitor
+     */
+    private Team getCompetitor(int index) {
+        return getTeam((index % 2 == 0) ? index + 1 : index - 1);
+    }
+
+    /**
+     * A help method used to find the team by its index
+     *
+     * @param index the index of a given team
+     * @return the team
+     */
+    private Team getTeam(int index) {
+        return (Team) ((Pane) pane.getChildren().get(0)).getChildren().get(index);
+    }
+
+    /**
+     * A helper method used to get the index of a specific team
+     * <p>
+     * Word as a "inverse function" of getTeam
+     *
+     * @param team a given team
+     * @return its index
+     */
+    private int getTeamIndex(Team team) {
+        return ((Pane) pane.getChildren().get(0)).getChildren().indexOf(team);
+    }
+
+    /**
+     * A private helper used to display information
+     *
+     * @param str the information we want to display
+     */
     private void showInfo(String str) {new Alert(Alert.AlertType.INFORMATION, str).showAndWait();}
 
+    /**
+     * A private helper used to display warning
+     *
+     * @param str the warning message we want to display
+     */
     private void showWarn(String str) {new Alert(Alert.AlertType.WARNING, str).showAndWait();}
 
 

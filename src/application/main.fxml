@@ -13,7 +13,7 @@
         <Pane id="pane1" visible="false">
             <Pane styleClass="team_container"/>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="240.0" vgap="5.0">
-                <Team styleClass="first" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="first" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
             </GridPane>
         </Pane>
@@ -24,8 +24,8 @@
                 <Team layoutX="750" layoutY="245" onAction="#handleTeam"/>
             </Pane>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
-                <Team styleClass="first" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Team styleClass="second" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="first" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                 <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
             </GridPane>
@@ -43,9 +43,9 @@
                 <Team layoutX="760" layoutY="325" onAction="#handleTeam"/>
             </Pane>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
-                <Team styleClass="first" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Team styleClass="second" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <Team styleClass="third" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Team styleClass="first" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="third" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                 <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                 <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
@@ -72,9 +72,9 @@
                 <Team layoutX="780" layoutY="395" onAction="#handleTeam"/>
             </Pane>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
-                <Team styleClass="first" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Team styleClass="second" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <Team styleClass="third" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Team styleClass="first" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="third" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                 <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                 <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
@@ -118,9 +118,9 @@
                 <Team layoutX="790" layoutY="450" onAction="#handleTeam"/>
             </Pane>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
-                <Team styleClass="first" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Team styleClass="second" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <Team styleClass="third" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Team styleClass="first" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="third" onAction="#handleTopThree" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                 <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                 <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
