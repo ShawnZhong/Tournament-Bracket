@@ -1,9 +1,9 @@
 .team_container {
     -fx-pref-height: 500;
     -fx-pref-width: 900;
+    -fx-background-color: white;
     -fx-border-color: black;
     -fx-border-width: 1px;
-    -fx-background-color: white;
     -fx-background-size: 900 600;
     -fx-background-position: center center;
 }
@@ -42,11 +42,35 @@ Team:hover{
     -fx-background-color: #86ade2;
 }
 
-.champion {
-	-fx-background-color: #fdd80c;
-}
-
-.champion:hover {
+.first {
 	-fx-background-color: #fdd80c;
     -fx-font-weight: bold;
+}
+
+.first:hover {
+	-fx-background-color: #fdd80c;
+    -fx-font-weight: bold;
+}
+
+.second {
+    -fx-background-color: silver;
+    -fx-font-weight: bold;
+}
+
+.second:hover {
+    -fx-background-color: silver;
+    -fx-font-weight: bold;
+}
+
+.third {
+    -fx-background-color: sandybrown;
+    -fx-font-weight: bold;
+}
+
+.third:hover {
+    -fx-background-color: sandybrown;
+    -fx-font-weight: bold;
+}
+
+.champion {
 }

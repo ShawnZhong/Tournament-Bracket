@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -78,40 +79,9 @@ public class Tournament {
         totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);// calculate the total rounds of the competition
     }
 
-     /**
-      * This method displays teams to the pane.
-     */
-    private void initializePane() {
-        // if there are no teams at all
-        if (teamSize == 0) {
-            showWarn("No challengers, no games, and no champion.");
-            totalRound = 0;
-        }
+    private GridPane championBox;
 
-        if ((teamSize & (teamSize - 1)) != 0 || teamSize > 16) { // not power of 2 or larger than 16
-            showWarn("Team size " + teamSize + " not supported. Use demo data instead.");
-            teamSize = 16; // set the default value to be 16
-            initialize(null); // Demo mode
-            return;
-        }
-
-        panes.getChildren().forEach(node -> node.setVisible(false));
-        pane = (Pane) panes.getChildren().get(totalRound); // define pane before displaying it 
-        pane.setVisible(true); // display the pane
-    }
-
-    /**
-     * This method matches teams to compete with each other.
-     */
-    private void initializeTeam() {
-        for (int i = 0; i < teamSize * 2 - 2; i++)
-            getTeam(i).setStatus(Status.DEFAULT);
-
-
-        //matches each team with team to compete with using the shuffle method
-        for (int i = 0; i < teamSize; i++)
-            getTeam(teamSize - 1 + i).setName(lines.get(shuffle(totalRound, i) - 1));
-    }
+    { }
 
     /**
      * This method matches up two teams to compete with each other in the optimal way.
@@ -139,11 +109,6 @@ public class Tournament {
     private void handleTeamEvent(ActionEvent event) {
         Team team = (Team) event.getSource();
 
-        if (pane.getChildren().indexOf(team) == 0) {
-            showInfo(team + " wins the game!!!");
-            return;
-        }
-
         if (team.getStatus().equals(Status.WIN)) {
             showInfo(team + " is the winner.");
             return;
@@ -158,22 +123,62 @@ public class Tournament {
         compareScore(team);
     }
 
+    /**
+     * This method displays teams to the pane.
+     */
+    private void initializePane() {
+        panes.getChildren().forEach(node -> node.setVisible(false));
+
+        // if there are no teams at all
+        if (teamSize == 0)
+            showWarn("No challengers, no games, and no champion.");
+
+
+        if ((teamSize & (teamSize - 1)) != 0 || teamSize > 16) { // not power of 2 or larger than 16
+            showWarn("Team size " + teamSize + " not supported. Use demo data instead.");
+            teamSize = 16; // set the default value to be 16
+            initialize(null); // Demo mode
+            return;
+        }
+        pane = (Pane) panes.getChildren().get(totalRound + 1); // define pane before displaying it
+        pane.setVisible(true); // display the pane
+        championBox = (GridPane) pane.getChildren().get(1);
+    }
 
     /**
-     * This method compares the scores of two teams and set their winning status. 
+     * This method matches teams to compete with each other.
+     */
+    private void initializeTeam() {
+        for (int i = 0; i < teamSize * 2 - 2; i++)
+            getTeam(i).setStatus(Status.DEFAULT);
+
+
+        if (teamSize == 1) {
+            getTeam(0).setName(lines.get(0));
+            getTeam(0).setStatus(Status.WIN);
+            ((Team) championBox.getChildren().get(0)).setName(lines.get(0));
+            return;
+        }
+
+        //matches each team with team to compete with using the shuffle method
+        for (int i = 0; i < teamSize; i++)
+            getTeam(teamSize - 2 + i).setName(lines.get(shuffle(totalRound, i) - 1));
+    }
+
+    /**
+     * This method compares the scores of two teams and set their winning status.
      *
      * @param team1 the team to be compared with its paired team.
      */
     private void compareScore(Team team1) {
-        int index = pane.getChildren().indexOf(team1); //the index of the team
-        int index2 = (index % 2 == 0) ? index - 1 : index + 1; // calculate the index of the team to be compared
-        Team team2 = (Team) pane.getChildren().get(index2); // get the team to be compared with team1
+        int index = getTeamIndex(team1); //the index of the team
+        Team team2 = getSibling(index); // get the team to be compared with team1
 
-        // if team2 has not start playing 
+        // if team2 has not start playing
         if (team2.getStatus().equals(Status.NOT_STARTED) || team2.getStatus().equals(Status.DEFAULT))
             return;
 
-        // if two teams have the same score 
+        // if two teams have the same score
         if (team1.compareTo(team2) == 0) {
             showWarn(team1 + " and " + team2 + " tie!" + "\r\nStart another game! ");
             team1.setStatus(Status.NOT_STARTED);
@@ -181,24 +186,51 @@ public class Tournament {
             return;
         }
 
-        // decide the winner of the game 
+        // decide the winner of the game
         Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
         Team loser = team1.compareTo(team2) < 0 ? team1 : team2;
         winner.setStatus(Status.WIN);
         loser.setStatus(Status.LOSE);
 
-        // decide the player of the next round 
-        int parentIndex = (index - 1) / 2;
+        // decide the player of the next round
+        int parentIndex = (index - 3) / 2;
+
+        if (parentIndex == -1) {
+            showInfo(winner + " wins the game!!!");
+            showChampion(winner, loser);
+            return;
+        }
+
         Team parent = getTeam(parentIndex);
         parent.setName(winner.getName());
-
-        if (parentIndex == 0)
-            showInfo(parent + " wins the game!!!");
     }
 
-    private Team getTeam(int index) {
-        return (Team) ((Pane) pane.getChildren().get(0)).getChildren().get(index);
+    private void showChampion(Team first, Team second) {
+        if (teamSize == 0)
+            return;
+        
+        ((Team) championBox.getChildren().get(0)).setName(first.getName());
+        ((Team) championBox.getChildren().get(1)).setName(second.getName());
+
+        if (teamSize <= 4)
+            return;
+
+        Team third = IntStream.range(2, 6)
+                .mapToObj(this::getTeam)
+                .filter(e -> e.getStatus().equals(Status.LOSE))
+                .sorted(Team::compareTo)
+                .collect(Collectors.toList())
+                .get(1);
+        ((Team) championBox.getChildren().get(2)).setName(third.getName());
     }
+
+
+    private Team getSibling(int index) { return getTeam((index % 2 == 0) ? index + 1 : index - 1); }
+
+    private Team getTeam(int index) { return (Team) ((Pane) pane.getChildren().get(0)).getChildren().get(index); }
+
+    private int getTeamIndex(Team team) { return ((Pane) pane.getChildren().get(0)).getChildren().indexOf(team); }
+
 
     @FXML
     private void handleLoad(ActionEvent event) {

@@ -5,26 +5,37 @@
 <?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
     <Pane fx:id="panes" layoutX="50.0" layoutY="50.0">
+        <Pane id="pane0" visible="false">
+            <Pane styleClass="team_container"/>
+            <GridPane/>
+        </Pane>
+
         <Pane id="pane1" visible="false">
             <Pane styleClass="team_container">
-                <Team layoutX="420" layoutY="300" onAction="#handleTeamEvent" styleClass="champion" />
+                <Team layoutX="420" layoutY="300"/>
             </Pane>
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
+                <Team styleClass="first" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            </GridPane>
         </Pane>
 
         <Pane id="pane2" visible="false">
             <Pane styleClass="team_container">
-                <Team layoutX="420" layoutY="360" onAction="#handleTeamEvent" styleClass="champion" />
-
                 <Team layoutX="100" layoutY="245" onAction="#handleTeamEvent" />
                 <Team layoutX="750" layoutY="245" onAction="#handleTeamEvent" />
             </Pane>
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
+                <Team styleClass="first" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            </GridPane>
         </Pane>
 
 
         <Pane id="pane4" visible="false">
             <Pane styleClass="team_container">
-                <Team layoutX="420" layoutY="280" onAction="#handleTeamEvent" styleClass="champion" />
-
                 <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent" />
                 <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent" />
 
@@ -33,12 +44,18 @@
                 <Team layoutX="760" layoutY="150" onAction="#handleTeamEvent" />
                 <Team layoutX="760" layoutY="325" onAction="#handleTeamEvent" />
             </Pane>
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
+                <Team styleClass="first" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="third" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            </GridPane>
         </Pane>
 
         <Pane id="pane8" visible="false">
             <Pane styleClass="team_container">
-                <Team layoutX="420" layoutY="290" onAction="#handleTeamEvent" styleClass="champion" />
-
                 <Team layoutX="330" layoutY="240" onAction="#handleTeamEvent" />
                 <Team layoutX="500" layoutY="240" onAction="#handleTeamEvent" />
 
@@ -56,14 +73,20 @@
                 <Team layoutX="780" layoutY="290" onAction="#handleTeamEvent" />
                 <Team layoutX="780" layoutY="395" onAction="#handleTeamEvent" />
             </Pane>
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
+                <Team styleClass="first" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="third" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            </GridPane>
         </Pane>
 
         <Pane id="pane16">
             <Pane styleClass="team_container">
-                <Team layoutX="414.0" layoutY="290.0" onAction="#handleTeamEvent" styleClass="champion"/>
-
-                <Team layoutX="350" layoutY="240" onAction="#handleTeamEvent" />
-                <Team layoutX="490" layoutY="240" onAction="#handleTeamEvent" />
+                <Team layoutX="345.0" layoutY="237.0" onAction="#handleTeamEvent"/>
+                <Team layoutX="490.0" layoutY="237.0" onAction="#handleTeamEvent"/>
 
                 <Team layoutX="280" layoutY="120" onAction="#handleTeamEvent" />
                 <Team layoutX="280" layoutY="360" onAction="#handleTeamEvent" />
@@ -95,7 +118,15 @@
                 <Team layoutX="790" layoutY="330" onAction="#handleTeamEvent" />
                 <Team layoutX="790" layoutY="390" onAction="#handleTeamEvent" />
                 <Team layoutX="790" layoutY="450" onAction="#handleTeamEvent" />
-        </Pane>
+            </Pane>
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
+                <Team styleClass="first" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="third" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            </GridPane>
         </Pane>
     </Pane>
 
