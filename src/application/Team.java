@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 import java.util.InputMismatchException;
 import java.util.Optional;
 
-enum Status {DEFAULT, NOT_STARTED, IN_PROGRESS, LOSE, WIN}
+enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
 
 public class Team extends Button implements Comparable<Team> {
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
@@ -25,7 +25,7 @@ public class Team extends Button implements Comparable<Team> {
 
     public void setName(String name) {
         this.name = name;
-        setStatus(Status.NOT_STARTED);
+        setStatus(Status.DEFAULT);
     }
 
     public void setScore() {
@@ -53,14 +53,13 @@ public class Team extends Button implements Comparable<Team> {
 
     public void setStatus(Status status) {
         switch (this.status = status) {
-            case DEFAULT:
+            case HIDDEN:
                 getStyleClass().removeAll("winner", "loser");
-
                 this.score = null;
                 setText(name);
                 setVisible(false);
                 break;
-            case NOT_STARTED:
+            case DEFAULT:
                 this.score = null;
                 setText(name);
                 setVisible(true);

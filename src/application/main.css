@@ -25,11 +25,14 @@
 }
 
 Team {
-	-fx-background-color: #86ade2;
-	-fx-text-fill: #ffffff;
+    -fx-text-fill: #ffffff;
 }
 
-Team:hover{
+.team_container > Team {
+	-fx-background-color: #86ade2;
+}
+
+.team_container > Team:hover {
     -fx-background-color:#3d82df;
 }
 
@@ -38,39 +41,22 @@ Team:hover{
     -fx-font-weight: bold;
 }
 
-.loser:hover{
+.loser:hover {
     -fx-background-color: #86ade2;
+}
+
+GridPane > Team {
+    -fx-font-weight: bold;
 }
 
 .first {
 	-fx-background-color: #fdd80c;
-    -fx-font-weight: bold;
-}
-
-.first:hover {
-	-fx-background-color: #fdd80c;
-    -fx-font-weight: bold;
 }
 
 .second {
     -fx-background-color: silver;
-    -fx-font-weight: bold;
-}
-
-.second:hover {
-    -fx-background-color: silver;
-    -fx-font-weight: bold;
 }
 
 .third {
     -fx-background-color: sandybrown;
-    -fx-font-weight: bold;
-}
-
-.third:hover {
-    -fx-background-color: sandybrown;
-    -fx-font-weight: bold;
-}
-
-.champion {
 }

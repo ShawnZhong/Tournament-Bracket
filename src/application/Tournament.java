@@ -138,7 +138,7 @@ public class Tournament {
         }
 
         for (int i = 0; i < teamSize * 2 - 2; i++)
-            getTeam(i).setStatus(Status.DEFAULT);
+            getTeam(i).setStatus(Status.HIDDEN);
 
 
         //matches each team with team to compete with using the shuffle method
@@ -177,14 +177,14 @@ public class Tournament {
         Team team2 = getSibling(index); // get the team to be compared with team1
 
         // if team2 has not start playing
-        if (team2.getStatus().equals(Status.NOT_STARTED) || team2.getStatus().equals(Status.DEFAULT))
+        if (team2.getStatus().equals(Status.DEFAULT) || team2.getStatus().equals(Status.HIDDEN))
             return;
 
         // if two teams have the same score
         if (team1.compareTo(team2) == 0) {
             showWarn(team1 + " and " + team2 + " tie!" + "\r\nStart another game! ");
-            team1.setStatus(Status.NOT_STARTED);
-            team2.setStatus(Status.NOT_STARTED);
+            team1.setStatus(Status.DEFAULT);
+            team2.setStatus(Status.DEFAULT);
             return;
         }
 
