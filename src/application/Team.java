@@ -29,6 +29,8 @@ enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
 
 /**
  * A Class used to represent the team in Tournament;
+ * Contains methods that used to present a Team:
+ * Include Name, score, status; and closure functions for editing those fields
  */
 public class Team extends Button implements Comparable<Team> {
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
@@ -44,19 +46,22 @@ public class Team extends Button implements Comparable<Team> {
     public Team() { this("Team 00"); }
 
     /**
-     * Constructor
+     * Constructor, generate a team by Name
+     *
      * @param name the name of team
      */
     public Team(String name) {setName(name);}
 
     /**
      * Get the name
+     *
      * @return String name of the team
      */
     public String getName() { return name; }
 
     /**
      * set the name
+     *
      * @param name String, the name of the team
      */
     public void setName(String name) {
@@ -66,6 +71,7 @@ public class Team extends Button implements Comparable<Team> {
 
     /**
      * Set the score for the team
+     *
      * Negative number of other unNumber characters will not be accept
      */
     public void setScore() {
@@ -134,7 +140,8 @@ public class Team extends Button implements Comparable<Team> {
     }
 
     /**
-     * Print name
+     * Used to help print name
+     *
      * @return the name
      */
     @Override
@@ -142,6 +149,7 @@ public class Team extends Button implements Comparable<Team> {
 
     /**
      * Used to compare with other team in terms of scores
+     *
      * @param other A TEAM
      * @return Boolean:
      * True: Win
