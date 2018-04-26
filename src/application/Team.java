@@ -13,22 +13,43 @@ enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
 public class Team extends Button implements Comparable<Team> {
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
 
-    private String name;
-    private Double score;
-    private Status status;
+    private String name; // The name of the team
+    private Double score; // The score of the team
+    private Status status; // Win or Lose?
 
+    /**
+     * Default constructor of Team, set name to default
+     * Normally will not be called
+     */
     public Team() { this("Team 00"); }
 
+    /**
+     * Constructor
+     * @param name the name of team
+     */
     public Team(String name) {setName(name);}
 
+    /**
+     * Get the name
+     * @return String name of the team
+     */
     public String getName() { return name; }
 
+    /**
+     * set the name
+     * @param name String, the name of the team
+     */
     public void setName(String name) {
         this.name = name;
         setStatus(Status.DEFAULT);
     }
 
+    /**
+     * Set the score for the team
+     * Negative number of other unNumber characters will not be accept
+     */
     public void setScore() {
+        // GUI part
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Input Score");
         dialog.setContentText("Input Score");
@@ -48,6 +69,15 @@ public class Team extends Button implements Comparable<Team> {
         }
     }
 
+    /**
+     * Status of the team
+     *  HIDDEN: Hide the team from canvas
+     *  DEFAULT: NO score but name
+     *  IN_PROGRESS:
+     *  WIN: HighList as a Winner
+     *  Lose: Set the status to a Loser
+     * @return
+     */
     public Status getStatus() { return status; }
 
 
@@ -76,9 +106,19 @@ public class Team extends Button implements Comparable<Team> {
         }
     }
 
-
+    /**
+     * Print name
+     * @return the name
+     */
     @Override
     public String toString() { return name; }
 
+    /**
+     * Used to compare with other team in terms of scores
+     * @param other A TEAM
+     * @return Boolean:
+     * True: Win
+     * False: Lost
+     */
     public int compareTo(Team other) { return score.compareTo(other.score); }
 }
