@@ -113,19 +113,26 @@ public class Tournament {
         try {
             lines = Files.readAllLines(Paths.get(filepath));
         } catch (Exception e) {
-            if (filepath != null) // if not in demo mode
+            if (filepath != null) // if not in demo mode, then we need to prompt error
                 showWarn("File not found. Entering demo mode...");
+
+            // Show prompting dialog
             ChoiceDialog<Integer> dialog = new ChoiceDialog<>(16, 0, 1, 2, 4, 8, 16);
             dialog.setTitle("Choose team size");
             dialog.setHeaderText("Demo mode");
             dialog.setContentText("Choose your team size:");
             dialog.showAndWait().ifPresent(integer -> teamSize = integer);
+
+            // initialed lines with {Team 01, ..., Team 16}
             lines = IntStream.range(1, teamSize + 1)
                     .mapToObj(i -> "Team " + String.format("%02d", i))
                     .collect(Collectors.toList());
         }
         teamSize = lines.size();
-        totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);// calculate the total rounds of the competition
+
+        // calculate the total rounds of the competition
+        // if teamSize = 0, then totalRound = -1
+        totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
     }
 
     /**
@@ -151,22 +158,27 @@ public class Tournament {
      * It will also initialize {@code championBox} with the corresponding one
      */
     private void initializePane() {
+        // Set all panes to be invisible
+        // this is necessary when we want to use another team size
         panes.getChildren().forEach(node -> node.setVisible(false));
 
         // if there are no teams at all
         if (teamSize == 0)
             showWarn("No challengers, no games, and no champion.");
 
-
-        if ((teamSize & (teamSize - 1)) != 0 || teamSize > 16) { // not power of 2 or larger than 16
+        // if teamSize is not power of 2 or is 0 or larger than 16
+        if ((teamSize & (teamSize - 1)) != 0 || teamSize > 16) {
             showWarn("Team size " + teamSize + " not supported. Use demo data instead.");
             teamSize = 16; // set the default value to be 16
             initialize(null); // Demo mode
             return;
         }
 
-        pane = (Pane) panes.getChildren().get(totalRound + 1); // define pane before displaying it
-        pane.setVisible(true); // display the pane
+        // get the corresponding pane depending on totalRound, and display it
+        pane = (Pane) panes.getChildren().get(totalRound + 1);
+        pane.setVisible(true);
+
+        // set championBox to corresponding GridPane, and set as hidden
         championBox = (GridPane) pane.getChildren().get(1);
         championBox.setVisible(false);
     }
@@ -175,39 +187,50 @@ public class Tournament {
      * This method will initialize all the teams displayed on the pane
      */
     private void initializeTeam() {
+        // When team size is 1, directly display the championBox
+        // Since the champion is determinant when there is only one team
         if (teamSize == 1) {
             ((Team) championBox.getChildren().get(0)).setName(lines.get(0));
             championBox.setVisible(true);
             return;
         }
 
+        // Initialize all the teams to be hidden first
         for (int i = 0; i < teamSize * 2 - 2; i++)
             getTeam(i).setStatus(Status.HIDDEN);
 
 
-        //matches each team with team to compete with using the shuffle method
+        // matches each team with team to compete with using the shuffle method
+        // The status will be set to default after setName is called
+        // And the team will be displayed on the pane
         for (int i = 0; i < teamSize; i++)
             getTeam(teamSize - 2 + i).setName(lines.get(shuffle(totalRound, i) - 1));
     }
 
 
     /**
-     * This method displays the result of the competition for each team.
+     * Event handler for the team buttons
+     *
+     * @param event the event invoked
      */
     @FXML
     private void handleTeam(ActionEvent event) {
+        // Get the team clicked
         Team team = (Team) event.getSource();
 
+        // If a given team is the winner in some round
         if (team.getStatus().equals(Status.WIN)) {
             showInfo(team + " is the winner.");
             return;
         }
 
+        // If a given team is the loser in some round
         if (team.getStatus().equals(Status.LOSE)) {
             showInfo(team + " loses the game.");
             return;
         }
 
+        // ask for user input of score and compare with another team
         team.setScore();
         compareScore(team);
     }
@@ -218,7 +241,7 @@ public class Tournament {
      * @param team1 the team to be compared with its paired team.
      */
     private void compareScore(Team team1) {
-        int index = getTeamIndex(team1); //the index of the team
+        int index = getTeamIndex(team1); // the index of the team
         Team team2 = getCompetitor(index); // get the team to be compared with team1
 
         // if team2 has not start playing
@@ -242,12 +265,14 @@ public class Tournament {
         // decide the player of the next round
         int parentIndex = (index - 3) / 2;
 
+        // Check if the whole game is finished
         if (parentIndex == -1) {
             showInfo(winner + " wins the game!!!");
             showChampion(winner, loser);
             return;
         }
 
+        // set the name for next round
         Team parent = getTeam(parentIndex);
         parent.setName(winner.getName());
     }
@@ -260,17 +285,22 @@ public class Tournament {
      * @param second the second prize
      */
     private void showChampion(Team first, Team second) {
-        championBox.setVisible(true);
-
+        // No need to display Champion Box if there are less than 2 teams
         if (teamSize < 2)
             return;
 
+        // Show Champion Box, because this method will be called only all the games is finished
+        championBox.setVisible(true);
+
+        // set name for first and second place
         ((Team) championBox.getChildren().get(0)).setName(first.getName());
         ((Team) championBox.getChildren().get(1)).setName(second.getName());
 
+        // No need to display the third place if there are only two teams
         if (teamSize < 4)
             return;
 
+        // Determine the third place
         Team third = IntStream.range(2, 6)
                 .mapToObj(this::getTeam)
                 .filter(e -> e.getStatus().equals(Status.LOSE))
@@ -278,20 +308,23 @@ public class Tournament {
                 .collect(Collectors.toList())
                 .get(1);
 
+        // Set name for the third place
         ((Team) championBox.getChildren().get(2)).setName(third.getName());
     }
 
 
     /**
-     * Event handler for the first prize, second prize & third prize
+     * Event handler for the first prize, second prize & third prize button
      *
      * @param event not used
      */
     @FXML
     public void handleTopThree(ActionEvent event) {
+        // get the team clicked and its index
         Team team = (Team) event.getSource();
         int index = championBox.getChildren().indexOf(team);
 
+        // display the corresponding info
         String[] place = {"first", "second", "third"};
         showInfo(team + " is " + place[index] + " place!!!");
     }
@@ -303,10 +336,13 @@ public class Tournament {
      */
     @FXML
     private void handleLoad(ActionEvent event) {
+        // Build a file chooser
         FileChooser fc = new FileChooser();
         fc.setTitle("Please choose team name file");
         fc.setInitialDirectory(new File("."));
         File file = fc.showOpenDialog(new Stage());
+
+        // continue if there is some file chosen
         if (file != null)
             initialize(file.getPath());
     }
@@ -328,7 +364,9 @@ public class Tournament {
      * @param event not used
      */
     @FXML
-    private void handleDemo(ActionEvent event) { initialize(null); }
+    private void handleDemo(ActionEvent event) {
+        initialize(null); // Entering demo mode
+    }
 
 
     /**
@@ -337,7 +375,9 @@ public class Tournament {
      * @param event not used
      */
     @FXML
-    private void handleReset(ActionEvent event) { initializeTeam(); }
+    private void handleReset(ActionEvent event) {
+        initializeTeam();
+    }
 
     /**
      * A help method used to find the competitor of given team
@@ -376,14 +416,18 @@ public class Tournament {
      *
      * @param str the information we want to display
      */
-    private void showInfo(String str) {new Alert(Alert.AlertType.INFORMATION, str).showAndWait();}
+    private void showInfo(String str) {
+        new Alert(Alert.AlertType.INFORMATION, str).showAndWait();
+    }
 
     /**
      * A private helper used to display warning
      *
      * @param str the warning message we want to display
      */
-    private void showWarn(String str) {new Alert(Alert.AlertType.WARNING, str).showAndWait();}
+    private void showWarn(String str) {
+        new Alert(Alert.AlertType.WARNING, str).showAndWait();
+    }
 
 
 }
