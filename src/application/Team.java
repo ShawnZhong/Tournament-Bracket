@@ -10,6 +10,9 @@ import java.util.Optional;
 
 enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
 
+/**
+ * A Class used to represent the team in Tournament;
+ */
 public class Team extends Button implements Comparable<Team> {
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
 
@@ -80,7 +83,14 @@ public class Team extends Button implements Comparable<Team> {
      */
     public Status getStatus() { return status; }
 
-
+    /**
+     *  HIDDEN: Hide the team from canvas
+     *  DEFAULT: NO score but name
+     *  IN_PROGRESS:
+     *  WIN: HighList as a Winner
+     *  Lose: Set the status to a Loser
+     * @param status
+     */
     public void setStatus(Status status) {
         switch (this.status = status) {
             case HIDDEN:
