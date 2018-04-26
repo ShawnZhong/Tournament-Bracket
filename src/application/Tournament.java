@@ -73,7 +73,9 @@ public class Tournament {
             dialog.setHeaderText("Demo mode");
             dialog.setContentText("Choose your team size:");
             dialog.showAndWait().ifPresent(integer -> teamSize = integer);
-            lines = IntStream.range(1, teamSize + 1).mapToObj(i -> "Team " + String.format("%02d", i)).collect(Collectors.toList());
+            lines = IntStream.range(1, teamSize + 1)
+                    .mapToObj(i -> "Team " + String.format("%02d", i))
+                    .collect(Collectors.toList());
         }
         teamSize = lines.size();
         totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);// calculate the total rounds of the competition
@@ -208,7 +210,7 @@ public class Tournament {
     private void showChampion(Team first, Team second) {
         if (teamSize == 0)
             return;
-        
+
         ((Team) championBox.getChildren().get(0)).setName(first.getName());
         ((Team) championBox.getChildren().get(1)).setName(second.getName());
 
@@ -221,9 +223,9 @@ public class Tournament {
                 .sorted(Team::compareTo)
                 .collect(Collectors.toList())
                 .get(1);
+
         ((Team) championBox.getChildren().get(2)).setName(third.getName());
     }
-
 
     private Team getSibling(int index) { return getTeam((index % 2 == 0) ? index + 1 : index - 1); }
 
