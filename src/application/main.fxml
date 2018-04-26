@@ -11,23 +11,21 @@
         </Pane>
 
         <Pane id="pane1" visible="false">
-            <Pane styleClass="team_container">
-                <Team layoutX="420" layoutY="300"/>
-            </Pane>
-            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
-                <Team styleClass="first" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Pane styleClass="team_container"/>
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="240.0" vgap="5.0">
+                <Team styleClass="first" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
             </GridPane>
         </Pane>
 
         <Pane id="pane2" visible="false">
             <Pane styleClass="team_container">
-                <Team layoutX="100" layoutY="245" onAction="#handleTeamEvent" />
-                <Team layoutX="750" layoutY="245" onAction="#handleTeamEvent" />
+                <Team layoutX="100" layoutY="245" onAction="#handleTeam"/>
+                <Team layoutX="750" layoutY="245" onAction="#handleTeam"/>
             </Pane>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
-                <Team styleClass="first" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Team styleClass="second" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="first" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                 <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
             </GridPane>
@@ -36,18 +34,18 @@
 
         <Pane id="pane4" visible="false">
             <Pane styleClass="team_container">
-                <Team layoutX="325" layoutY="240" onAction="#handleTeamEvent" />
-                <Team layoutX="515" layoutY="240" onAction="#handleTeamEvent" />
+                <Team layoutX="325" layoutY="240" onAction="#handleTeam"/>
+                <Team layoutX="515" layoutY="240" onAction="#handleTeam"/>
 
-                <Team layoutX="20" layoutY="150" onAction="#handleTeamEvent" />
-                <Team layoutX="20" layoutY="325" onAction="#handleTeamEvent" />
-                <Team layoutX="760" layoutY="150" onAction="#handleTeamEvent" />
-                <Team layoutX="760" layoutY="325" onAction="#handleTeamEvent" />
+                <Team layoutX="20" layoutY="150" onAction="#handleTeam"/>
+                <Team layoutX="20" layoutY="325" onAction="#handleTeam"/>
+                <Team layoutX="760" layoutY="150" onAction="#handleTeam"/>
+                <Team layoutX="760" layoutY="325" onAction="#handleTeam"/>
             </Pane>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
-                <Team styleClass="first" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Team styleClass="second" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <Team styleClass="third" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Team styleClass="first" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="third" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                 <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                 <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
@@ -56,73 +54,73 @@
 
         <Pane id="pane8" visible="false">
             <Pane styleClass="team_container">
-                <Team layoutX="330" layoutY="240" onAction="#handleTeamEvent" />
-                <Team layoutX="500" layoutY="240" onAction="#handleTeamEvent" />
+                <Team layoutX="330" layoutY="240" onAction="#handleTeam"/>
+                <Team layoutX="500" layoutY="240" onAction="#handleTeam"/>
 
-                <Team layoutX="240" layoutY="140" onAction="#handleTeamEvent" />
-                <Team layoutX="240" layoutY="350" onAction="#handleTeamEvent" />
-                <Team layoutX="600" layoutY="140" onAction="#handleTeamEvent" />
-                <Team layoutX="600" layoutY="350" onAction="#handleTeamEvent" />
+                <Team layoutX="240" layoutY="140" onAction="#handleTeam"/>
+                <Team layoutX="240" layoutY="350" onAction="#handleTeam"/>
+                <Team layoutX="600" layoutY="140" onAction="#handleTeam"/>
+                <Team layoutX="600" layoutY="350" onAction="#handleTeam"/>
 
-                <Team layoutX="30" layoutY="75" onAction="#handleTeamEvent" />
-                <Team layoutX="30" layoutY="185" onAction="#handleTeamEvent" />
-                <Team layoutX="30" layoutY="290" onAction="#handleTeamEvent" />
-                <Team layoutX="30" layoutY="395" onAction="#handleTeamEvent" />
-                <Team layoutX="780" layoutY="75" onAction="#handleTeamEvent" />
-                <Team layoutX="780" layoutY="185" onAction="#handleTeamEvent" />
-                <Team layoutX="780" layoutY="290" onAction="#handleTeamEvent" />
-                <Team layoutX="780" layoutY="395" onAction="#handleTeamEvent" />
+                <Team layoutX="30" layoutY="75" onAction="#handleTeam"/>
+                <Team layoutX="30" layoutY="185" onAction="#handleTeam"/>
+                <Team layoutX="30" layoutY="290" onAction="#handleTeam"/>
+                <Team layoutX="30" layoutY="395" onAction="#handleTeam"/>
+                <Team layoutX="780" layoutY="75" onAction="#handleTeam"/>
+                <Team layoutX="780" layoutY="185" onAction="#handleTeam"/>
+                <Team layoutX="780" layoutY="290" onAction="#handleTeam"/>
+                <Team layoutX="780" layoutY="395" onAction="#handleTeam"/>
             </Pane>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
-                <Team styleClass="first" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Team styleClass="second" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <Team styleClass="third" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Team styleClass="first" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="third" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                 <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                 <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
             </GridPane>
         </Pane>
 
-        <Pane id="pane16">
+        <Pane id="pane16" visible="false">
             <Pane styleClass="team_container">
-                <Team layoutX="345.0" layoutY="237.0" onAction="#handleTeamEvent"/>
-                <Team layoutX="490.0" layoutY="237.0" onAction="#handleTeamEvent"/>
+                <Team layoutX="345.0" layoutY="237.0" onAction="#handleTeam"/>
+                <Team layoutX="490.0" layoutY="237.0" onAction="#handleTeam"/>
 
-                <Team layoutX="280" layoutY="120" onAction="#handleTeamEvent" />
-                <Team layoutX="280" layoutY="360" onAction="#handleTeamEvent" />
-                <Team layoutX="560" layoutY="120" onAction="#handleTeamEvent" />
-                <Team layoutX="560" layoutY="360" onAction="#handleTeamEvent" />
+                <Team layoutX="280" layoutY="120" onAction="#handleTeam"/>
+                <Team layoutX="280" layoutY="360" onAction="#handleTeam"/>
+                <Team layoutX="560" layoutY="120" onAction="#handleTeam"/>
+                <Team layoutX="560" layoutY="360" onAction="#handleTeam"/>
 
-                <Team layoutX="190" layoutY="60" onAction="#handleTeamEvent" />
-                <Team layoutX="190" layoutY="180" onAction="#handleTeamEvent" />
-                <Team layoutX="190" layoutY="300" onAction="#handleTeamEvent" />
-                <Team layoutX="190" layoutY="420" onAction="#handleTeamEvent" />
-                <Team layoutX="650" layoutY="60" onAction="#handleTeamEvent" />
-                <Team layoutX="650" layoutY="180" onAction="#handleTeamEvent" />
-                <Team layoutX="650" layoutY="300" onAction="#handleTeamEvent" />
-                <Team layoutX="650" layoutY="420" onAction="#handleTeamEvent" />
+                <Team layoutX="190" layoutY="60" onAction="#handleTeam"/>
+                <Team layoutX="190" layoutY="180" onAction="#handleTeam"/>
+                <Team layoutX="190" layoutY="300" onAction="#handleTeam"/>
+                <Team layoutX="190" layoutY="420" onAction="#handleTeam"/>
+                <Team layoutX="650" layoutY="60" onAction="#handleTeam"/>
+                <Team layoutX="650" layoutY="180" onAction="#handleTeam"/>
+                <Team layoutX="650" layoutY="300" onAction="#handleTeam"/>
+                <Team layoutX="650" layoutY="420" onAction="#handleTeam"/>
 
-                <Team layoutX="40" layoutY="30" onAction="#handleTeamEvent" />
-                <Team layoutX="40" layoutY="90" onAction="#handleTeamEvent" />
-                <Team layoutX="40" layoutY="150" onAction="#handleTeamEvent" />
-                <Team layoutX="40" layoutY="210" onAction="#handleTeamEvent" />
-                <Team layoutX="40" layoutY="270" onAction="#handleTeamEvent" />
-                <Team layoutX="40" layoutY="330" onAction="#handleTeamEvent" />
-                <Team layoutX="40" layoutY="390" onAction="#handleTeamEvent" />
-                <Team layoutX="40" layoutY="450" onAction="#handleTeamEvent" />
-                <Team layoutX="790" layoutY="32" onAction="#handleTeamEvent" />
-                <Team layoutX="790" layoutY="90" onAction="#handleTeamEvent" />
-                <Team layoutX="790" layoutY="150" onAction="#handleTeamEvent" />
-                <Team layoutX="790" layoutY="210" onAction="#handleTeamEvent" />
-                <Team layoutX="790" layoutY="270" onAction="#handleTeamEvent" />
-                <Team layoutX="790" layoutY="330" onAction="#handleTeamEvent" />
-                <Team layoutX="790" layoutY="390" onAction="#handleTeamEvent" />
-                <Team layoutX="790" layoutY="450" onAction="#handleTeamEvent" />
+                <Team layoutX="40" layoutY="30" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="90" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="150" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="210" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="270" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="330" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="390" onAction="#handleTeam"/>
+                <Team layoutX="40" layoutY="450" onAction="#handleTeam"/>
+                <Team layoutX="790" layoutY="32" onAction="#handleTeam"/>
+                <Team layoutX="790" layoutY="90" onAction="#handleTeam"/>
+                <Team layoutX="790" layoutY="150" onAction="#handleTeam"/>
+                <Team layoutX="790" layoutY="210" onAction="#handleTeam"/>
+                <Team layoutX="790" layoutY="270" onAction="#handleTeam"/>
+                <Team layoutX="790" layoutY="330" onAction="#handleTeam"/>
+                <Team layoutX="790" layoutY="390" onAction="#handleTeam"/>
+                <Team layoutX="790" layoutY="450" onAction="#handleTeam"/>
             </Pane>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
-                <Team styleClass="first" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Team styleClass="second" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <Team styleClass="third" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Team styleClass="first" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Team styleClass="second" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Team styleClass="third" onAction="#handleChampion" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                 <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                 <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>

@@ -103,28 +103,6 @@ public class Tournament {
         return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
     }
 
-
-    /**
-     * This method displays the result of the competition for each team.
-     */
-    @FXML
-    private void handleTeamEvent(ActionEvent event) {
-        Team team = (Team) event.getSource();
-
-        if (team.getStatus().equals(Status.WIN)) {
-            showInfo(team + " is the winner.");
-            return;
-        }
-
-        if (team.getStatus().equals(Status.LOSE)) {
-            showInfo(team + " loses the game.");
-            return;
-        }
-
-        team.setScore();
-        compareScore(team);
-    }
-
     /**
      * This method displays teams to the pane.
      */
@@ -142,31 +120,53 @@ public class Tournament {
             initialize(null); // Demo mode
             return;
         }
+
         pane = (Pane) panes.getChildren().get(totalRound + 1); // define pane before displaying it
         pane.setVisible(true); // display the pane
         championBox = (GridPane) pane.getChildren().get(1);
+        championBox.setVisible(false);
     }
 
     /**
      * This method matches teams to compete with each other.
      */
     private void initializeTeam() {
+        if (teamSize == 1) {
+            ((Team) championBox.getChildren().get(0)).setName(lines.get(0));
+            championBox.setVisible(true);
+            return;
+        }
+
         for (int i = 0; i < teamSize * 2 - 2; i++)
             getTeam(i).setStatus(Status.DEFAULT);
 
-
-        if (teamSize == 1) {
-            getTeam(0).setName(lines.get(0));
-            getTeam(0).setStatus(Status.WIN);
-            ((Team) championBox.getChildren().get(0)).setName(lines.get(0));
-            return;
-        }
 
         //matches each team with team to compete with using the shuffle method
         for (int i = 0; i < teamSize; i++)
             getTeam(teamSize - 2 + i).setName(lines.get(shuffle(totalRound, i) - 1));
     }
 
+
+    /**
+     * This method displays the result of the competition for each team.
+     */
+    @FXML
+    private void handleTeam(ActionEvent event) {
+        Team team = (Team) event.getSource();
+
+        if (team.getStatus().equals(Status.WIN)) {
+            showInfo(team + " is the winner.");
+            return;
+        }
+
+        if (team.getStatus().equals(Status.LOSE)) {
+            showInfo(team + " loses the game.");
+            return;
+        }
+
+        team.setScore();
+        compareScore(team);
+    }
     /**
      * This method compares the scores of two teams and set their winning status.
      *
@@ -208,13 +208,15 @@ public class Tournament {
     }
 
     private void showChampion(Team first, Team second) {
-        if (teamSize == 0)
+        championBox.setVisible(true);
+
+        if (teamSize < 2)
             return;
 
         ((Team) championBox.getChildren().get(0)).setName(first.getName());
         ((Team) championBox.getChildren().get(1)).setName(second.getName());
 
-        if (teamSize <= 4)
+        if (teamSize < 4)
             return;
 
         Team third = IntStream.range(2, 6)
@@ -227,12 +229,21 @@ public class Tournament {
         ((Team) championBox.getChildren().get(2)).setName(third.getName());
     }
 
+
     private Team getSibling(int index) { return getTeam((index % 2 == 0) ? index + 1 : index - 1); }
 
     private Team getTeam(int index) { return (Team) ((Pane) pane.getChildren().get(0)).getChildren().get(index); }
 
     private int getTeamIndex(Team team) { return ((Pane) pane.getChildren().get(0)).getChildren().indexOf(team); }
 
+    @FXML
+    public void handleChampion(ActionEvent event) {
+        Team team = (Team) event.getSource();
+        int index = championBox.getChildren().indexOf(team);
+
+        String[] place = {"first", "second", "third"};
+        showInfo(team + " is " + place[index] + " place!!!");
+    }
 
     @FXML
     private void handleLoad(ActionEvent event) {
@@ -256,4 +267,6 @@ public class Tournament {
     private void showInfo(String str) {new Alert(Alert.AlertType.INFORMATION, str).showAndWait();}
 
     private void showWarn(String str) {new Alert(Alert.AlertType.WARNING, str).showAndWait();}
+
+
 }
