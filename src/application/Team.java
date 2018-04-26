@@ -1,4 +1,21 @@
 package application;
+/////////////////////////////////////////////////////////////////////////////
+//Semester:         CS400 Spring 2018
+//PROJECT:          cs400_p4_201804
+//FILES:            Tournament.java
+//                  Team.java
+//                  Main.java
+//
+//USER:             Han Cao
+//                  Suyan Qu
+//                  Wanxiang Zhong
+//                  Yujie Guo
+//                  Yuhan Liu
+//Instructor:       Deb Deppeler (deppeler@cs.wisc.edu)
+//Bugs:             no known bugs
+//
+//2018 Mar 28, 2018  Team.java
+////////////////////////////80 columns wide //////////////////////////////////
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
