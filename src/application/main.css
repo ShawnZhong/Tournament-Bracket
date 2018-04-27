@@ -1,3 +1,4 @@
+/*Panes*/
 .team_container {
     -fx-pref-height: 500;
     -fx-pref-width: 900;
@@ -24,17 +25,18 @@
     -fx-background-image: url('16.jpg');
 }
 
-Team {
-    -fx-text-fill: #ffffff;
-}
+/*Teams*/
+/*Team {*/
+/*-fx-text-fill: #ffffff;*/
+/*}*/
 
-.team_container > Team {
-	-fx-background-color: #86ade2;
-}
+/*.team_container > Team {*/
+/*-fx-background-color: #86ade2;*/
+/*}*/
 
-.team_container > Team:hover {
-    -fx-background-color:#3d82df;
-}
+/*.team_container > Team:hover {*/
+/*-fx-background-color:#3d82df;*/
+/*}*/
 
 .winner{
     -fx-background-color:#3d82df;
@@ -45,6 +47,7 @@ Team {
     -fx-background-color: #86ade2;
 }
 
+/* Champion Box */
 GridPane > Button {
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
