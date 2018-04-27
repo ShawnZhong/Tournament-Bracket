@@ -133,14 +133,12 @@ public class Team extends GridPane implements Comparable<Team> {
      * @see Status
      */
     public void setStatus(Status status) {
-
         switch (this.status = status) {
             case HIDDEN:
-                getStyleClass().removeAll("winner", "loser");
-                this.score = null;
                 setVisible(false);
                 break;
             case DEFAULT:
+                getStyleClass().removeAll("winner", "loser");
                 this.score = null;
                 label.setText(name);
                 setVisible(true);
