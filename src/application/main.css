@@ -45,8 +45,9 @@ Team {
     -fx-background-color: #86ade2;
 }
 
-GridPane > Team {
+GridPane > Button {
     -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
 }
 
 .first {

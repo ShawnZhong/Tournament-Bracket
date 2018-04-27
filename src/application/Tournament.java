@@ -20,6 +20,7 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -191,7 +192,7 @@ public class Tournament {
         // When team size is 1, directly display the championBox
         // Since the champion is determinant when there is only one team
         if (teamSize == 1) {
-            ((Team) championBox.getChildren().get(0)).setName(lines.get(0));
+            ((Button) championBox.getChildren().get(0)).setText(lines.get(0));
             championBox.setVisible(true);
             return;
         }
@@ -294,8 +295,8 @@ public class Tournament {
         championBox.setVisible(true);
 
         // set name for first and second place
-        ((Team) championBox.getChildren().get(0)).setName(first.getName());
-        ((Team) championBox.getChildren().get(1)).setName(second.getName());
+        ((Button) championBox.getChildren().get(0)).setText(first.getName());
+        ((Button) championBox.getChildren().get(1)).setText(second.getName());
 
         // No need to display the third place if there are only two teams
         if (teamSize < 4)
@@ -310,7 +311,7 @@ public class Tournament {
                 .get(1);
 
         // Set name for the third place
-        ((Team) championBox.getChildren().get(2)).setName(third.getName());
+        ((Button) championBox.getChildren().get(2)).setText(third.getName());
     }
 
 
