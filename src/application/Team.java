@@ -18,8 +18,10 @@ package application;
 ////////////////////////////80 columns wide //////////////////////////////////
 
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.GridPane;
 
 import java.text.DecimalFormat;
 import java.util.InputMismatchException;
@@ -32,11 +34,14 @@ enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
  * Contains methods that used to present a Team:
  * Include Name, score, status; and closure functions for editing those fields
  */
-public class Team extends Button implements Comparable<Team> {
+public class Team extends GridPane implements Comparable<Team> {
     /**
      * This is a formatter for displaying the score
      */
     private static final DecimalFormat formatter = new DecimalFormat("0.#");
+
+    private Label label;
+    private TextField textField;
 
     /**
      * This is the name of the team
@@ -55,20 +60,10 @@ public class Team extends Button implements Comparable<Team> {
      */
     private Status status;
 
-    /**
-     * Default constructor of Team, set name to default
-     * Normally will not be called
-     */
-    public Team() {
-        this("Team 00");
-    }
+    public void initialize(String name) {
+        label = (Label) getChildren().get(0);
+        textField = (TextField) getChildren().get(1);
 
-    /**
-     * Constructor, generate a team by Name
-     *
-     * @param name the name of team
-     */
-    public Team(String name) {
         setName(name);
     }
 
@@ -81,11 +76,6 @@ public class Team extends Button implements Comparable<Team> {
         return name;
     }
 
-    /**
-     * set the name
-     *
-     * @param name String, the name of the team
-     */
     public void setName(String name) {
         this.name = name;
         setStatus(Status.DEFAULT);
@@ -143,20 +133,20 @@ public class Team extends Button implements Comparable<Team> {
      * @see Status
      */
     public void setStatus(Status status) {
+
         switch (this.status = status) {
             case HIDDEN:
                 getStyleClass().removeAll("winner", "loser");
                 this.score = null;
-                setText(name);
                 setVisible(false);
                 break;
             case DEFAULT:
                 this.score = null;
-                setText(name);
+                label.setText(name);
                 setVisible(true);
                 break;
             case IN_PROGRESS:
-                setText(name + ": " + formatter.format(score));
+                label.setText(name + ": " + formatter.format(score));
                 break;
             case WIN:
                 getStyleClass().add("winner");

@@ -201,12 +201,13 @@ public class Tournament {
         for (int i = 0; i < teamSize * 2 - 2; i++)
             getTeam(i).setStatus(Status.HIDDEN);
 
-
         // matches each team with team to compete with using the shuffle method
-        // The status will be set to default after setName is called
+        // The status will be set to default after initialize is called
         // And the team will be displayed on the pane
         for (int i = 0; i < teamSize; i++)
-            getTeam(teamSize - 2 + i).setName(lines.get(shuffle(totalRound, i) - 1));
+            getTeam(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
+
+
     }
 
 
