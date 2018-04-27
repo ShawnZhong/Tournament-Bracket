@@ -20,12 +20,7 @@ package application;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
-
-import java.text.DecimalFormat;
-import java.util.InputMismatchException;
-import java.util.Optional;
 
 enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
 
@@ -35,23 +30,9 @@ enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
  * Include Name, score, status; and closure functions for editing those fields
  */
 public class Team extends GridPane implements Comparable<Team> {
-    /**
-     * This is a formatter for displaying the score
-     */
-    private static final DecimalFormat formatter = new DecimalFormat("0.#");
-
     private Label label;
     private TextField textField;
-
-    /**
-     * This is the name of the team
-     */
-    private String name;
-
-    /**
-     * This is the score of the team
-     */
-    private Double score;
+    private Integer score;
 
     /**
      * This is the current status of the team
@@ -63,6 +44,16 @@ public class Team extends GridPane implements Comparable<Team> {
     public void initialize(String name) {
         label = (Label) getChildren().get(0);
         textField = (TextField) getChildren().get(1);
+        textField.focusedProperty().addListener((arg0, arg1, notChanged) -> {
+            if (!notChanged && textField.getText().trim().length() != 0) {
+                try {
+                    score = Integer.valueOf(textField.getText());
+                } catch (Exception e) {
+                    new Alert(Alert.AlertType.INFORMATION, "Invalid Input").showAndWait();
+                    textField.clear();
+                }
+            }
+        });
 
         setName(name);
     }
@@ -73,38 +64,12 @@ public class Team extends GridPane implements Comparable<Team> {
      * @return String name of the team
      */
     public String getName() {
-        return name;
+        return label.getText();
     }
 
     public void setName(String name) {
-        this.name = name;
+        label.setText(name);
         setStatus(Status.DEFAULT);
-    }
-
-    /**
-     * Set the score for the team
-     *
-     * Negative number of other unNumber characters will not be accept
-     */
-    public void setScore() {
-        // GUI part
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Input Score");
-        dialog.setContentText("Input Score");
-        dialog.setContentText("Score for " + name + ": ");
-        while (true) try {
-            Optional<String> str = dialog.showAndWait();
-            if (!str.isPresent())
-                return;
-            Double score = Double.valueOf(str.get());
-            if (score < 0)
-                throw new InputMismatchException();
-            this.score = score;
-            setStatus(Status.IN_PROGRESS);
-            return;
-        } catch (Exception e) {
-            new Alert(Alert.AlertType.WARNING, "Invalid input. Please try again.").showAndWait();
-        }
     }
 
     /**
@@ -139,12 +104,9 @@ public class Team extends GridPane implements Comparable<Team> {
                 break;
             case DEFAULT:
                 getStyleClass().removeAll("winner", "loser");
-                this.score = null;
-                label.setText(name);
                 setVisible(true);
                 break;
             case IN_PROGRESS:
-                label.setText(name + ": " + formatter.format(score));
                 break;
             case WIN:
                 getStyleClass().add("winner");
@@ -153,16 +115,6 @@ public class Team extends GridPane implements Comparable<Team> {
                 getStyleClass().add("loser");
                 break;
         }
-    }
-
-    /**
-     * Used to help print name
-     *
-     * @return the name
-     */
-    @Override
-    public String toString() {
-        return name;
     }
 
     /**

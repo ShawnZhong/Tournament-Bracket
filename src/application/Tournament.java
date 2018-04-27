@@ -223,18 +223,17 @@ public class Tournament {
 
         // If a given team is the winner in some round
         if (team.getStatus().equals(Status.WIN)) {
-            showInfo(team + " is the winner.");
+            showInfo(team.getName() + " is the winner.");
             return;
         }
 
         // If a given team is the loser in some round
         if (team.getStatus().equals(Status.LOSE)) {
-            showInfo(team + " loses the game.");
+            showInfo(team.getName() + " loses the game.");
             return;
         }
 
-        // ask for user input of score and compare with another team
-        team.setScore();
+        // compare with another team
         compareScore(team);
     }
 
@@ -253,7 +252,7 @@ public class Tournament {
 
         // if two teams have the same score
         if (team1.compareTo(team2) == 0) {
-            showWarn(team1 + " and " + team2 + " tie!" + "\r\nStart another game! ");
+            showWarn(team1.getName() + " and " + team2.getName() + " tie!" + "\r\nStart another game! ");
             team1.setStatus(Status.DEFAULT);
             team2.setStatus(Status.DEFAULT);
             return;
@@ -270,7 +269,7 @@ public class Tournament {
 
         // Check if the whole game is finished
         if (parentIndex == -1) {
-            showInfo(winner + " wins the game!!!");
+            showInfo(winner.getName() + " wins the game!!!");
             showChampion(winner, loser);
             return;
         }
@@ -329,7 +328,7 @@ public class Tournament {
 
         // display the corresponding info
         String[] place = {"first", "second", "third"};
-        showInfo(team + " is " + place[index] + " place!!!");
+        showInfo(team.getName() + " is " + place[index] + " place!!!");
     }
 
     /**

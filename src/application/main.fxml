@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import application.Team?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-
+<?import application.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
     <Pane fx:id="panes" layoutX="50.0" layoutY="50.0">
         <Pane id="pane0" visible="false">
@@ -36,7 +29,7 @@
             <Pane styleClass="team_container">
                 <Team layoutX="100" layoutY="245">
                     <Label text="Team 00" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <TextField prefWidth="40" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <TextField prefWidth="40" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
                 </Team>
                 <Team layoutX="750" layoutY="245">
                     <Label text="Team 00" GridPane.columnIndex="0" GridPane.rowIndex="0" />
