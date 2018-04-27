@@ -20,7 +20,7 @@ package application;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
 
@@ -29,7 +29,7 @@ enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
  * Contains methods that used to present a Team:
  * Include Name, score, status; and closure functions for editing those fields
  */
-public class Team extends GridPane implements Comparable<Team> {
+public class Team extends HBox implements Comparable<Team> {
     private Label label;
     private TextField textField;
     private Integer score;

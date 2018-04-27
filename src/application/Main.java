@@ -28,6 +28,7 @@ import javafx.stage.Stage;
  * Launch the GUI for the program
  */
 public class Main extends Application {
+
     /**
      * Path for the teamlist file
      *

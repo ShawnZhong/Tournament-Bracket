@@ -62,7 +62,7 @@ public class Tournament {
      *
      * @see #initializePane()
      */
-    private GridPane championBox;
+    private Pane championBox;
 
     /**
      * This is the size of team
@@ -206,8 +206,6 @@ public class Tournament {
         // And the team will be displayed on the pane
         for (int i = 0; i < teamSize; i++)
             getTeam(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
-
-
     }
 
 
@@ -218,6 +216,7 @@ public class Tournament {
      */
     @FXML
     private void handleTeam(ActionEvent event) {
+        // TODO: Get team by index, and this method should be invoked by the confirm button
         // Get the team clicked
         Team team = (Team) event.getSource();
 
