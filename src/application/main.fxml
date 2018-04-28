@@ -2,16 +2,17 @@
 
 <?import application.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
     <Pane fx:id="panes" layoutX="50.0" layoutY="50.0">
-        <Pane styleClass="pane" id="pane0" visible="false">
+        <Pane id="pane0" styleClass="pane" visible="false">
             <Pane styleClass="team_container" />
             <GridPane />
         </Pane>
-        <Pane styleClass="pane" id="pane1" visible="false">
+        <Pane id="pane1" styleClass="pane" visible="false">
             <Pane styleClass="team_container" />
-            <GridPane styleClass="top_three_container" hgap="5.0" layoutX="390.0" layoutY="240.0" vgap="5.0">
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="240.0" styleClass="top_three_container" vgap="5.0">
                 <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
             <columnConstraints>
@@ -22,10 +23,10 @@
                <RowConstraints />
             </rowConstraints>
             </GridPane>
-            <Pane styleClass="confirm_container"></Pane>
+            <Pane styleClass="confirm_container"/>
         </Pane>
 
-        <Pane styleClass="pane" id="pane2" visible="false">
+        <Pane id="pane2" styleClass="pane" visible="false">
             <Pane styleClass="team_container">
                 <Team alignment="CENTER" layoutX="100" layoutY="245">
                     <Label text="Team 00"/>
@@ -36,7 +37,7 @@
                     <TextField prefWidth="40"/>
                 </Team>
             </Pane>
-            <GridPane styleClass="top_three_container" hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" styleClass="top_three_container" vgap="5.0">
                 <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <Button onAction="#handleTopThree" styleClass="second" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
@@ -50,11 +51,11 @@
                <RowConstraints />
             </rowConstraints>
             </GridPane>
-            <Pane styleClass="confirm_container"></Pane>
+            <Pane styleClass="confirm_container"/>
         </Pane>
 
 
-        <Pane styleClass="pane" id="pane4" visible="false">
+        <Pane id="pane4" styleClass="pane" visible="false">
             <Pane styleClass="team_container">
                 <Team alignment="CENTER" layoutX="325" layoutY="240">
                     <Label text="Team 00"/>
@@ -82,7 +83,7 @@
                     <TextField prefWidth="40"/>
                 </Team>
             </Pane>
-            <GridPane styleClass="top_three_container" hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" styleClass="top_three_container" vgap="5.0">
                 <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <Button onAction="#handleTopThree" styleClass="second" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Button onAction="#handleTopThree" styleClass="third" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -99,10 +100,10 @@
                <RowConstraints />
             </rowConstraints>
             </GridPane>
-            <Pane styleClass="confirm_container"></Pane>
+            <Pane styleClass="confirm_container"/>
         </Pane>
 
-        <Pane styleClass="pane" id="pane8" visible="false">
+        <Pane id="pane8" styleClass="pane" visible="false">
             <Pane styleClass="team_container">
                 <Team alignment="CENTER" layoutX="330" layoutY="240">
                     <Label text="Team 00"/>
@@ -163,7 +164,7 @@
                     <TextField prefWidth="40"/>
                 </Team>
             </Pane>
-            <GridPane styleClass="top_three_container" hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" styleClass="top_three_container" vgap="5.0">
                 <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <Button onAction="#handleTopThree" styleClass="second" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Button onAction="#handleTopThree" styleClass="third" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -181,11 +182,13 @@
             </rowConstraints>
             </GridPane>
             <Pane styleClass="confirm_container">
-                <Button onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam"
+                        text="Submit"/>
             </Pane>
         </Pane>
 
-        <Pane styleClass="pane" id="pane16">
+        <Pane id="pane16" styleClass="pane">
+
             <Pane styleClass="team_container">
                 <Team alignment="CENTER" layoutX="345.0" layoutY="237.0">
                     <Label text="Team 00"/>
@@ -311,31 +314,55 @@
                     <TextField prefWidth="40"/>
                 </Team>
             </Pane>
-            <GridPane styleClass="top_three_container" hgap="5.0" layoutX="390.0" layoutY="80.0" vgap="5.0">
+            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" styleClass="top_three_container" vgap="5.0">
                 <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <Button onAction="#handleTopThree" styleClass="second" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Button onAction="#handleTopThree" styleClass="third" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                 <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <columnConstraints>
+                    <ColumnConstraints/>
+                    <ColumnConstraints/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
             </GridPane>
-            <GridPane styleClass="confirm_container">
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false"  onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
-            </GridPane>
+            <Group styleClass="confirm_container">
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam"
+                        text="Submit"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit"
+                        visible="false"/>
+            </Group>
         </Pane>
     </Pane>
 

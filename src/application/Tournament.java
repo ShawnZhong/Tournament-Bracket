@@ -210,7 +210,6 @@ public class Tournament {
             getTeam(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
     }
 
-
 //    /**
 //     * Event handler for the team buttons
 //     *
@@ -246,14 +245,14 @@ public class Tournament {
      */
     @FXML
     private void handleConfirm(ActionEvent event) {
-//        //Get the button index
-//        Button btn = (Button) event.getSource();
-//        int index = ((Pane)(pane.getChildren().get(2))).getChildren().indexOf(btn);
-//
-//        Team team1 = getTeam(index*2);
-//        Team team2 = getTeam(index*2+1);
-//
-//        compareScore(team1, team2, index - 1);
+        //Get the button index
+        Button btn = (Button) event.getSource();
+        int index = ((Pane) (pane.getChildren().get(2))).getChildren().indexOf(btn);
+
+        Team team1 = getTeam(index * 2);
+        Team team2 = getTeam(index * 2 + 1);
+
+        compareScore(team1, team2, index - 1);
     }
 
     /**

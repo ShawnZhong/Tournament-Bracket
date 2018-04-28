@@ -17,7 +17,6 @@ package application;
 //2018 Mar 28, 2018  Team.java
 ////////////////////////////80 columns wide //////////////////////////////////
 
-import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -45,16 +44,16 @@ public class Team extends HBox implements Comparable<Team> {
     public void initialize(String name) {
         label = (Label) getChildren().get(0);
         textField = (TextField) getChildren().get(1);
-//        textField.focusedProperty().addListener((arg0, arg1, notChanged) -> {
-//            if (!notChanged && textField.getText().trim().length() != 0) {
-//                try {
-//                    score = Integer.valueOf(textField.getText());
-//                } catch (Exception e) {
-//                    new Alert(Alert.AlertType.INFORMATION, "Invalid Input").showAndWait();
-//                    textField.clear();
-//                }
-//            }
-//        });
+        textField.focusedProperty().addListener((arg0, arg1, notChanged) -> {
+            if (!notChanged && textField.getText().trim().length() != 0) {
+                try {
+                    score = Integer.valueOf(textField.getText());
+                } catch (Exception e) {
+                    new Alert(Alert.AlertType.INFORMATION, "Invalid Input").showAndWait();
+                    textField.clear();
+                }
+            }
+        });
 
         setName(name);
     }
