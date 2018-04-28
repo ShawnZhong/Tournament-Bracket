@@ -186,6 +186,16 @@ public class Tournament {
     }
 
     /**
+     * Handle the the action of final submit button;
+     * Do two things:
+     * 1. compare the score of two teams
+     * 2. change the status of two teams
+     */
+    private void handleConfirm() {
+
+    }
+
+    /**
      * This method will initialize all the teams displayed on the pane
      */
     private void initializeTeam() {
