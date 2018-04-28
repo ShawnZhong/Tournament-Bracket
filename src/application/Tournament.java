@@ -62,7 +62,7 @@ public class Tournament {
      *
      * @see #initializePane()
      */
-    private Pane championBox;
+    private Pane topThreeBox;
 
     /**
      * This is the size of team
@@ -90,7 +90,7 @@ public class Tournament {
     /**
      * This method will
      * 1. call initializeData to initialize {@code lines}
-     * 2. call initializePane to initialize {@code pane} and {@code championBox}
+     * 2. call initializePane to initialize {@code pane} and {@code topThreeBox}
      * 3. call initializeTeam to initialize all the teams
      *
      * @param filePath the path of the teamList file.
@@ -157,7 +157,7 @@ public class Tournament {
 
     /**
      * This method will initialize the {@code pane} variable by choosing the right pane to display
-     * It will also initialize {@code championBox} with the corresponding one
+     * It will also initialize {@code topThreeBox} with the corresponding one
      */
     private void initializePane() {
         // Set all panes to be invisible
@@ -180,20 +180,20 @@ public class Tournament {
         pane = (Pane) panes.getChildren().get(totalRound + 1);
         pane.setVisible(true);
 
-        // set championBox to corresponding GridPane, and set as hidden
-        championBox = (GridPane) pane.getChildren().get(1);
-        championBox.setVisible(false);
+        // set topThreeBox to corresponding GridPane, and set as hidden
+        topThreeBox = (GridPane) pane.getChildren().get(1);
+        topThreeBox.setVisible(false);
     }
 
     /**
      * This method will initialize all the teams displayed on the pane
      */
     private void initializeTeam() {
-        // When team size is 1, directly display the championBox
+        // When team size is 1, directly display the topThreeBox
         // Since the champion is determinant when there is only one team
         if (teamSize == 1) {
-            ((Button) championBox.getChildren().get(0)).setText(lines.get(0));
-            championBox.setVisible(true);
+            ((Button) topThreeBox.getChildren().get(0)).setText(lines.get(0));
+            topThreeBox.setVisible(true);
             return;
         }
 
@@ -216,7 +216,7 @@ public class Tournament {
      */
     @FXML
     private void handleTeam(ActionEvent event) {
-        // TODO: Get team by index, and this method should be invoked by the confirm button
+        // TODO: Get team by index, and this method should be invoked handleConfirm by the confirm button
         // Get the team clicked
         Team team = (Team) event.getSource();
 
@@ -280,7 +280,7 @@ public class Tournament {
 
     /**
      * This method handle the champions
-     * It will fill championBox with correct information, and display it
+     * It will fill topThreeBox with correct information, and display it
      *
      * @param first  the first prize
      * @param second the second prize
@@ -291,11 +291,11 @@ public class Tournament {
             return;
 
         // Show Champion Box, because this method will be called only all the games is finished
-        championBox.setVisible(true);
+        topThreeBox.setVisible(true);
 
         // set name for first and second place
-        ((Button) championBox.getChildren().get(0)).setText(first.getName());
-        ((Button) championBox.getChildren().get(1)).setText(second.getName());
+        ((Button) topThreeBox.getChildren().get(0)).setText(first.getName());
+        ((Button) topThreeBox.getChildren().get(1)).setText(second.getName());
 
         // No need to display the third place if there are only two teams
         if (teamSize < 4)
@@ -310,7 +310,7 @@ public class Tournament {
                 .get(1);
 
         // Set name for the third place
-        ((Button) championBox.getChildren().get(2)).setText(third.getName());
+        ((Button) topThreeBox.getChildren().get(2)).setText(third.getName());
     }
 
 
@@ -323,7 +323,7 @@ public class Tournament {
     public void handleTopThree(ActionEvent event) {
         // get the team clicked and its index
         Team team = (Team) event.getSource();
-        int index = championBox.getChildren().indexOf(team);
+        int index = topThreeBox.getChildren().indexOf(team);
 
         // display the corresponding info
         String[] place = {"first", "second", "third"};
