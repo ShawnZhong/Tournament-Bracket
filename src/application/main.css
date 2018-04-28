@@ -1,4 +1,3 @@
-/*Panes*/
 .team_container {
     -fx-pref-height: 500;
     -fx-pref-width: 900;
@@ -48,19 +47,19 @@
 }
 
 /* Champion Box */
-GridPane > Button {
+.top_three_container > Button {
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
 }
 
-.first {
+.top_three_container > .first {
 	-fx-background-color: #fdd80c;
 }
 
-.second {
+.top_three_container > .second {
     -fx-background-color: silver;
 }
 
-.third {
+.top_three_container > .third {
     -fx-background-color: sandybrown;
 }
