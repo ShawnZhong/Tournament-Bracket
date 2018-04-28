@@ -185,15 +185,7 @@ public class Tournament {
         topThreeBox.setVisible(false);
     }
 
-    /**
-     * Handle the the action of final submit button;
-     * Do two things:
-     * 1. compare the score of two teams
-     * 2. change the status of two teams
-     */
-    private void handleConfirm() {
 
-    }
 
     /**
      * This method will initialize all the teams displayed on the pane
@@ -219,31 +211,49 @@ public class Tournament {
     }
 
 
+//    /**
+//     * Event handler for the team buttons
+//     *
+//     * @param event the event invoked
+//     */
+//    @FXML
+//    private void handleTeam(ActionEvent event) {
+//        // TODO: Get team by index, and this method should be invoked handleConfirm by the confirm button
+//        // Get the team clicked
+//        Team team = (Team) event.getSource();
+//
+//        // If a given team is the winner in some round
+//        if (team.getStatus().equals(Status.WIN)) {
+//            showInfo(team.getName() + " is the winner.");
+//            return;
+//        }
+//
+//        // If a given team is the loser in some round
+//        if (team.getStatus().equals(Status.LOSE)) {
+//            showInfo(team.getName() + " loses the game.");
+//            return;
+//        }
+//
+//        // compare with another team
+//        compareScore(team);
+//    }
+
     /**
-     * Event handler for the team buttons
-     *
-     * @param event the event invoked
+     * Handle the the action of final submit button;
+     * Do two things:
+     * 1. compare the score of two teams
+     * 2. change the status of two teams
      */
     @FXML
-    private void handleTeam(ActionEvent event) {
-        // TODO: Get team by index, and this method should be invoked handleConfirm by the confirm button
-        // Get the team clicked
-        Team team = (Team) event.getSource();
-
-        // If a given team is the winner in some round
-        if (team.getStatus().equals(Status.WIN)) {
-            showInfo(team.getName() + " is the winner.");
-            return;
-        }
-
-        // If a given team is the loser in some round
-        if (team.getStatus().equals(Status.LOSE)) {
-            showInfo(team.getName() + " loses the game.");
-            return;
-        }
-
-        // compare with another team
-        compareScore(team);
+    private void handleConfirm(ActionEvent event) {
+//        //Get the button index
+//        Button btn = (Button) event.getSource();
+//        int index = ((Pane)(pane.getChildren().get(2))).getChildren().indexOf(btn);
+//
+//        Team team1 = getTeam(index*2);
+//        Team team2 = getTeam(index*2+1);
+//
+//        compareScore(team1, team2, index - 1);
     }
 
     /**
@@ -251,9 +261,10 @@ public class Tournament {
      *
      * @param team1 the team to be compared with its paired team.
      */
-    private void compareScore(Team team1) {
-        int index = getTeamIndex(team1); // the index of the team
-        Team team2 = getCompetitor(index); // get the team to be compared with team1
+    private void compareScore(Team team1, Team team2, int parentIndex) {
+        // if team1 has not start playing
+        if (team1.getStatus().equals(Status.DEFAULT) || team1.getStatus().equals(Status.HIDDEN))
+            return;
 
         // if team2 has not start playing
         if (team2.getStatus().equals(Status.DEFAULT) || team2.getStatus().equals(Status.HIDDEN))
@@ -273,8 +284,6 @@ public class Tournament {
         winner.setStatus(Status.WIN);
         loser.setStatus(Status.LOSE);
 
-        // decide the player of the next round
-        int parentIndex = (index - 3) / 2;
 
         // Check if the whole game is finished
         if (parentIndex == -1) {

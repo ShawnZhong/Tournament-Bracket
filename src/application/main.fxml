@@ -180,7 +180,9 @@
                <RowConstraints />
             </rowConstraints>
             </GridPane>
-            <Pane styleClass="confirm_container"></Pane>
+            <Pane styleClass="confirm_container">
+                <Button onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+            </Pane>
         </Pane>
 
         <Pane id="pane16">
@@ -316,17 +318,24 @@
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                 <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <columnConstraints>
-               <ColumnConstraints />
-               <ColumnConstraints />
-            </columnConstraints>
-            <rowConstraints>
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-            </rowConstraints>
             </GridPane>
-            <Pane styleClass="confirm_container"></Pane>
+            <GridPane styleClass="confirm_container">
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false"  onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+                <Button visible="false" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" layoutX="400.0" layoutY="100.0"/>
+            </GridPane>
         </Pane>
     </Pane>
 
