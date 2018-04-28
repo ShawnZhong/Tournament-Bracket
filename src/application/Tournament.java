@@ -19,6 +19,7 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
@@ -247,7 +248,7 @@ public class Tournament {
     private void handleConfirm(ActionEvent event) {
         //Get the button index
         Button btn = (Button) event.getSource();
-        int index = ((Pane) (pane.getChildren().get(2))).getChildren().indexOf(btn);
+        int index = ((Group) (pane.getChildren().get(2))).getChildren().indexOf(btn);
 
         Team team1 = getTeam(index * 2);
         Team team2 = getTeam(index * 2 + 1);
