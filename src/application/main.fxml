@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
     <Pane fx:id="panes" layoutX="50.0" layoutY="50.0">
-        <Pane id="pane0" visible="false">
+        <Pane styleClass="pane" id="pane0" visible="false">
             <Pane styleClass="team_container" />
             <GridPane />
         </Pane>
-        <Pane id="pane1" visible="false">
+        <Pane styleClass="pane" id="pane1" visible="false">
             <Pane styleClass="team_container" />
             <GridPane styleClass="top_three_container" hgap="5.0" layoutX="390.0" layoutY="240.0" vgap="5.0">
                 <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
@@ -25,7 +25,7 @@
             <Pane styleClass="confirm_container"></Pane>
         </Pane>
 
-        <Pane id="pane2" visible="false">
+        <Pane styleClass="pane" id="pane2" visible="false">
             <Pane styleClass="team_container">
                 <Team alignment="CENTER" layoutX="100" layoutY="245">
                     <Label text="Team 00"/>
@@ -54,7 +54,7 @@
         </Pane>
 
 
-        <Pane id="pane4" visible="false">
+        <Pane styleClass="pane" id="pane4" visible="false">
             <Pane styleClass="team_container">
                 <Team alignment="CENTER" layoutX="325" layoutY="240">
                     <Label text="Team 00"/>
@@ -102,7 +102,7 @@
             <Pane styleClass="confirm_container"></Pane>
         </Pane>
 
-        <Pane id="pane8" visible="false">
+        <Pane styleClass="pane" id="pane8" visible="false">
             <Pane styleClass="team_container">
                 <Team alignment="CENTER" layoutX="330" layoutY="240">
                     <Label text="Team 00"/>
@@ -185,7 +185,7 @@
             </Pane>
         </Pane>
 
-        <Pane id="pane16">
+        <Pane styleClass="pane" id="pane16">
             <Pane styleClass="team_container">
                 <Team alignment="CENTER" layoutX="345.0" layoutY="237.0">
                     <Label text="Team 00"/>
