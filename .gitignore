@@ -26,7 +26,6 @@ out
 .settings/org.eclipse.jdt.core.prefs
 .gitattributes
 build.fxbuild
-.project
 bin
 .idea
 *.iml
