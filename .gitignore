@@ -31,3 +31,7 @@ src/.DS_Store
 
 #All idea setting files
 .idea/*.xml
+
+.project
+.classpath
+build.fxbuild
