@@ -279,8 +279,8 @@
                     <TextField prefWidth="40" />
                 </Team>
 
-                <Team alignment="CENTER" layoutX="40.0" layoutY="15.0" prefWidth="95.0">
-                    <Label text="Team 00" />
+                <Team alignment="CENTER" layoutX="35.0" layoutY="15.0" prefWidth="95.0">
+                    <Label prefHeight="21.0" prefWidth="64.0" text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
                 <Team alignment="CENTER" layoutX="34.0" layoutY="76.0">
@@ -343,7 +343,6 @@
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
-                <Button layoutX="149.0" layoutY="76.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit8" visible="true" />
 
             </Pane>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" styleClass="top_three_container" vgap="5.0">
@@ -372,15 +371,15 @@
                 <Button layoutX="685.0" layoutY="84.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit4" visible="true" />
                 <Button layoutX="147.0" layoutY="398.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit5" visible="true" />
                 <Button layoutX="147.0" layoutY="318.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit6" visible="true" />
-                <Button layoutX="147.0" layoutY="165.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit7" visible="true" />
-                <Button layoutX="451.0" layoutY="305.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit8" visible="true" />
+                <Button layoutX="147.0" layoutY="157.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit7" visible="true" />
+                <Button layoutX="437.0" layoutY="274.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit8" visible="true" />
                 <Button layoutX="597.0" layoutY="332.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit9" visible="true" />
-                <Button layoutX="594.0" layoutY="138.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit10" visible="true" />
+                <Button layoutX="592.0" layoutY="140.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit10" visible="true" />
                 <Button layoutX="236.0" layoutY="332.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit11" visible="true" />
                 <Button layoutX="235.0" layoutY="141.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit12" visible="true" />
-                <Button layoutX="413.0" layoutY="306.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit13" visible="true" />
-                <Button layoutX="235.0" layoutY="141.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit14" visible="true" />
-                <Button layoutX="413.0" layoutY="306.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit15" visible="true" />
+                <Button layoutX="337.0" layoutY="303.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit13" visible="true" />
+                <Button layoutX="242.0" layoutY="157.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit14" visible="true" />
+                <Button layoutX="421.0" layoutY="363.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit15" visible="true" />
 
             </Group>
         </Pane>
