@@ -249,7 +249,6 @@ public class Tournament {
         //Get the button index
         Button btn = (Button) event.getSource();
         int index = ((Group) (pane.getChildren().get(2))).getChildren().indexOf(btn);
-
         Team team1 = getTeam(index * 2);
         Team team2 = getTeam(index * 2 + 1);
 
@@ -294,7 +293,7 @@ public class Tournament {
 
         // set the name for next round
         Team parent = getTeam(parentIndex);
-        parent.setName(winner.getName());
+        parent.initialize(winner.getName());
     }
 
     /**

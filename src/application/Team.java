@@ -48,6 +48,7 @@ public class Team extends HBox implements Comparable<Team> {
             if (!notChanged && textField.getText().trim().length() != 0) {
                 try {
                     score = Integer.valueOf(textField.getText());
+                    status = Status.IN_PROGRESS;
                 } catch (Exception e) {
                     new Alert(Alert.AlertType.INFORMATION, "Invalid Input").showAndWait();
                     textField.clear();
