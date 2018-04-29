@@ -32,6 +32,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -88,6 +89,8 @@ public class Tournament {
      * @see #initializeData(String)
      */
     private List<String> lines;
+
+    private List<Team> teams = new ArrayList<>();
 
     /**
      * This method will
@@ -208,15 +211,18 @@ public class Tournament {
             return;
         }
 
+        teams.clear();
+        ((Group) pane.getChildren().get(0)).getChildren().forEach(e -> teams.add((Team) e));
+
+
         // Initialize all the teams to be hidden first
-        for (int i = 0; i < teamSize * 2 - 2; i++)
-            getTeam(i).setStatus(Status.HIDDEN);
+        teams.forEach(e -> e.setStatus(Status.HIDDEN));
 
         // matches each team with team to compete with using the shuffle method
         // The status will be set to default after initialize is called
         // And the team will be displayed on the pane
         for (int i = 0; i < teamSize; i++)
-            getTeam(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
+            teams.get(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
     }
 
     /**
@@ -230,8 +236,8 @@ public class Tournament {
         //Get the button index
         Button btn = (Button) event.getSource();
         int index = ((Group) (pane.getChildren().get(2))).getChildren().indexOf(btn);
-        Team team1 = getTeam(index * 2);
-        Team team2 = getTeam(index * 2 + 1);
+        Team team1 = teams.get(index * 2);
+        Team team2 = teams.get(index * 2 + 1);
         int result = compareScore(team1, team2, index - 1);
         if(result > 0)
         	btn.setVisible(false);
@@ -287,7 +293,7 @@ public class Tournament {
         }
 
         // set the name for next round
-        Team parent = getTeam(parentIndex);
+        Team parent = teams.get(parentIndex);
         parent.initialize(winner.getName());
         return 1;
     }
@@ -316,8 +322,7 @@ public class Tournament {
             return;
 
         // Determine the third place
-        Team third = IntStream.range(2, 6)
-                .mapToObj(this::getTeam)
+        Team third = teams.subList(2, 6).stream()
                 .filter(e -> e.getStatus().equals(Status.LOSE))
                 .sorted(Team::compareTo)
                 .collect(Collectors.toList())
@@ -402,29 +407,7 @@ public class Tournament {
      * @return its competitor
      */
     private Team getCompetitor(int index) {
-        return getTeam((index % 2 == 0) ? index + 1 : index - 1);
-    }
-
-    /**
-     * A help method used to find the team by its index
-     *
-     * @param index the index of a given team
-     * @return the team
-     */
-    private Team getTeam(int index) {
-        return (Team) ((Group) pane.getChildren().get(0)).getChildren().get(index);
-    }
-
-    /**
-     * A helper method used to get the index of a specific team
-     * <p>
-     * Word as a "inverse function" of getTeam
-     *
-     * @param team a given team
-     * @return its index
-     */
-    private int getTeamIndex(Team team) {
-        return ((Pane) pane.getChildren().get(0)).getChildren().indexOf(team);
+        return teams.get((index % 2 == 0) ? index + 1 : index - 1);
     }
 
     /**
