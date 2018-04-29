@@ -63,3 +63,7 @@
 .top_three_container > .third {
     -fx-background-color: sandybrown;
 }
+
+.confirm_container > Button {
+    
+}

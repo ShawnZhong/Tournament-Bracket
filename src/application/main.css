@@ -24,26 +24,13 @@
     -fx-background-image: url('16.jpg');
 }
 
-/*Teams*/
-/*Team {*/
-/*-fx-text-fill: #ffffff;*/
-/*}*/
-
-/*.team_container > Team {*/
-/*-fx-background-color: #86ade2;*/
-/*}*/
-
-/*.team_container > Team:hover {*/
-/*-fx-background-color:#3d82df;*/
-/*}*/
-
 .winner{
-    -fx-background-color:#3d82df;
+    /*-fx-background-color:#3d82df;*/
     -fx-font-weight: bold;
 }
 
 .loser:hover {
-    -fx-background-color: #86ade2;
+    /*-fx-background-color: #86ade2;*/
 }
 
 /* Champion Box */
