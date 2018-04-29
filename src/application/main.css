@@ -1,0 +1,64 @@
+.pane {
+    -fx-pref-height: 500;
+    -fx-pref-width: 900;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-size: 900 600;
+    -fx-background-position: center center;
+}
+
+#pane2 {
+    -fx-background-image: url('2.jpg');
+}
+
+#pane4 {
+    -fx-background-image: url('4.jpg');
+}
+
+#pane8 {
+    -fx-background-image: url('8.jpg');
+}
+
+#pane16 {
+    -fx-background-image: url('16.jpg');
+}
+
+Team {
+    -fx-spacing: 5;
+    -fx-background-color: white;
+}
+
+Team > Label {
+    -fx-background-radius: 5;
+    -fx-label-padding: 3;
+}
+
+.winner > Label {
+    -fx-background-color: #e8b542;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.loser > Label {
+    -fx-background-color: #177a96;
+    -fx-text-fill: white;
+}
+
+/* Champion Box */
+.top_three_container > Button {
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.top_three_container > .first {
+	-fx-background-color: #fdd80c;
+}
+
+.top_three_container > .second {
+    -fx-background-color: silver;
+}
+
+.top_three_container > .third {
+    -fx-background-color: sandybrown;
+}
