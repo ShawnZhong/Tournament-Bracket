@@ -24,3 +24,6 @@ out
 bin
 .idea/workspace.xml
 .idea/workspace.xml
+src/.DS_Store
+.DS_Store
+.gitattributes
