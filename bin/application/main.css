@@ -24,26 +24,17 @@
     -fx-background-image: url('16.jpg');
 }
 
-/*Teams*/
-/*Team {*/
-/*-fx-text-fill: #ffffff;*/
-/*}*/
+Team > Label {
+    -fx-background-radius: 5;
+}
 
-/*.team_container > Team {*/
-/*-fx-background-color: #86ade2;*/
-/*}*/
-
-/*.team_container > Team:hover {*/
-/*-fx-background-color:#3d82df;*/
-/*}*/
-
-.winner{
-    -fx-background-color:#3d82df;
+.winner > Label {
+    -fx-background-color: yellow;
     -fx-font-weight: bold;
 }
 
-.loser:hover {
-    -fx-background-color: #86ade2;
+.loser > Label {
+    -fx-background-color: red;
 }
 
 /* Champion Box */
@@ -62,8 +53,4 @@
 
 .top_three_container > .third {
     -fx-background-color: sandybrown;
-}
-
-.confirm_container > Button {
-    
 }

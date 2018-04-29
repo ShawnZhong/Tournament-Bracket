@@ -20,6 +20,7 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
@@ -184,6 +185,11 @@ public class Tournament {
         // set topThreeBox to corresponding GridPane, and set as hidden
         topThreeBox = (GridPane) pane.getChildren().get(1);
         topThreeBox.setVisible(false);
+        
+        //set all buttons except those for the first round as hidden
+        List<Node> btns = ((Group)pane.getChildren().get(2)).getChildren();
+        for(int i = 0; i < teamSize/2-1; i++) 
+        	btns.get(i).setVisible(false);
     }
 
 
@@ -224,30 +230,44 @@ public class Tournament {
         int index = ((Group) (pane.getChildren().get(2))).getChildren().indexOf(btn);
         Team team1 = getTeam(index * 2);
         Team team2 = getTeam(index * 2 + 1);
-        System.out.println(index);
-        compareScore(team1, team2, index - 1);
+        int result = compareScore(team1, team2, index - 1);
+        if(result > 0)
+        	btn.setVisible(false);
+        if(result == 1) 
+        	showButton(index);
+    }
+    
+    private void showButton(int index) {
+    	Team team2 = getCompetitor(index-1);
+    	if(team2.isVisible())
+    		((Group) (pane.getChildren().get(2))).getChildren().get((index-1)/2).setVisible(true);
     }
 
     /**
      * This method compares the scores of two teams and set their winning status.
      *
      * @param team1 the team to be compared with its paired team.
+     * @return the result of the comparison. 
+     * 			-1 means tie.
+     * 			0 means one or both of the teams are not ready. 
+     * 			1 means the comparison is made, and the winner will go to the next round
+     * 			2 means the final round is over, and we have a winner. 
      */
-    private void compareScore(Team team1, Team team2, int parentIndex) {
+    private int compareScore(Team team1, Team team2, int parentIndex) {
         // if team1 has not start playing
-        if (team1.getStatus().equals(Status.HIDDEN))
-            return;
+        if (team1.getStatus().equals(Status.HIDDEN) || !team1.hasScore())
+            return 0;
 
         // if team2 has not start playing
-        if (team2.getStatus().equals(Status.HIDDEN))
-            return;
+        if (team2.getStatus().equals(Status.HIDDEN) || !team2.hasScore())
+            return 0;
 
         // if two teams have the same score
         if (team1.compareTo(team2) == 0) {
             showWarn(team1.getName() + " and " + team2.getName() + " tie!" + "\r\nStart another game! ");
             team1.setStatus(Status.DEFAULT);
             team2.setStatus(Status.DEFAULT);
-            return;
+            return -1;
         }
 
         // decide the winner of the game
@@ -261,12 +281,13 @@ public class Tournament {
         if (parentIndex == -1) {
             showInfo(winner.getName() + " wins the game!!!");
             showChampion(winner, loser);
-            return;
+            return 2;
         }
 
         // set the name for next round
         Team parent = getTeam(parentIndex);
         parent.initialize(winner.getName());
+        return 1;
     }
 
     /**
