@@ -262,18 +262,18 @@ public class Tournament {
      */
     private void compareScore(Team team1, Team team2, int parentIndex) {
         // if team1 has not start playing
-        if (team1.getStatus().equals(Status.DEFAULT) || team1.getStatus().equals(Status.HIDDEN))
+        if (team1.getStatus().equals(Status.HIDDEN))
             return;
 
         // if team2 has not start playing
-        if (team2.getStatus().equals(Status.DEFAULT) || team2.getStatus().equals(Status.HIDDEN))
+        if (team2.getStatus().equals(Status.HIDDEN))
             return;
 
         // if two teams have the same score
         if (team1.compareTo(team2) == 0) {
             showWarn(team1.getName() + " and " + team2.getName() + " tie!" + "\r\nStart another game! ");
-            team1.setStatus(Status.IN_PROGRESS);
-            team2.setStatus(Status.IN_PROGRESS);
+            team1.setStatus(Status.DEFAULT);
+            team2.setStatus(Status.DEFAULT);
             return;
         }
 

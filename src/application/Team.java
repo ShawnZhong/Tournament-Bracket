@@ -22,7 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
-enum Status {HIDDEN, DEFAULT, IN_PROGRESS, LOSE, WIN}
+enum Status {HIDDEN, DEFAULT, LOSE, WIN}
 
 /**
  * A Class used to represent the team in Tournament;
@@ -48,7 +48,7 @@ public class Team extends HBox implements Comparable<Team> {
             if (!notChanged && textField.getText().trim().length() != 0) {
                 try {
                     score = Integer.valueOf(textField.getText());
-                    status = Status.IN_PROGRESS;
+                    status = Status.DEFAULT;
                 } catch (Exception e) {
                     new Alert(Alert.AlertType.INFORMATION, "Invalid Input").showAndWait();
                     textField.clear();
@@ -107,8 +107,7 @@ public class Team extends HBox implements Comparable<Team> {
             case DEFAULT:
                 getStyleClass().removeAll("winner", "loser");
                 setVisible(true);
-                break;
-            case IN_PROGRESS:
+                textField.clear();
                 break;
             case WIN:
                 getStyleClass().add("winner");

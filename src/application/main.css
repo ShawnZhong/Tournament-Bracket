@@ -24,13 +24,17 @@
     -fx-background-image: url('16.jpg');
 }
 
-.winner{
-    /*-fx-background-color:#3d82df;*/
+Team > Label {
+    -fx-background-radius: 5;
+}
+
+.winner > Label {
+    -fx-background-color: yellow;
     -fx-font-weight: bold;
 }
 
-.loser:hover {
-    /*-fx-background-color: #86ade2;*/
+.loser > Label {
+    -fx-background-color: red;
 }
 
 /* Champion Box */

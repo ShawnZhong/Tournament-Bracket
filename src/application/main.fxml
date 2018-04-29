@@ -288,7 +288,7 @@
                 </Team>
 
                 <Team alignment="CENTER" layoutX="35.0" layoutY="15.0">
-                    <Label prefHeight="21.0" prefWidth="64.0" text="Team 00" />
+                    <Label text="Team 00"/>
                     <TextField prefWidth="40" />
                 </Team>
                 <Team alignment="CENTER" layoutX="34.0" layoutY="76.0">
