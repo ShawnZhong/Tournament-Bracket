@@ -37,18 +37,18 @@
                     <RowConstraints />
                 </rowConstraints>
             </GridPane>
-            <Pane styleClass="confirm_container" />
+            <Group styleClass="confirm_container" />
         </Pane>
 
         <Pane id="pane2" styleClass="pane" visible="false">
 
             <Pane styleClass="team_container">
 
-                <Team alignment="CENTER" layoutX="100" layoutY="245">
+                <Team alignment="CENTER" layoutX="98.0" layoutY="230.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 </Team>
-                <Team alignment="CENTER" layoutX="750" layoutY="245">
+                <Team alignment="CENTER" layoutX="736.0" layoutY="230.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
@@ -70,7 +70,12 @@
                     <RowConstraints />
                 </rowConstraints>
             </GridPane>
-            <Pane styleClass="confirm_container" />
+            <Group styleClass="confirm_container">
+            <children>
+                   <Button layoutX="445.0" layoutY="223.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+            </children>
+                
+            </Group>
         </Pane>
 
 
@@ -124,7 +129,11 @@
                     <RowConstraints />
                 </rowConstraints>
             </GridPane>
-            <Pane styleClass="confirm_container" />
+            <Group styleClass="confirm_container">
+                <Button layoutX="459.0" layoutY="281.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="194.0" layoutY="238.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="686.0" layoutY="238.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+            </Group>
         </Pane>
 
         <Pane id="pane8" styleClass="pane" visible="false">
@@ -140,7 +149,7 @@
                     <TextField prefWidth="40" />
                 </Team>
 
-                <Team alignment="CENTER" layoutX="240" layoutY="140">
+                <Team alignment="CENTER" layoutX="233.0" layoutY="115.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
@@ -148,44 +157,44 @@
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
-                <Team alignment="CENTER" layoutX="600" layoutY="140">
+                <Team alignment="CENTER" layoutX="600.0" layoutY="115.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
-                <Team alignment="CENTER" layoutX="600" layoutY="350">
+                <Team alignment="CENTER" layoutX="600.0" layoutY="357.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
 
-                <Team alignment="CENTER" layoutX="30" layoutY="75">
+                <Team alignment="CENTER" layoutX="30.0" layoutY="60.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
-                <Team alignment="CENTER" layoutX="30" layoutY="185">
+                <Team alignment="CENTER" layoutX="30.0" layoutY="170.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
-                <Team alignment="CENTER" layoutX="30" layoutY="290">
+                <Team alignment="CENTER" layoutX="30.0" layoutY="271.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
-                <Team alignment="CENTER" layoutX="30" layoutY="395">
+                <Team alignment="CENTER" layoutX="30.0" layoutY="372.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
-                <Team alignment="CENTER" layoutX="780" layoutY="75">
+                <Team alignment="CENTER" layoutX="773.0" layoutY="60.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
-                <Team alignment="CENTER" layoutX="780" layoutY="185">
+                <Team alignment="CENTER" layoutX="780.0" layoutY="170.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
-                <Team alignment="CENTER" layoutX="780" layoutY="290">
+                <Team alignment="CENTER" layoutX="780.0" layoutY="271.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
-                <Team alignment="CENTER" layoutX="780" layoutY="395">
+                <Team alignment="CENTER" layoutX="780.0" layoutY="381.0">
                     <Label text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
@@ -210,9 +219,15 @@
                     <RowConstraints />
                 </rowConstraints>
             </GridPane>
-            <Pane styleClass="confirm_container">
-                <Button layoutX="400.0" layoutY="100.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit" />
-            </Pane>
+            <Group styleClass="confirm_container">
+                <Button layoutX="448.0" layoutY="275.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="252.0" layoutY="238.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="611.0" layoutY="238.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="139.0" layoutY="131.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="128.0" layoutY="348.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="715.0" layoutY="131.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="704.0" layoutY="348.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+            </Group>
 
         </Pane>
 
@@ -279,7 +294,7 @@
                     <TextField prefWidth="40" />
                 </Team>
 
-                <Team alignment="CENTER" layoutX="35.0" layoutY="15.0" prefWidth="95.0">
+                <Team alignment="CENTER" layoutX="35.0" layoutY="15.0">
                     <Label prefHeight="21.0" prefWidth="64.0" text="Team 00" />
                     <TextField prefWidth="40" />
                 </Team>
@@ -365,21 +380,21 @@
                 </rowConstraints>
             </GridPane>
             <Group layoutX="0" layoutY="0" styleClass="confirm_container">
-                <Button layoutX="430.0" layoutY="294.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit1" visible="true" />
-                <Button layoutX="265.0" layoutY="229.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit2" visible="true" />
-                <Button layoutX="583.0" layoutY="229.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit3" visible="true" />
-                <Button layoutX="197.0" layoutY="104.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit4" visible="true" />
-                <Button layoutX="197.0" layoutY="348.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit5" visible="true" />
-                <Button layoutX="671.0" layoutY="120.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit6" visible="true" />
-                <Button layoutX="682.0" layoutY="364.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit7" visible="true" />
-                <Button layoutX="122.0" layoutY="48.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit8" visible="true" />
-                <Button layoutX="124.0" layoutY="188.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit9" visible="true" />
-                <Button layoutX="121.0" layoutY="288.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit10" visible="true" />
-                <Button layoutX="119.0" layoutY="415.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit11" visible="true" />
-                <Button layoutX="748.0" layoutY="41.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit12" visible="true" />
-                <Button layoutX="740.0" layoutY="172.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit13" visible="true" />
-                <Button layoutX="757.0" layoutY="279.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit14" visible="true" />
-                <Button layoutX="757.0" layoutY="400.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit15" visible="true" />
+                <Button layoutX="452.0" layoutY="264.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="289.0" layoutY="229.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="583.0" layoutY="229.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="197.0" layoutY="120.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="197.0" layoutY="348.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="664.0" layoutY="113.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="657.0" layoutY="348.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="122.0" layoutY="48.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="122.0" layoutY="165.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="119.0" layoutY="279.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="119.0" layoutY="400.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="743.0" layoutY="55.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="743.0" layoutY="165.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="743.0" layoutY="294.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
+                <Button layoutX="743.0" layoutY="409.0" onAction="#handleConfirm" styleClass="normalTeam" text="GO" />
       </Group>
         </Pane>
     </Pane>
