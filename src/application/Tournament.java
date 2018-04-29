@@ -211,33 +211,6 @@ public class Tournament {
             getTeam(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
     }
 
-//    /**
-//     * Event handler for the team buttons
-//     *
-//     * @param event the event invoked
-//     */
-//    @FXML
-//    private void handleTeam(ActionEvent event) {
-//        // TODO: Get team by index, and this method should be invoked handleConfirm by the confirm button
-//        // Get the team clicked
-//        Team team = (Team) event.getSource();
-//
-//        // If a given team is the winner in some round
-//        if (team.getStatus().equals(Status.WIN)) {
-//            showInfo(team.getName() + " is the winner.");
-//            return;
-//        }
-//
-//        // If a given team is the loser in some round
-//        if (team.getStatus().equals(Status.LOSE)) {
-//            showInfo(team.getName() + " loses the game.");
-//            return;
-//        }
-//
-//        // compare with another team
-//        compareScore(team);
-//    }
-
     /**
      * Handle the the action of final submit button;
      * Do two things:
@@ -415,7 +388,7 @@ public class Tournament {
      * @return the team
      */
     private Team getTeam(int index) {
-        return (Team) ((Pane) pane.getChildren().get(0)).getChildren().get(index);
+        return (Team) ((Group) pane.getChildren().get(0)).getChildren().get(index);
     }
 
     /**

@@ -35,7 +35,7 @@
 
         <Pane id="pane2" styleClass="pane" visible="false">
 
-            <Pane styleClass="team_container">
+            <Group styleClass="team_container">
 
                 <Team alignment="CENTER" layoutX="98.0" layoutY="230.0">
                     <Label text="Team 00" />
@@ -46,7 +46,7 @@
                     <TextField prefWidth="40" />
                 </Team>
 
-            </Pane>
+            </Group>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" styleClass="top_three_container" vgap="5.0">
 
                 <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
@@ -74,7 +74,7 @@
 
         <Pane id="pane4" styleClass="pane" visible="false">
 
-            <Pane styleClass="team_container">
+            <Group styleClass="team_container">
 
                 <Team alignment="CENTER" layoutX="325" layoutY="240">
                     <Label text="Team 00" />
@@ -102,7 +102,7 @@
                     <TextField prefWidth="40" />
                 </Team>
 
-            </Pane>
+            </Group>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" styleClass="top_three_container" vgap="5.0">
 
                 <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
@@ -131,7 +131,7 @@
 
         <Pane id="pane8" styleClass="pane" visible="false">
 
-            <Pane styleClass="team_container">
+            <Group styleClass="team_container">
 
                 <Team alignment="CENTER" layoutX="335.0" layoutY="227.0">
                     <Label text="Team 00" />
@@ -192,167 +192,7 @@
                     <TextField prefWidth="40" />
                 </Team>
 
-            </Pane>
-            <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" styleClass="top_three_container" vgap="5.0">
-
-                <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <Button onAction="#handleTopThree" styleClass="second" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Button onAction="#handleTopThree" styleClass="third" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-
-                <columnConstraints>
-                    <ColumnConstraints />
-                    <ColumnConstraints />
-                </columnConstraints>
-                <rowConstraints>
-                    <RowConstraints />
-                    <RowConstraints />
-                    <RowConstraints />
-                </rowConstraints>
-            </GridPane>
-            <Group styleClass="confirm_container" visible="false">
-                <Button layoutX="448.0" layoutY="275.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="252.0" layoutY="238.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="611.0" layoutY="238.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="139.0" layoutY="131.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="137.0" layoutY="344.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="715.0" layoutY="131.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="717.0" layoutY="343.0" onAction="#handleConfirm" text="GO"/>
             </Group>
-
-        </Pane>
-
-        <Pane id="pane16" styleClass="pane">
-
-
-            <Pane styleClass="team_container">
-                <Team alignment="CENTER" layoutX="345.0" layoutY="229.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="483.0" layoutY="229.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-
-                <Team alignment="CENTER" layoutX="280.0" layoutY="109.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="280.0" layoutY="363.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="560.0" layoutY="107.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="560.0" layoutY="369.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-
-                <Team alignment="CENTER" layoutX="189.0" layoutY="49.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="190.0" layoutY="186.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="187.0" layoutY="285.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="184.0" layoutY="420.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="650.0" layoutY="49.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="650.0" layoutY="194.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="650.0" layoutY="284.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="650.0" layoutY="428.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-
-                <Team alignment="CENTER" layoutX="35.0" layoutY="15.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="34.0" layoutY="76.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="40.0" layoutY="134.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="40.0" layoutY="194.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="38.0" layoutY="252.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="36.0" layoutY="313.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="40.0" layoutY="369.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="37.0" layoutY="428.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="790.0" layoutY="15.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="790.0" layoutY="76.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="790.0" layoutY="134.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="790.0" layoutY="200.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="790.0" layoutY="252.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="790.0" layoutY="313.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="790.0" layoutY="377.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-                <Team alignment="CENTER" layoutX="790.0" layoutY="428.0">
-                    <Label text="Team 00" />
-                    <TextField prefWidth="40" />
-                </Team>
-
-            </Pane>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" styleClass="top_three_container" vgap="5.0">
 
                 <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
@@ -373,21 +213,181 @@
                 </rowConstraints>
             </GridPane>
             <Group styleClass="confirm_container">
-                <Button layoutX="453.0" layoutY="263.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="288.0" layoutY="237.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="583.0" layoutY="236.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="197.0" layoutY="118.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="197.0" layoutY="348.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="448.0" layoutY="275.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="252.0" layoutY="238.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="611.0" layoutY="238.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="139.0" layoutY="131.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="137.0" layoutY="344.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="715.0" layoutY="131.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="717.0" layoutY="343.0" onAction="#handleConfirm" text="GO"/>
+            </Group>
+
+        </Pane>
+
+        <Pane id="pane16" styleClass="pane" visible="false">
+
+
+            <Group styleClass="team_container">
+                <Team alignment="CENTER" layoutX="349.0" layoutY="236.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="476.0" layoutY="236.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+
+                <Team alignment="CENTER" layoutX="275.0" layoutY="119.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="280.0" layoutY="354.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="558.0" layoutY="119.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="552.0" layoutY="355.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+
+                <Team alignment="CENTER" layoutX="192.0" layoutY="60.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="190.0" layoutY="177.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="194.0" layoutY="296.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="197.0" layoutY="413.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="615.0" layoutY="61.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="609.0" layoutY="178.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="603.0" layoutY="295.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="603.0" layoutY="413.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+
+                <Team alignment="CENTER" layoutX="19.0" layoutY="33.0">
+                    <Label text="Team 00"/>
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="19.0" layoutY="89.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="19.0" layoutY="148.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="19.0" layoutY="208.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="18.0" layoutY="269.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="19.0" layoutY="324.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="19.0" layoutY="383.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="18.0" layoutY="445.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="801.0" layoutY="30.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="801.0" layoutY="91.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="801.0" layoutY="149.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="801.0" layoutY="215.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="801.0" layoutY="267.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="801.0" layoutY="328.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="801.0" layoutY="383.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+                <Team alignment="CENTER" layoutX="801.0" layoutY="443.0">
+                    <Label text="Team 00" />
+                    <TextField prefWidth="40" />
+                </Team>
+
+            </Group>
+            <GridPane hgap="5.0" layoutX="394.0" layoutY="14.0" styleClass="top_three_container" vgap="5.0">
+
+                <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Button onAction="#handleTopThree" styleClass="second" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button onAction="#handleTopThree" styleClass="third" text="Team 00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label text="Second:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label text="Third:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+
+                <columnConstraints>
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
+            </GridPane>
+            <Group styleClass="confirm_container">
+                <Button layoutX="445.0" layoutY="285.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="298.0" layoutY="237.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="582.0" layoutY="236.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="211.0" layoutY="120.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="203.0" layoutY="354.0" onAction="#handleConfirm" text="GO"/>
                 <Button layoutX="664.0" layoutY="113.0" onAction="#handleConfirm" text="GO"/>
                 <Button layoutX="657.0" layoutY="348.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="122.0" layoutY="48.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="122.0" layoutY="165.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="119.0" layoutY="279.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="119.0" layoutY="400.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="746.0" layoutY="55.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="746.0" layoutY="174.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="745.0" layoutY="294.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="743.0" layoutY="409.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="46.0" layoutY="61.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="46.0" layoutY="177.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="46.0" layoutY="297.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="46.0" layoutY="413.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="813.0" layoutY="58.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="813.0" layoutY="177.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="813.0" layoutY="297.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="813.0" layoutY="412.0" onAction="#handleConfirm" text="GO"/>
       </Group>
         </Pane>
     </Pane>

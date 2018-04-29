@@ -25,6 +25,7 @@
 }
 
 Team > Label {
+    -fx-background-color: white;
     -fx-background-radius: 5;
 }
 
