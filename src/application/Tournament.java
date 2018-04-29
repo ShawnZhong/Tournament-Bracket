@@ -185,9 +185,11 @@ public class Tournament {
         // set topThreeBox to corresponding GridPane, and set as hidden
         topThreeBox = (GridPane) pane.getChildren().get(1);
         topThreeBox.setVisible(false);
-        
+
+
         //set all buttons except those for the first round as hidden
         List<Node> btns = ((Group)pane.getChildren().get(2)).getChildren();
+        btns.forEach(e -> e.setVisible(true));
         for(int i = 0; i < teamSize/2-1; i++) 
         	btns.get(i).setVisible(false);
     }
@@ -334,12 +336,12 @@ public class Tournament {
     @FXML
     public void handleTopThree(ActionEvent event) {
         // get the team clicked and its index
-        Team team = (Team) event.getSource();
+        Button team = (Button) event.getSource();
         int index = topThreeBox.getChildren().indexOf(team);
 
         // display the corresponding info
         String[] place = {"first", "second", "third"};
-        showInfo(team.getName() + " is " + place[index] + " place!!!");
+        showInfo(team.getText() + " is " + place[index] + " place!!!");
     }
 
     /**
@@ -389,6 +391,7 @@ public class Tournament {
      */
     @FXML
     private void handleReset(ActionEvent event) {
+        initializePane();
         initializeTeam();
     }
 

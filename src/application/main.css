@@ -27,15 +27,19 @@
 Team > Label {
     -fx-background-color: white;
     -fx-background-radius: 5;
+    -fx-label-padding: 3;
+
 }
 
 .winner > Label {
-    -fx-background-color: yellow;
+    -fx-background-color: lightgreen;
     -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
 .loser > Label {
-    -fx-background-color: red;
+    -fx-background-color: lightcoral;
+    -fx-text-fill: white;
 }
 
 /* Champion Box */
