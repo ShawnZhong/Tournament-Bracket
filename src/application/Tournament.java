@@ -272,8 +272,8 @@ public class Tournament {
         // if two teams have the same score
         if (team1.compareTo(team2) == 0) {
             showWarn(team1.getName() + " and " + team2.getName() + " tie!" + "\r\nStart another game! ");
-            team1.setStatus(Status.DEFAULT);
-            team2.setStatus(Status.DEFAULT);
+            team1.setStatus(Status.IN_PROGRESS);
+            team2.setStatus(Status.IN_PROGRESS);
             return;
         }
 
