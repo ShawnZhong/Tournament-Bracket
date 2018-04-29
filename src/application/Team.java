@@ -59,7 +59,6 @@ public class Team extends HBox implements Comparable<Team> {
         setName(name);
     }
 
-
     /**
      * Get the name
      *
@@ -116,6 +115,10 @@ public class Team extends HBox implements Comparable<Team> {
                 getStyleClass().add("loser");
                 break;
         }
+    }
+    
+    public boolean hasScore() {
+    	return score != null;
     }
 
     /**
