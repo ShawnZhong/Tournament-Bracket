@@ -109,7 +109,7 @@ public class Tournament {
     /**
      * This method loads file through its path
      * {@code lines}, {@code teamSize}, {@code totalRound} will be initialed
-     *
+     * <p>
      * If we there is any exception, or the {@code filepath} is null
      * Then we will enter demo mode, and initialed lines with {Team 01, ..., Team 16}
      *
@@ -191,12 +191,11 @@ public class Tournament {
 
 
         //set all buttons except those for the first round as hidden
-        List<Node> btns = ((Group)pane.getChildren().get(2)).getChildren();
+        List<Node> btns = ((Group) pane.getChildren().get(2)).getChildren();
         btns.forEach(e -> e.setVisible(true));
-        for(int i = 0; i < teamSize/2-1; i++) 
-        	btns.get(i).setVisible(false);
+        for (int i = 0; i < teamSize / 2 - 1; i++)
+            btns.get(i).setVisible(false);
     }
-
 
 
     /**
@@ -239,27 +238,27 @@ public class Tournament {
         Team team1 = teams.get(index * 2);
         Team team2 = teams.get(index * 2 + 1);
         int result = compareScore(team1, team2, index - 1);
-        if(result > 0)
-        	btn.setVisible(false);
-        if(result == 1) 
-        	showButton(index);
+        if (result > 0)
+            btn.setVisible(false);
+        if (result == 1)
+            showButton(index);
     }
-    
+
     private void showButton(int index) {
-    	Team team2 = getCompetitor(index-1);
-    	if(team2.isVisible())
-    		((Group) (pane.getChildren().get(2))).getChildren().get((index-1)/2).setVisible(true);
+        Team team2 = getCompetitor(index - 1);
+        if (team2.isVisible())
+            ((Group) (pane.getChildren().get(2))).getChildren().get((index - 1) / 2).setVisible(true);
     }
 
     /**
      * This method compares the scores of two teams and set their winning status.
      *
      * @param team1 the team to be compared with its paired team.
-     * @return the result of the comparison. 
-     * 			-1 means tie.
-     * 			0 means one or both of the teams are not ready. 
-     * 			1 means the comparison is made, and the winner will go to the next round
-     * 			2 means the final round is over, and we have a winner. 
+     * @return the result of the comparison.
+     * -1 means tie.
+     * 0 means one or both of the teams are not ready.
+     * 1 means the comparison is made, and the winner will go to the next round
+     * 2 means the final round is over, and we have a winner.
      */
     private int compareScore(Team team1, Team team2, int parentIndex) {
         // if team1 has not start playing
