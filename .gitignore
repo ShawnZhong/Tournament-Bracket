@@ -28,3 +28,6 @@ src/.DS_Store
 .DS_Store
 .gitattributes
 *.iml
+
+#All idea setting files
+.idea/*.xml

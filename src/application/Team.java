@@ -110,9 +110,11 @@ public class Team extends HBox implements Comparable<Team> {
                 break;
             case WIN:
                 getStyleClass().add("winner");
+                textField.setEditable(false);
                 break;
             case LOSE:
                 getStyleClass().add("loser");
+                textField.setEditable(false);
                 break;
         }
     }
