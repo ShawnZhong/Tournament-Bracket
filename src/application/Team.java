@@ -49,10 +49,14 @@ public class Team extends HBox implements Comparable<Team> {
                 try {
                     score = Integer.valueOf(textField.getText());
                     status = Status.DEFAULT;
+
                 } catch (Exception e) {
                     new Alert(Alert.AlertType.INFORMATION, "Invalid Input").showAndWait();
                     textField.clear();
                 }
+            }else if (textField.getText().trim().length() == 0){
+                score = null;
+                status = Status.DEFAULT;
             }
         });
 
@@ -106,6 +110,7 @@ public class Team extends HBox implements Comparable<Team> {
             case DEFAULT:
                 getStyleClass().removeAll("winner", "loser");
                 setVisible(true);
+                textField.setEditable(true);
                 textField.clear();
                 break;
             case WIN:
