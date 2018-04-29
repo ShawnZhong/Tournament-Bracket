@@ -66,7 +66,7 @@
             <children>
                 <Button layoutX="445.0" layoutY="223.0" onAction="#handleConfirm" text="GO" />
             </children>
-                
+
             </Group>
         </Pane>
 

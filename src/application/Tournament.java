@@ -20,7 +20,6 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
@@ -91,6 +90,8 @@ public class Tournament {
     private List<String> lines;
 
     private List<Team> teams = new ArrayList<>();
+    private List<Button> confirmButtons = new ArrayList<>();
+    private List<Button> topThree = new ArrayList<>();
 
     /**
      * This method will
@@ -188,13 +189,14 @@ public class Tournament {
         // set topThreeBox to corresponding GridPane, and set as hidden
         topThreeBox = (GridPane) pane.getChildren().get(1);
         topThreeBox.setVisible(false);
+        topThreeBox.getChildren().subList(0, 3).forEach(e -> topThree.add((Button) e));
 
-
-        //set all buttons except those for the first round as hidden
-        List<Node> btns = ((Group) pane.getChildren().get(2)).getChildren();
-        btns.forEach(e -> e.setVisible(true));
-        for (int i = 0; i < teamSize / 2 - 1; i++)
-            btns.get(i).setVisible(false);
+        // When team size is 1, directly display the topThreeBox
+        // Since the champion is determinant when there is only one team
+        if (teamSize == 1) {
+            topThree.get(0).setText(lines.get(0));
+            topThreeBox.setVisible(true);
+        }
     }
 
 
@@ -202,17 +204,14 @@ public class Tournament {
      * This method will initialize all the teams displayed on the pane
      */
     private void initializeTeam() {
-        // When team size is 1, directly display the topThreeBox
-        // Since the champion is determinant when there is only one team
-        if (teamSize == 1) {
-            ((Button) topThreeBox.getChildren().get(0)).setText(lines.get(0));
-            topThreeBox.setVisible(true);
-            return;
-        }
+        //set all buttons except those for the first round as hidden
+        confirmButtons.clear();
+        ((Group) pane.getChildren().get(2)).getChildren().forEach(e -> confirmButtons.add((Button) e));
+        confirmButtons.forEach(e -> e.setVisible(true));
+        confirmButtons.subList(0, teamSize / 2 - 1).forEach(e -> e.setVisible(false));
 
         teams.clear();
         ((Group) pane.getChildren().get(0)).getChildren().forEach(e -> teams.add((Team) e));
-
 
         // Initialize all the teams to be hidden first
         teams.forEach(e -> e.setStatus(Status.HIDDEN));
@@ -234,7 +233,7 @@ public class Tournament {
     private void handleConfirm(ActionEvent event) {
         //Get the button index
         Button btn = (Button) event.getSource();
-        int index = ((Group) (pane.getChildren().get(2))).getChildren().indexOf(btn);
+        int index = confirmButtons.indexOf(btn);
         Team team1 = teams.get(index * 2);
         Team team2 = teams.get(index * 2 + 1);
         int result = compareScore(team1, team2, index - 1);
@@ -247,7 +246,7 @@ public class Tournament {
     private void showButton(int index) {
         Team team2 = getCompetitor(index - 1);
         if (team2.isVisible())
-            ((Group) (pane.getChildren().get(2))).getChildren().get((index - 1) / 2).setVisible(true);
+            confirmButtons.get((index - 1) / 2).setVisible(true);
     }
 
     /**
@@ -313,8 +312,8 @@ public class Tournament {
         topThreeBox.setVisible(true);
 
         // set name for first and second place
-        ((Button) topThreeBox.getChildren().get(0)).setText(first.getName());
-        ((Button) topThreeBox.getChildren().get(1)).setText(second.getName());
+        topThree.get(0).setText(first.getName());
+        topThree.get(1).setText(second.getName());
 
         // No need to display the third place if there are only two teams
         if (teamSize < 4)
@@ -328,7 +327,7 @@ public class Tournament {
                 .get(1);
 
         // Set name for the third place
-        ((Button) topThreeBox.getChildren().get(2)).setText(third.getName());
+        topThree.get(2).setText(third.getName());
     }
 
 
@@ -338,10 +337,10 @@ public class Tournament {
      * @param event not used
      */
     @FXML
-    public void handleTopThree(ActionEvent event) {
+    private void handleTopThree(ActionEvent event) {
         // get the team clicked and its index
         Button team = (Button) event.getSource();
-        int index = topThreeBox.getChildren().indexOf(team);
+        int index = topThree.indexOf(team);
 
         // display the corresponding info
         String[] place = {"first", "second", "third"};
@@ -386,7 +385,6 @@ public class Tournament {
     private void handleDemo(ActionEvent event) {
         initialize(null); // Entering demo mode
     }
-
 
     /**
      * Event handler for the reset button
