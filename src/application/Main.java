@@ -41,7 +41,6 @@ public class Main extends Application {
      * @param args String: the path of team list
      */
     public static void main(String[] args) {
-    	System.out.println(1);
         filePath = args.length == 0 ? null : args[0];
         launch(args);
     }
