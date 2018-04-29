@@ -251,7 +251,7 @@ public class Tournament {
         int index = ((Group) (pane.getChildren().get(2))).getChildren().indexOf(btn);
         Team team1 = getTeam(index * 2);
         Team team2 = getTeam(index * 2 + 1);
-
+        System.out.println(index);
         compareScore(team1, team2, index - 1);
     }
 
