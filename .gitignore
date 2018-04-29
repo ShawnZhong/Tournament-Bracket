@@ -35,4 +35,5 @@ src/.DS_Store
 #Clear files for eclipse
 .classpath
 .project
+.settings
 build.fxbuild
