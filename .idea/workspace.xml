@@ -43,12 +43,12 @@
       </file>
       <file leaf-file-name="main.fxml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/application/main.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="399" column="13" selection-start-line="399" selection-start-column="13" selection-end-line="399" selection-end-column="13" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="377" column="60" lean-forward="true" selection-start-line="377" selection-start-column="60" selection-end-line="377" selection-end-column="60" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -250,12 +250,12 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5021482" side_tool="true" weight="0.32915717" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785176" weight="0.5253078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49785176" visible="true" weight="0.1737346" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32915717" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.24943052" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13476562" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13476562" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -442,12 +442,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/main.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="399" column="13" selection-start-line="399" selection-start-column="13" selection-end-line="399" selection-end-column="13" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="377" column="60" lean-forward="true" selection-start-line="377" selection-start-column="60" selection-end-line="377" selection-end-column="60" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
   </component>
   <component name="masterDetails">

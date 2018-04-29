@@ -384,6 +384,8 @@
                 <Button layoutX="239.0" layoutY="377.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit11" visible="true" />
                 <Button layoutX="235.0" layoutY="141.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit12" visible="true" />
                 <Button layoutX="413.0" layoutY="306.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit13" visible="true" />
+                <Button layoutX="235.0" layoutY="141.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit14" visible="true" />
+                <Button layoutX="413.0" layoutY="306.0" onAction="#handleConfirm" styleClass="normalTeam" text="Submit15" visible="true" />
             </Group>
 
 
