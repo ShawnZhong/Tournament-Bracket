@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import application.Team?>
-<?import javafx.scene.Group?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-
+<?import application.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tournament">
 
     <Pane fx:id="panes" layoutX="50.0" layoutY="50.0">
@@ -22,7 +15,6 @@
 
         </Pane>
         <Pane id="pane1" styleClass="pane" visible="false">
-
             <Pane styleClass="team_container" />
             <GridPane hgap="5.0" layoutX="390.0" layoutY="240.0" styleClass="top_three_container" vgap="5.0">
 
@@ -46,11 +38,11 @@
 
                 <Team alignment="CENTER" layoutX="98.0" layoutY="230.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <TextField prefWidth="30" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="736.0" layoutY="230.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
 
             </Group>
@@ -85,28 +77,28 @@
 
                 <Team alignment="CENTER" layoutX="325" layoutY="240">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="515" layoutY="240">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="20" layoutY="150">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="20" layoutY="325">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="760" layoutY="150">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="760" layoutY="325">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
 
             </Group>
@@ -142,61 +134,61 @@
 
                 <Team alignment="CENTER" layoutX="335.0" layoutY="227.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="505.0" layoutY="227.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="227.0" layoutY="122.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="240" layoutY="350">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="600.0" layoutY="115.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="600.0" layoutY="357.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="30.0" layoutY="60.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="30.0" layoutY="170.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="30.0" layoutY="278.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="30.0" layoutY="381.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="773.0" layoutY="60.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="780.0" layoutY="170.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="780.0" layoutY="271.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="780.0" layoutY="381.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
 
             </Group>
@@ -237,126 +229,126 @@
             <Group styleClass="team_container">
                 <Team alignment="CENTER" layoutX="349.0" layoutY="236.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="476.0" layoutY="236.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="275.0" layoutY="119.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="280.0" layoutY="354.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="558.0" layoutY="119.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="552.0" layoutY="355.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="192.0" layoutY="60.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="190.0" layoutY="177.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="194.0" layoutY="296.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="197.0" layoutY="413.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="615.0" layoutY="61.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="609.0" layoutY="178.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="603.0" layoutY="295.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="603.0" layoutY="413.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="19.0" layoutY="33.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="19.0" layoutY="89.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="19.0" layoutY="148.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="19.0" layoutY="208.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="18.0" layoutY="269.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="19.0" layoutY="324.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="19.0" layoutY="383.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="18.0" layoutY="445.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="30.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="91.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="149.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="215.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="267.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="328.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="383.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="443.0">
                     <Label text="Team 00" />
-                    <TextField prefWidth="40" />
+                    <TextField prefWidth="35"/>
                 </Team>
 
             </Group>

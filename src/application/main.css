@@ -24,21 +24,24 @@
     -fx-background-image: url('16.jpg');
 }
 
-Team > Label {
+Team {
+    -fx-spacing: 5;
     -fx-background-color: white;
+}
+
+Team > Label {
     -fx-background-radius: 5;
     -fx-label-padding: 3;
-
 }
 
 .winner > Label {
-    -fx-background-color: lightgreen;
+    -fx-background-color: #e8b542;
     -fx-font-weight: bold;
     -fx-text-fill: white;
 }
 
 .loser > Label {
-    -fx-background-color: lightcoral;
+    -fx-background-color: #177a96;
     -fx-text-fill: white;
 }
 
