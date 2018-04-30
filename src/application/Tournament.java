@@ -240,14 +240,9 @@ public class Tournament {
         if (result > 0)
             btn.setVisible(false);
         if (result == 1)
-            showButton(index);
-    }
-
-    private void showButton(int index) {
-        Team team2 = getCompetitor(index - 1);
-        if (team2.isVisible())
             confirmButtons.get((index - 1) / 2).setVisible(true);
     }
+
 
     /**
      * This method compares the scores of two teams and set their winning status.
@@ -260,19 +255,22 @@ public class Tournament {
      * 2 means the final round is over, and we have a winner.
      */
     private int compareScore(Team team1, Team team2, int parentIndex) {
+        System.out.println(team1.getStatus());
+        System.out.println(team2.getStatus());
+
         // if team1 has not start playing
-        if (team1.getStatus().equals(Status.HIDDEN) || !team1.hasScore())
+        if (!team1.getStatus().equals(Status.SCORE_ENTERED))
             return 0;
 
         // if team2 has not start playing
-        if (team2.getStatus().equals(Status.HIDDEN) || !team2.hasScore())
+        if (!team2.getStatus().equals(Status.SCORE_ENTERED))
             return 0;
 
         // if two teams have the same score
         if (team1.compareTo(team2) == 0) {
             showWarn(team1.getName() + " and " + team2.getName() + " tie!" + "\r\nStart another game! ");
-            team1.setStatus(Status.DEFAULT);
-            team2.setStatus(Status.DEFAULT);
+            team1.setStatus(Status.NO_SCORE);
+            team2.setStatus(Status.NO_SCORE);
             return -1;
         }
 

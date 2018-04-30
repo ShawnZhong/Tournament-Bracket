@@ -22,7 +22,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
-enum Status {HIDDEN, DEFAULT, LOSE, WIN}
+enum Status {HIDDEN, NO_SCORE, SCORE_ENTERED, LOSE, WIN}
+
 
 /**
  * A Class used to represent the team in Tournament;
@@ -45,18 +46,22 @@ public class Team extends HBox implements Comparable<Team> {
         label = (Label) getChildren().get(0);
         textField = (TextField) getChildren().get(1);
         textField.focusedProperty().addListener((arg0, arg1, notChanged) -> {
-            if (!notChanged && textField.getText().trim().length() != 0) {
-                try {
-                    if (Integer.valueOf(textField.getText())<0) throw new Exception();
-                    score = Integer.valueOf(textField.getText());
-                    status = Status.DEFAULT;
-                } catch (Exception e) {
-                    new Alert(Alert.AlertType.INFORMATION, "Invalid Input").showAndWait();
-                    textField.clear();
-                }
-            }else if (textField.getText().trim().length() == 0){
-                score = null;
-                status = Status.DEFAULT;
+            if (notChanged)
+                return;
+
+            if (textField.getText().trim().length() == 0) {
+                setStatus(Status.NO_SCORE);
+                return;
+            }
+
+            try {
+                if ((score = Integer.valueOf(textField.getText())) < 0)
+                    throw new Exception("Score should not be negative");
+
+                setStatus(Status.SCORE_ENTERED);
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.INFORMATION, "Invalid Input\n" + e.getMessage()).showAndWait();
+                setStatus(Status.NO_SCORE);
             }
         });
 
@@ -74,18 +79,18 @@ public class Team extends HBox implements Comparable<Team> {
 
     public void setName(String name) {
         label.setText(name);
-        setStatus(Status.DEFAULT);
+        setStatus(Status.NO_SCORE);
     }
 
     /**
      * Status of the team
-     *  HIDDEN: Hide the team from canvas
-     *  DEFAULT: NO score but name
-     *  IN_PROGRESS:
-     *  WIN: HighList as a Winner
-     *  Lose: Set the status to a Loser
-     * @return the status of this team
+     * HIDDEN: Hide the team from canvas
+     * NO_SCORE: NO score but name
+     * SCORE_ENTERED:
+     * WIN: HighList as a Winner
+     * Lose: Set the status to a Loser
      *
+     * @return the status of this team
      * @see Status
      */
     public Status getStatus() {
@@ -93,13 +98,13 @@ public class Team extends HBox implements Comparable<Team> {
     }
 
     /**
-     *  HIDDEN: Hide the team from canvas
-     *  DEFAULT: NO score but name
-     *  IN_PROGRESS:
-     *  WIN: HighList as a Winner
-     *  Lose: Set the status to a Loser
-     * @param status the status of a given team
+     * HIDDEN: Hide the team from canvas
+     * NO_SCORE: NO score but name
+     * SCORE_ENTERED:
+     * WIN: HighList as a Winner
+     * Lose: Set the status to a Loser
      *
+     * @param status the status of a given team
      * @see Status
      */
     public void setStatus(Status status) {
@@ -107,11 +112,14 @@ public class Team extends HBox implements Comparable<Team> {
             case HIDDEN:
                 setVisible(false);
                 break;
-            case DEFAULT:
+            case NO_SCORE:
                 getStyleClass().removeAll("winner", "loser");
                 setVisible(true);
+                score = null;
                 textField.setEditable(true);
                 textField.clear();
+                break;
+            case SCORE_ENTERED:
                 break;
             case WIN:
                 getStyleClass().add("winner");
@@ -122,10 +130,6 @@ public class Team extends HBox implements Comparable<Team> {
                 textField.setEditable(false);
                 break;
         }
-    }
-    
-    public boolean hasScore() {
-    	return score != null;
     }
 
     /**
