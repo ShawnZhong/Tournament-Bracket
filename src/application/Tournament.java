@@ -45,7 +45,7 @@ public class Tournament {
      * This variable links to 'panes' in the fxml file
      * It is the parent of all other panes (pane16, pane8, pane4, ..., pane1)
      *
-     * @see #initializePane()
+     * @see #initializeGUI()
      */
     @FXML
     private Pane panes;
@@ -54,7 +54,7 @@ public class Tournament {
      * This is the actual pane we are using.
      * It will store one of the pane from {pane16, ..., pane1}, depending on the team size
      *
-     * @see #initializePane()
+     * @see #initializeGUI()
      */
     private Pane pane;
 
@@ -62,7 +62,7 @@ public class Tournament {
      * This GridPane is used to display champions (first, second, third)
      * It is a child of the selected pane above
      *
-     * @see #initializePane()
+     * @see #initializeGUI()
      */
     private Pane topThreeBox;
 
@@ -70,7 +70,7 @@ public class Tournament {
      * This is the size of team
      * Acceptable: 0,1,2,4,8,16
      *
-     * @see #initializeTeam()
+     * @see #initializeGUI()
      */
     private int teamSize = 16;
 
@@ -96,15 +96,14 @@ public class Tournament {
     /**
      * This method will
      * 1. call initializeData to initialize {@code lines}
-     * 2. call initializePane to initialize {@code pane} and {@code topThreeBox}
+     * 2. call initializeGUI to initialize {@code pane} and {@code topThreeBox}
      * 3. call initializeTeam to initialize all the teams
      *
      * @param filePath the path of the teamList file.
      */
     public void initialize(String filePath) {
         initializeData(filePath);
-        initializePane();
-        initializeTeam();
+        initializeGUI();
     }
 
     /**
@@ -165,14 +164,10 @@ public class Tournament {
      * This method will initialize the {@code pane} variable by choosing the right pane to display
      * It will also initialize {@code topThreeBox} with the corresponding one
      */
-    private void initializePane() {
+    private void initializeGUI() {
         // Set all panes to be invisible
         // this is necessary when we want to use another team size
         panes.getChildren().forEach(node -> node.setVisible(false));
-
-        // if there are no teams at all
-        if (teamSize == 0)
-            showWarn("No challengers, no games, and no champion.");
 
         // if teamSize is not power of 2 or is 0 or larger than 16
         if ((teamSize & (teamSize - 1)) != 0 || teamSize > 16) {
@@ -186,6 +181,32 @@ public class Tournament {
         pane = (Pane) panes.getChildren().get(totalRound + 1);
         pane.setVisible(true);
 
+        // if there are no teams at all
+        if (teamSize == 0) {
+            showWarn("No challengers, no games, and no champion.");
+            return;
+        }
+
+        initializeTeams();
+        initializeTopThreeBox();
+        initializeConfirmButtons();
+    }
+
+    private void initializeTeams() {
+        teams.clear();
+        ((Group) pane.getChildren().get(0)).getChildren().forEach(e -> teams.add((Team) e));
+
+        // Initialize all the teams to be hidden first
+        teams.forEach(e -> e.setStatus(Status.HIDDEN));
+
+        // matches each team with team to compete with using the shuffle method
+        // The status will be set to default after initialize is called
+        // And the team will be displayed on the pane
+        for (int i = 0; i < teamSize; i++)
+            teams.get(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
+    }
+
+    private void initializeTopThreeBox() {
         // set topThreeBox to corresponding GridPane, and set as hidden
         topThreeBox = (GridPane) pane.getChildren().get(1);
         topThreeBox.setVisible(false);
@@ -199,29 +220,14 @@ public class Tournament {
         }
     }
 
-
-    /**
-     * This method will initialize all the teams displayed on the pane
-     */
-    private void initializeTeam() {
+    private void initializeConfirmButtons() {
         //set all buttons except those for the first round as hidden
         confirmButtons.clear();
         ((Group) pane.getChildren().get(2)).getChildren().forEach(e -> confirmButtons.add((Button) e));
         confirmButtons.forEach(e -> e.setVisible(true));
         confirmButtons.subList(0, teamSize / 2 - 1).forEach(e -> e.setVisible(false));
-
-        teams.clear();
-        ((Group) pane.getChildren().get(0)).getChildren().forEach(e -> teams.add((Team) e));
-
-        // Initialize all the teams to be hidden first
-        teams.forEach(e -> e.setStatus(Status.HIDDEN));
-
-        // matches each team with team to compete with using the shuffle method
-        // The status will be set to default after initialize is called
-        // And the team will be displayed on the pane
-        for (int i = 0; i < teamSize; i++)
-            teams.get(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
     }
+
 
     /**
      * Handle the the action of final submit button;
@@ -236,10 +242,18 @@ public class Tournament {
         int index = confirmButtons.indexOf(btn);
         Team team1 = teams.get(index * 2);
         Team team2 = teams.get(index * 2 + 1);
+
         int result = compareScore(team1, team2, index - 1);
+
         if (result > 0)
             btn.setVisible(false);
         if (result == 1)
+            showButton(index);
+    }
+
+    private void showButton(int index) {
+        Team team2 = getCompetitor(index - 1);
+        if (!team2.getStatus().equals(Status.HIDDEN))
             confirmButtons.get((index - 1) / 2).setVisible(true);
     }
 
@@ -255,16 +269,18 @@ public class Tournament {
      * 2 means the final round is over, and we have a winner.
      */
     private int compareScore(Team team1, Team team2, int parentIndex) {
-        System.out.println(team1.getStatus());
-        System.out.println(team2.getStatus());
-
         // if team1 has not start playing
-        if (!team1.getStatus().equals(Status.SCORE_ENTERED))
+        if (!team1.getStatus().equals(Status.SCORE_ENTERED)) {
+            showWarn(team1.getName() + " has no score.");
             return 0;
+        }
 
         // if team2 has not start playing
-        if (!team2.getStatus().equals(Status.SCORE_ENTERED))
+        if (!team2.getStatus().equals(Status.SCORE_ENTERED)) {
+            showWarn(team2.getName() + " has no score.");
             return 0;
+        }
+
 
         // if two teams have the same score
         if (team1.compareTo(team2) == 0) {
@@ -391,8 +407,7 @@ public class Tournament {
      */
     @FXML
     private void handleReset(ActionEvent event) {
-        initializePane();
-        initializeTeam();
+        initializeGUI();
     }
 
     /**
