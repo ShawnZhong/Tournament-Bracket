@@ -142,23 +142,6 @@ public class Tournament {
         totalRound = 31 - Integer.numberOfLeadingZeros(teamSize);
     }
 
-    /**
-     * This method matches up two teams to compete with each other in the optimal way.
-     * See https://oeis.org/A208569
-     * Example:
-     * 1;
-     * 1,  2;
-     * 1,  4, 2, 3;
-     * 1,  8, 4, 5, 2,  7, 3,  6;
-     * 1, 16, 8, 9, 4, 13, 5, 12, 2, 15, 7, 10, 3, 14, 6, 11;
-     *
-     * @param n Total number of teams.
-     * @param k The index of the current position.
-     * @return a list of strings that contains the list of the teams.
-     */
-    private int shuffle(int n, int k) {
-        return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
-    }
 
     /**
      * This method will initialize the {@code pane} variable by choosing the right pane to display
@@ -192,19 +175,40 @@ public class Tournament {
         initializeConfirmButtons();
     }
 
+
+    /**
+     * Initialize all the teams to be hidden first
+     * matches each team with team to compete with using the shuffle method
+     * The status will be set to default after initialize is called
+     * And the team will be displayed on the pane
+     */
     private void initializeTeams() {
         teams.clear();
         ((Group) pane.getChildren().get(0)).getChildren().forEach(e -> teams.add((Team) e));
-
-        // Initialize all the teams to be hidden first
         teams.forEach(e -> e.setStatus(Status.HIDDEN));
-
-        // matches each team with team to compete with using the shuffle method
-        // The status will be set to default after initialize is called
-        // And the team will be displayed on the pane
         for (int i = 0; i < teamSize; i++)
             teams.get(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
+
     }
+
+    /**
+     * This method matches up two teams to compete with each other in the optimal way.
+     * See https://oeis.org/A208569
+     * Example:
+     * 1;
+     * 1,  2;
+     * 1,  4, 2, 3;
+     * 1,  8, 4, 5, 2,  7, 3,  6;
+     * 1, 16, 8, 9, 4, 13, 5, 12, 2, 15, 7, 10, 3, 14, 6, 11;
+     *
+     * @param n Total number of teams.
+     * @param k The index of the current position.
+     * @return a list of strings that contains the list of the teams.
+     */
+    private int shuffle(int n, int k) {
+        return n == 0 ? 1 : k % 2 == 1 ? (1 << n) + 1 - shuffle(n - 1, k / 2) : shuffle(n - 1, k / 2);
+    }
+
 
     private void initializeTopThreeBox() {
         // set topThreeBox to corresponding GridPane, and set as hidden
@@ -246,14 +250,14 @@ public class Tournament {
         int result = compareScore(team1, team2, index - 1);
 
         if (result > 0)
-            btn.setVisible(false);
+            confirmButtons.get(index).setVisible(false);
         if (result == 1)
             showButton(index);
     }
 
     private void showButton(int index) {
         Team team2 = getCompetitor(index - 1);
-        if (!team2.getStatus().equals(Status.HIDDEN))
+        if (team2.getStatus() != Status.HIDDEN)
             confirmButtons.get((index - 1) / 2).setVisible(true);
     }
 
@@ -270,13 +274,13 @@ public class Tournament {
      */
     private int compareScore(Team team1, Team team2, int parentIndex) {
         // if team1 has not start playing
-        if (!team1.getStatus().equals(Status.SCORE_ENTERED)) {
+        if (team1.getStatus() != Status.SCORE_ENTERED) {
             showWarn(team1.getName() + " has no score.");
             return 0;
         }
 
         // if team2 has not start playing
-        if (!team2.getStatus().equals(Status.SCORE_ENTERED)) {
+        if (team2.getStatus() != Status.SCORE_ENTERED) {
             showWarn(team2.getName() + " has no score.");
             return 0;
         }
@@ -335,7 +339,7 @@ public class Tournament {
 
         // Determine the third place
         Team third = teams.subList(2, 6).stream()
-                .filter(e -> e.getStatus().equals(Status.LOSE))
+                .filter(e -> e.getStatus() == Status.LOSE)
                 .sorted(Team::compareTo)
                 .collect(Collectors.toList())
                 .get(1);

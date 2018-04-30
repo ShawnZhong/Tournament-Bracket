@@ -22,7 +22,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
-enum Status {HIDDEN, NO_SCORE, SCORE_ENTERED, LOSE, WIN}
+/**
+ * The status enum is used for representing the status of Team
+ * <p>
+ * HIDDEN: when the team is hidden
+ * NO_SCORE: when the team have no score entered
+ * SCORE_ENTERED: when the team have score entered
+ * LOSE: when the team lose the game
+ * WIN: when the team win the game
+ */
+enum Status {
+    HIDDEN, NO_SCORE, SCORE_ENTERED, LOSE, WIN
+}
 
 
 /**
@@ -83,12 +94,7 @@ public class Team extends HBox implements Comparable<Team> {
     }
 
     /**
-     * Status of the team
-     * HIDDEN: Hide the team from canvas
-     * NO_SCORE: NO score but name
-     * SCORE_ENTERED:
-     * WIN: HighList as a Winner
-     * Lose: Set the status to a Loser
+     * Get status of the team
      *
      * @return the status of this team
      * @see Status
@@ -98,11 +104,7 @@ public class Team extends HBox implements Comparable<Team> {
     }
 
     /**
-     * HIDDEN: Hide the team from canvas
-     * NO_SCORE: NO score but name
-     * SCORE_ENTERED:
-     * WIN: HighList as a Winner
-     * Lose: Set the status to a Loser
+     * set status of the team
      *
      * @param status the status of a given team
      * @see Status
