@@ -398,7 +398,7 @@
     </Pane>
 
     <Label layoutX="50.0" layoutY="20.0"
-           text="Note: You can use Tab and Shift+tab keys to select team, and space key to enter score."/>
+           text="Note: You can use Tab and Shift + Tab keys to move between teams, and Enter key to confirm score input."/>
     <Button layoutX="50.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleDemo" text="Demo Data"/>
     <Button layoutX="671.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleLoad" text="Load New File"/>
     <Button layoutX="784.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleReset" text="Reset All Scores"/>
