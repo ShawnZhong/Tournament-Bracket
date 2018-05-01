@@ -89,8 +89,25 @@ public class Tournament {
      */
     private List<String> lines;
 
-    private List<Team> teams = new ArrayList<>();
-    private List<Button> confirmButtons = new ArrayList<>();
+   /**
+     * This is the teams to compete. 
+     *
+     * @see #initializeTeams()
+     */
+    private List<Team> teams = new ArrayList<>(); 
+    
+    /**
+     * This is the list of confirmButtons that corresponds to 
+     * each round of the game. 
+     *
+     * @see #initializeConfirmButtons()
+     */
+    private List<Button> confirmButtons = new ArrayList<>(); 
+    /**
+     * This is the list of the top three teams that wins the game.
+     *
+     * @see #initializeTopThreeBox()
+     */
     private List<Button> topThree = new ArrayList<>();
 
     /**
@@ -210,6 +227,11 @@ public class Tournament {
     }
 
 
+    /**
+     * This method will initialize the TopThreeBox which is a GridPane 
+     * that displays the final results of the game. 
+     * 
+     */
     private void initializeTopThreeBox() {
         // set topThreeBox to corresponding GridPane, and set as hidden
         topThreeBox = (GridPane) pane.getChildren().get(1);
@@ -224,6 +246,12 @@ public class Tournament {
         }
     }
 
+    /**
+     * This method will initialize the confirm buttons that confirms the score 
+     * of two teams competed. Set all the buttons except those for the first 
+     * round to Hidden. 
+     * 
+     */
     private void initializeConfirmButtons() {
         //set all buttons except those for the first round as hidden
         confirmButtons.clear();
@@ -251,15 +279,22 @@ public class Tournament {
 
         if (result > 0)
             confirmButtons.get(index).setVisible(false);
-        if (result == 1)
+        if (result == 1) // if this round is over
             showButton(index);
     }
 
+    /**
+     * This method shows the confirm buttons of the next round 
+     * after the former round is over. 
+     * 
+     * @param index is the round that confirm buttons need to be showed. 
+     */
     private void showButton(int index) {
         Team team2 = getCompetitor(index - 1);
         if (team2.getStatus() != Status.HIDDEN)
             confirmButtons.get((index - 1) / 2).setVisible(true);
     }
+
 
 
     /**
