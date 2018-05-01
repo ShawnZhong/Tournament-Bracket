@@ -202,13 +202,12 @@ public class Tournament {
      * And the team will be displayed on the pane
      */
     private void initializeTeams() {
-        teams.clear();
+        teams.clear(); // Clear the previous data
         ((Group) pane.getChildren().get(0)).getChildren().forEach(e -> teams.add((Team) e));
-        teams.forEach(e -> e.setStatus(Status.HIDDEN));
-        if (teamSize < 2) return;
+        teams.forEach(e -> e.setStatus(Status.HIDDEN)); // reset the status of teams
+        if (teamSize < 2) return; // no need to initialize teams for only 1 group or no groups
         for (int i = 0; i < teamSize; i++)
             teams.get(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
-
     }
 
     /**
@@ -236,7 +235,7 @@ public class Tournament {
      */
     private void initializeTopThreeBox() {
         // set topThreeBox to corresponding GridPane, and set as hidden
-        topThree.clear();
+        topThree.clear(); // Clear the previous data
         topThreeBox = (GridPane) pane.getChildren().get(1);
         topThreeBox.setVisible(false);
         int max = teamSize > 3 ? 3 : teamSize;
@@ -257,7 +256,7 @@ public class Tournament {
      */
     private void initializeConfirmButtons() {
         //set all buttons except those for the first round as hidden
-        confirmButtons.clear();
+        confirmButtons.clear(); // Clear the previous data
         ((Group) pane.getChildren().get(2)).getChildren().forEach(e -> confirmButtons.add((Button) e));
         confirmButtons.forEach(e -> e.setVisible(true));
         confirmButtons.subList(0, teamSize / 2 - 1).forEach(e -> e.setVisible(false));
@@ -298,6 +297,15 @@ public class Tournament {
             confirmButtons.get((index - 1) / 2).setVisible(true);
     }
 
+    /**
+     * A help method used to find the competitor of given team
+     *
+     * @param index the index of a given team
+     * @return its competitor
+     */
+    private Team getCompetitor(int index) {
+        return teams.get((index % 2 == 0) ? index + 1 : index - 1);
+    }
 
     /**
      * This method compares the scores of two teams and set their winning status.
@@ -385,16 +393,6 @@ public class Tournament {
         topThree.get(2).setText(third.getName());
     }
 
-
-    /**
-     * A help method used to find the competitor of given team
-     *
-     * @param index the index of a given team
-     * @return its competitor
-     */
-    private Team getCompetitor(int index) {
-        return teams.get((index % 2 == 0) ? index + 1 : index - 1);
-    }
 
     /**
      * Event handler for the first prize, second prize & third prize button

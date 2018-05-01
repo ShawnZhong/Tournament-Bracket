@@ -58,6 +58,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        // get the controller of "main.fxml", and initialize it
         Tournament tournament = loader.getController();
         tournament.initialize(filePath);
     }
