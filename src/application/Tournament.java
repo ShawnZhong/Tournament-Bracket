@@ -189,7 +189,8 @@ public class Tournament {
         // set topThreeBox to corresponding GridPane, and set as hidden
         topThreeBox = (GridPane) pane.getChildren().get(1);
         topThreeBox.setVisible(false);
-        topThreeBox.getChildren().subList(0, 3).forEach(e -> topThree.add((Button) e));
+        int max = teamSize>3?3:teamSize;
+        topThreeBox.getChildren().subList(0, max).forEach(e -> topThree.add((Button) e));
 
         // When team size is 1, directly display the topThreeBox
         // Since the champion is determinant when there is only one team
