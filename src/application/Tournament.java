@@ -89,20 +89,20 @@ public class Tournament {
      */
     private List<String> lines;
 
-   /**
-     * This is the teams to compete. 
+    /**
+     * This is the teams to compete.
      *
      * @see #initializeTeams()
      */
-    private List<Team> teams = new ArrayList<>(); 
-    
+    private List<Team> teams = new ArrayList<>();
+
     /**
-     * This is the list of confirmButtons that corresponds to 
-     * each round of the game. 
+     * This is the list of confirmButtons that corresponds to
+     * each round of the game.
      *
      * @see #initializeConfirmButtons()
      */
-    private List<Button> confirmButtons = new ArrayList<>(); 
+    private List<Button> confirmButtons = new ArrayList<>();
     /**
      * This is the list of the top three teams that wins the game.
      *
@@ -187,9 +187,10 @@ public class Tournament {
             return;
         }
 
-        initializeTeams();       
+        initializeTeams();
         initializeTopThreeBox();
-        if(teamSize == 1) return;
+        if (teamSize == 1) // No confirm button needed for only 1 team
+            return;
         initializeConfirmButtons();
     }
 
@@ -204,7 +205,7 @@ public class Tournament {
         teams.clear();
         ((Group) pane.getChildren().get(0)).getChildren().forEach(e -> teams.add((Team) e));
         teams.forEach(e -> e.setStatus(Status.HIDDEN));
-        if(teamSize < 2) return;
+        if (teamSize < 2) return;
         for (int i = 0; i < teamSize; i++)
             teams.get(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
 
@@ -230,16 +231,15 @@ public class Tournament {
 
 
     /**
-     * This method will initialize the TopThreeBox which is a GridPane 
-     * that displays the final results of the game. 
-     * 
+     * This method will initialize the TopThreeBox which is a GridPane
+     * that displays the final results of the game.
      */
     private void initializeTopThreeBox() {
         // set topThreeBox to corresponding GridPane, and set as hidden
-    	topThree.clear();
+        topThree.clear();
         topThreeBox = (GridPane) pane.getChildren().get(1);
         topThreeBox.setVisible(false);
-        int max = teamSize>3?3:teamSize;
+        int max = teamSize > 3 ? 3 : teamSize;
         topThreeBox.getChildren().subList(0, max).forEach(e -> topThree.add((Button) e));
 
         // When team size is 1, directly display the topThreeBox
@@ -251,10 +251,9 @@ public class Tournament {
     }
 
     /**
-     * This method will initialize the confirm buttons that confirms the score 
-     * of two teams competed. Set all the buttons except those for the first 
-     * round to Hidden. 
-     * 
+     * This method will initialize the confirm buttons that confirms the score
+     * of two teams competed. Set all the buttons except those for the first
+     * round to Hidden.
      */
     private void initializeConfirmButtons() {
         //set all buttons except those for the first round as hidden
@@ -288,17 +287,16 @@ public class Tournament {
     }
 
     /**
-     * This method shows the confirm buttons of the next round 
-     * after the former round is over. 
-     * 
-     * @param index is the round that confirm buttons need to be showed. 
+     * This method shows the confirm buttons of the next round
+     * after the former round is over.
+     *
+     * @param index is the round that confirm buttons need to be showed.
      */
     private void showButton(int index) {
         Team team2 = getCompetitor(index - 1);
         if (team2.getStatus() != Status.HIDDEN)
             confirmButtons.get((index - 1) / 2).setVisible(true);
     }
-
 
 
     /**
@@ -389,6 +387,16 @@ public class Tournament {
 
 
     /**
+     * A help method used to find the competitor of given team
+     *
+     * @param index the index of a given team
+     * @return its competitor
+     */
+    private Team getCompetitor(int index) {
+        return teams.get((index % 2 == 0) ? index + 1 : index - 1);
+    }
+
+    /**
      * Event handler for the first prize, second prize & third prize button
      *
      * @param event not used
@@ -453,15 +461,6 @@ public class Tournament {
         initializeGUI();
     }
 
-    /**
-     * A help method used to find the competitor of given team
-     *
-     * @param index the index of a given team
-     * @return its competitor
-     */
-    private Team getCompetitor(int index) {
-        return teams.get((index % 2 == 0) ? index + 1 : index - 1);
-    }
 
     /**
      * A private helper used to display information
