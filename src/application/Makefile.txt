@@ -1,0 +1,38 @@
+# Place this Makefile in the same file as your .java files
+
+all: *.java
+	javac *.java
+    
+# if your java files are in src (place your teams??.txt files there too)
+teams00: 
+	java Main teams00.txt > teams00.log
+        
+teams01: 
+	java Main teams01.txt > teams01.log
+    
+teams02: 
+	java Main teams02.txt > teams02.log
+    
+teams04: 
+	java Main teams04.txt > teams04.log
+    
+teams08: 
+	java Main teams08.txt > teams08.log
+    
+teams16: 
+	java Main teams16.txt > teams16.log
+
+teams32: 
+	java Main teams32.txt > teams32.log
+    
+# CREATE executable.jar files
+# make jar     - IF .java FILES ARE NOT IN src folder
+jar:
+	jar -cmf manifest.txt executable.jar application
+    
+# make jar_src - IF .java FILES ARE IN src folder
+jar_src:   
+	jar -cmf manifest.txt ../executable.jar application
+
+clean:
+	\rm *.class
