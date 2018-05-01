@@ -262,6 +262,20 @@ public class Tournament {
         confirmButtons.subList(0, teamSize / 2 - 1).forEach(e -> e.setVisible(false));
     }
 
+    public void handleTextFieldEnter(ActionEvent event) {
+        int index = confirmButtons.indexOf(event.getSource());
+
+        System.out.println(index);
+        System.out.println((index - 1) / 2);
+
+        int result = compareScore((index - 1) / 2);
+
+
+        if (result > 0)
+            confirmButtons.get(index).setVisible(false);
+        if (result == 1) // if this round is over
+            showButton(index);
+    }
 
     /**
      * Handle the the action of final submit button;
@@ -272,6 +286,7 @@ public class Tournament {
     @FXML
     private void handleConfirm(ActionEvent event) {
         //Get the button index
+
         int index = confirmButtons.indexOf(event.getSource());
 
         int result = compareScore(index - 1);
