@@ -20,9 +20,12 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -262,19 +265,40 @@ public class Tournament {
         confirmButtons.subList(0, teamSize / 2 - 1).forEach(e -> e.setVisible(false));
     }
 
+
+    public void handleTextInput(KeyEvent event) {
+        TextField textField = (TextField) event.getSource();
+        Team team = (Team) textField.getParent();
+
+        if (textField.getText().trim().length() == 0) {
+            team.setStatus(Status.NO_SCORE);
+            return;
+        }
+
+        try {// handles possible exceptions
+            int score = Integer.valueOf(textField.getText());
+            if (score < 0)
+                throw new Exception("Score should not be negative");
+
+            team.setScore(score);
+
+            team.setStatus(Status.SCORE_ENTERED);
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.INFORMATION, "Invalid Input\n" + e.getMessage()).showAndWait();
+            team.setStatus(Status.NO_SCORE);
+        }
+    }
+
+    @FXML
     public void handleTextFieldEnter(ActionEvent event) {
-        int index = confirmButtons.indexOf(event.getSource());
-
-        System.out.println(index);
-        System.out.println((index - 1) / 2);
-
-        int result = compareScore((index - 1) / 2);
+        int index = teams.indexOf(((Node) event.getSource()).getParent());
+        confirmScore((index - 2) / 2);
+    }
 
 
-        if (result > 0)
-            confirmButtons.get(index).setVisible(false);
-        if (result == 1) // if this round is over
-            showButton(index);
+    @FXML
+    private void handleConfirm(ActionEvent event) {
+        confirmScore(confirmButtons.indexOf(event.getSource()) - 1);
     }
 
     /**
@@ -283,18 +307,13 @@ public class Tournament {
      * 1. compare the score of two teams
      * 2. change the status of two teams
      */
-    @FXML
-    private void handleConfirm(ActionEvent event) {
-        //Get the button index
-
-        int index = confirmButtons.indexOf(event.getSource());
-
-        int result = compareScore(index - 1);
+    private void confirmScore(int parentIndex) {
+        int result = compareScore(parentIndex);
 
         if (result > 0)
-            confirmButtons.get(index).setVisible(false);
+            confirmButtons.get(parentIndex + 1).setVisible(false);
         if (result == 1) // if this round is over
-            showButton(index);
+            showButton(parentIndex + 1);
     }
 
     /**
@@ -492,4 +511,6 @@ public class Tournament {
     private void showWarn(String str) {
         new Alert(Alert.AlertType.WARNING, str).showAndWait();
     }
+
+
 }

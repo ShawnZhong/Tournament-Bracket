@@ -42,8 +42,8 @@
                     <TextField prefWidth="30" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="736.0" layoutY="230.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 01"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
 
             </Group>
@@ -80,28 +80,28 @@
 
                 <Team alignment="CENTER" layoutX="325" layoutY="240">
                     <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="515" layoutY="240">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 01"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="20" layoutY="150">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 02"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="20" layoutY="325">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 03"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="760" layoutY="150">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 04"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="760" layoutY="325">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 05"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
 
             </Group>
@@ -135,68 +135,65 @@
         </Pane>
 
         <Pane id="pane8" styleClass="pane" visible="false">
-
             <Group styleClass="team_container">
-
                 <Team alignment="CENTER" layoutX="335.0" layoutY="227.0">
                     <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="505.0" layoutY="227.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 01"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="227.0" layoutY="122.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 02"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="240" layoutY="350">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 03"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="600.0" layoutY="115.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 04"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="600.0" layoutY="357.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 05"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="30.0" layoutY="60.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 06"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="30.0" layoutY="170.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 07"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="30.0" layoutY="278.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 08"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="30.0" layoutY="381.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 09"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="773.0" layoutY="60.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 10"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="780.0" layoutY="170.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 11"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="780.0" layoutY="271.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 12"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="780.0" layoutY="381.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 13"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
-
             </Group>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="80.0" styleClass="top_three_container" vgap="5.0">
 
@@ -233,133 +230,130 @@
         </Pane>
 
         <Pane id="pane16" styleClass="pane">
-
-
             <Group styleClass="team_container">
                 <Team alignment="CENTER" layoutX="349.0" layoutY="236.0">
                     <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="476.0" layoutY="236.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 01"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="275.0" layoutY="119.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 02"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="280.0" layoutY="354.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 03"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="558.0" layoutY="119.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 04"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="552.0" layoutY="355.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 05"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="192.0" layoutY="60.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 06"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="190.0" layoutY="177.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 07"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="194.0" layoutY="296.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 08"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="197.0" layoutY="413.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 09"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="615.0" layoutY="61.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 10"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="604.0" layoutY="178.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 11"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="603.0" layoutY="295.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 12"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="603.0" layoutY="413.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 13"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
 
                 <Team alignment="CENTER" layoutX="19.0" layoutY="33.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 14"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="19.0" layoutY="89.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 15"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="19.0" layoutY="148.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 16"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="19.0" layoutY="208.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 17"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="18.0" layoutY="269.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 18"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="19.0" layoutY="324.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 19"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="19.0" layoutY="383.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 20"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="18.0" layoutY="445.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 21"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="30.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 22"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="91.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 23"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="149.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 24"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="215.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 25"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="267.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 26"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="328.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 27"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="383.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 28"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
                 <Team alignment="CENTER" layoutX="785.0" layoutY="443.0">
-                    <Label text="Team 00"/>
-                    <TextField prefWidth="35"/>
+                    <Label text="Team 29"/>
+                    <TextField prefWidth="35" onAction="#handleTextFieldEnter" onKeyReleased="#handleTextInput"/>
                 </Team>
-
             </Group>
             <GridPane hgap="5.0" layoutX="394.0" layoutY="14.0" styleClass="top_three_container" vgap="5.0">
 
