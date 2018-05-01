@@ -42,9 +42,9 @@ enum Status {
  * Include Name, score, status; and closure functions for editing those fields
  */
 public class Team extends HBox implements Comparable<Team> {
-    private Label label;
-    private TextField textField;
-    private Integer score;
+        private Label label; // the label of the team 
+    private TextField textField; // the textField to enter the score of the team
+    private Integer score; // the score of a team
 
     /**
      * This is the current status of the team
@@ -53,6 +53,12 @@ public class Team extends HBox implements Comparable<Team> {
      */
     private Status status;
 
+    /**
+     * this is the method that initializes the information of a team, including 
+     * the label, textField, and name. 
+     * @param name the name of the team to be initialized
+     * @return nothing. 
+     */
     public void initialize(String name) {
         label = (Label) getChildren().get(0);
         textField = (TextField) getChildren().get(1);
@@ -65,6 +71,7 @@ public class Team extends HBox implements Comparable<Team> {
                 return;
             }
 
+            // handles possible exceptions
             try {
                 if ((score = Integer.valueOf(textField.getText())) < 0)
                     throw new Exception("Score should not be negative");
@@ -88,9 +95,14 @@ public class Team extends HBox implements Comparable<Team> {
         return label.getText();
     }
 
+    /**
+     * This is the method that sets the label of a team to be name of the team.
+     *
+     * @return String name of the team
+     */
     public void setName(String name) {
         label.setText(name);
-        setStatus(Status.NO_SCORE);
+        setStatus(Status.NO_SCORE); // default status
     }
 
     /**
