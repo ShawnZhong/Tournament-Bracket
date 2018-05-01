@@ -37,3 +37,4 @@ src/.DS_Store
 .project
 .settings
 build.fxbuild
+.idea
