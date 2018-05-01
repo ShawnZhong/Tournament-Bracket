@@ -31,3 +31,9 @@ src/.DS_Store
 
 #All idea setting files
 .idea/*.xml
+
+#Clear files for eclipse
+.classpath
+.project
+.settings
+build.fxbuild
