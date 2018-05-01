@@ -272,12 +272,9 @@ public class Tournament {
     @FXML
     private void handleConfirm(ActionEvent event) {
         //Get the button index
-        Button btn = (Button) event.getSource();
-        int index = confirmButtons.indexOf(btn);
-        Team team1 = teams.get(index * 2);
-        Team team2 = teams.get(index * 2 + 1);
+        int index = confirmButtons.indexOf(event.getSource());
 
-        int result = compareScore(team1, team2, index - 1);
+        int result = compareScore(index - 1);
 
         if (result > 0)
             confirmButtons.get(index).setVisible(false);
@@ -310,14 +307,17 @@ public class Tournament {
     /**
      * This method compares the scores of two teams and set their winning status.
      *
-     * @param team1 the team to be compared with its paired team.
+     * @param parentIndex the index of their parent
      * @return the result of the comparison.
      * -1 means tie.
      * 0 means one or both of the teams are not ready.
      * 1 means the comparison is made, and the winner will go to the next round
      * 2 means the final round is over, and we have a winner.
      */
-    private int compareScore(Team team1, Team team2, int parentIndex) {
+    private int compareScore(int parentIndex) {
+        Team team1 = teams.get(parentIndex * 2 + 2);
+        Team team2 = teams.get(parentIndex * 2 + 3);
+
         // if team1 has not start playing
         if (team1.getStatus() != Status.SCORE_ENTERED) {
             showWarn(team1.getName() + " has no score.");
