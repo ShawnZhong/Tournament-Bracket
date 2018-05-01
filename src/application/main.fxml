@@ -16,20 +16,12 @@
 
         </Pane>
         <Pane id="pane1" styleClass="pane" visible="false">
-            <Pane styleClass="team_container"/>
+            <Group styleClass="team_container"/>
             <GridPane hgap="5.0" layoutX="390.0" layoutY="240.0" styleClass="top_three_container" vgap="5.0">
 
                 <Button onAction="#handleTopThree" styleClass="first" text="Team 00" GridPane.columnIndex="1"
                         GridPane.rowIndex="0"/>
                 <Label text="First:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-
-                <columnConstraints>
-                    <ColumnConstraints/>
-                    <ColumnConstraints/>
-                </columnConstraints>
-                <rowConstraints>
-                    <RowConstraints/>
-                </rowConstraints>
             </GridPane>
             <Group styleClass="confirm_container"/>
         </Pane>

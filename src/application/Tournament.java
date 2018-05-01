@@ -187,8 +187,9 @@ public class Tournament {
             return;
         }
 
-        initializeTeams();
+        initializeTeams();       
         initializeTopThreeBox();
+        if(teamSize == 1) return;
         initializeConfirmButtons();
     }
 
@@ -203,6 +204,7 @@ public class Tournament {
         teams.clear();
         ((Group) pane.getChildren().get(0)).getChildren().forEach(e -> teams.add((Team) e));
         teams.forEach(e -> e.setStatus(Status.HIDDEN));
+        if(teamSize < 2) return;
         for (int i = 0; i < teamSize; i++)
             teams.get(teamSize - 2 + i).initialize(lines.get(shuffle(totalRound, i) - 1));
 
@@ -234,6 +236,7 @@ public class Tournament {
      */
     private void initializeTopThreeBox() {
         // set topThreeBox to corresponding GridPane, and set as hidden
+    	topThree.clear();
         topThreeBox = (GridPane) pane.getChildren().get(1);
         topThreeBox.setVisible(false);
         int max = teamSize>3?3:teamSize;
