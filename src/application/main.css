@@ -27,6 +27,7 @@
 Team {
     -fx-spacing: 5;
     -fx-background-color: white;
+    -fx-text-fill: white;
 }
 
 Team > Label {
@@ -43,6 +44,7 @@ Team > Label {
 .loser > Label {
     -fx-background-color: #177a96;
     -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 0, 0, 0, 1);
 }
 
 /* Champion Box */
@@ -52,7 +54,7 @@ Team > Label {
 }
 
 .top_three_container > .first {
-	-fx-background-color: #fdd80c;
+    -fx-background-color: #fdd80c;
 }
 
 .top_three_container > .second {
@@ -63,25 +65,16 @@ Team > Label {
     -fx-background-color: sandybrown;
 }
 
-.button {
-    -fx-background-color:
-            #090a0c,
-            linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
-            linear-gradient(#20262b, #191d22),
-            radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
-    -fx-background-radius: 5,4,3,5;
-    -fx-background-insets: 0,1,2,0;
-    -fx-text-fill: white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+.confirm_container > Button {
+    -fx-background-color: #090a0c,
+    linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+    linear-gradient(#20262b, #191d22),
+    radial-gradient(center 50% 0%, radius 100%, rgba(114, 131, 148, 0.9), rgba(255, 255, 255, 0));
+    -fx-background-radius: 5, 4, 3, 5;
+    -fx-background-insets: 0, 1, 2, 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
     -fx-font-family: "Arial";
     -fx-text-fill: linear-gradient(white, #d0d0d0);
     -fx-font-size: 12px;
     -fx-padding: 6 14 6 14;
-}
-
-.label {
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333333;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
