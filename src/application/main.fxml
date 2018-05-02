@@ -67,7 +67,7 @@
             </GridPane>
             <Group styleClass="confirm_container">
                 <children>
-                    <Button layoutX="445.0" layoutY="236.0" onAction="#handleConfirm" text="GO"/>
+                    <Button layoutX="445.0" layoutY="236.0" onAction="#handleConfirmButton" text="GO"/>
                 </children>
 
             </Group>
@@ -128,9 +128,9 @@
                 </rowConstraints>
             </GridPane>
             <Group styleClass="confirm_container">
-                <Button layoutX="455.0" layoutY="311.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="194.0" layoutY="238.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="686.0" layoutY="238.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="455.0" layoutY="311.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="194.0" layoutY="238.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="686.0" layoutY="238.0" onAction="#handleConfirmButton" text="GO"/>
             </Group>
         </Pane>
 
@@ -218,13 +218,13 @@
                 </rowConstraints>
             </GridPane>
             <Group styleClass="confirm_container">
-                <Button layoutX="448.0" layoutY="275.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="252.0" layoutY="238.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="611.0" layoutY="238.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="139.0" layoutY="131.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="137.0" layoutY="344.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="715.0" layoutY="131.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="717.0" layoutY="343.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="448.0" layoutY="275.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="252.0" layoutY="238.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="611.0" layoutY="238.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="139.0" layoutY="131.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="137.0" layoutY="344.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="715.0" layoutY="131.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="717.0" layoutY="343.0" onAction="#handleConfirmButton" text="GO"/>
             </Group>
 
         </Pane>
@@ -378,21 +378,21 @@
                 </rowConstraints>
             </GridPane>
             <Group styleClass="confirm_container">
-                <Button layoutX="445.0" layoutY="285.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="298.0" layoutY="237.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="582.0" layoutY="236.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="211.0" layoutY="120.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="203.0" layoutY="354.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="664.0" layoutY="113.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="657.0" layoutY="348.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="46.0" layoutY="61.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="46.0" layoutY="177.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="46.0" layoutY="297.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="46.0" layoutY="413.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="813.0" layoutY="58.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="813.0" layoutY="177.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="813.0" layoutY="297.0" onAction="#handleConfirm" text="GO"/>
-                <Button layoutX="813.0" layoutY="412.0" onAction="#handleConfirm" text="GO"/>
+                <Button layoutX="445.0" layoutY="285.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="298.0" layoutY="237.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="582.0" layoutY="236.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="211.0" layoutY="120.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="203.0" layoutY="354.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="664.0" layoutY="113.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="657.0" layoutY="348.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="46.0" layoutY="61.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="46.0" layoutY="177.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="46.0" layoutY="297.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="46.0" layoutY="413.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="813.0" layoutY="58.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="813.0" layoutY="177.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="813.0" layoutY="297.0" onAction="#handleConfirmButton" text="GO"/>
+                <Button layoutX="813.0" layoutY="412.0" onAction="#handleConfirmButton" text="GO"/>
             </Group>
         </Pane>
     </Pane>

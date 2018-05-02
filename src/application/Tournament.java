@@ -266,7 +266,8 @@ public class Tournament {
     }
 
 
-    public void handleTextInput(KeyEvent event) {
+    @FXML
+    private void handleTextInput(KeyEvent event) {
         TextField textField = (TextField) event.getSource();
         Team team = (Team) textField.getParent();
 
@@ -290,14 +291,14 @@ public class Tournament {
     }
 
     @FXML
-    public void handleTextFieldEnter(ActionEvent event) {
+    private void handleTextFieldEnter(ActionEvent event) {
         int index = teams.indexOf(((Node) event.getSource()).getParent());
         confirmScore((index - 2) / 2);
     }
 
 
     @FXML
-    private void handleConfirm(ActionEvent event) {
+    private void handleConfirmButton(ActionEvent event) {
         confirmScore(confirmButtons.indexOf(event.getSource()) - 1);
     }
 
@@ -493,7 +494,6 @@ public class Tournament {
         initializeGUI();
     }
 
-
     /**
      * A private helper used to display information
      *
@@ -511,6 +511,4 @@ public class Tournament {
     private void showWarn(String str) {
         new Alert(Alert.AlertType.WARNING, str).showAndWait();
     }
-
-
 }
