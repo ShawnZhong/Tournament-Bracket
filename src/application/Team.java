@@ -24,11 +24,11 @@ import javafx.scene.layout.HBox;
 /**
  * The status enum is used for representing the status of Team
  * <p>
- * HIDDEN: when the team is hidden
- * NO_SCORE: when the team have no score entered
- * SCORE_ENTERED: when the team have score entered
- * LOSE: when the team lose the game
- * WIN: when the team win the game
+ * HIDDEN: when the team is hidden from the stage
+ * NO_SCORE: when the team has no score entered
+ * SCORE_ENTERED: when the team has score entered
+ * LOSE: when the team loses the game
+ * WIN: when the team wins the game
  */
 enum Status {
     HIDDEN, NO_SCORE, SCORE_ENTERED, LOSE, WIN
@@ -36,12 +36,12 @@ enum Status {
 
 
 /**
- * A Class used to represent the team in Tournament;
- * Contains methods that used to present a Team:
- * Include Name, score, status; and closure functions for editing those fields
+ * This Class is used to represent the team in Tournament;
+ * and contains methods that is used to present a Team:
+ * name, score, status; and closure functions for editing those fields
  */
 public class Team extends HBox implements Comparable<Team> {
-    private Label label; // the label of the team
+    private Label label; // the name of the team in the form of label
     private TextField textField; // the textField to enter the score of the team
     private Integer score; // the score of a team
 
@@ -57,7 +57,6 @@ public class Team extends HBox implements Comparable<Team> {
      * the label, textField, and name.
      *
      * @param name the name of the team to be initialized
-     * @return nothing.
      */
     public void initialize(String name) {
         label = (Label) getChildren().get(0);
