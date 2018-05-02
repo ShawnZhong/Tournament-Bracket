@@ -289,6 +289,7 @@ public class Tournament {
             team.setScore(score);
         } catch (Exception e) {
             new Alert(Alert.AlertType.INFORMATION, "Invalid Input\n" + e.getMessage()).showAndWait();
+            team.setStatus(Status.NO_SCORE);
         }
     }
 
