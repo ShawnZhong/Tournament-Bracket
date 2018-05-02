@@ -62,7 +62,8 @@ public class Team extends HBox implements Comparable<Team> {
     public void initialize(String name) {
         label = (Label) getChildren().get(0);
         textField = (TextField) getChildren().get(1);
-        setName(name);
+        label.setText(name);
+        setStatus(Status.NO_SCORE); // default status
     }
 
     /**
@@ -74,18 +75,10 @@ public class Team extends HBox implements Comparable<Team> {
         return label.getText();
     }
 
-    /**
-     * This is the method that sets the label of a team to be name of the team.
-     *
-     * @return String name of the team
-     */
-    public void setName(String name) {
-        label.setText(name);
-        setStatus(Status.NO_SCORE); // default status
-    }
 
     public void setScore(int score) {
         this.score = score;
+        setStatus(Status.SCORE_ENTERED);
     }
 
     /**

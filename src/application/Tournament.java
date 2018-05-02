@@ -277,16 +277,18 @@ public class Tournament {
         }
 
         try {// handles possible exceptions
-            int score = Integer.valueOf(textField.getText());
-            if (score < 0)
+            String text = textField.getText();
+            if (text.contains("-"))
                 throw new Exception("Score should not be negative");
 
-            team.setScore(score);
+            if (text.contains("."))
+                throw new Exception("Score must be a whole number");
 
-            team.setStatus(Status.SCORE_ENTERED);
+            int score = Integer.valueOf(text);
+
+            team.setScore(score);
         } catch (Exception e) {
             new Alert(Alert.AlertType.INFORMATION, "Invalid Input\n" + e.getMessage()).showAndWait();
-            team.setStatus(Status.NO_SCORE);
         }
     }
 
