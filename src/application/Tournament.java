@@ -337,6 +337,11 @@ public class Tournament {
         Team team1 = teams.get(parentIndex * 2 + 2);
         Team team2 = teams.get(parentIndex * 2 + 3);
 
+        // check if the round is already finished
+        if (team1.getStatus() == Status.WIN || team2.getStatus() == Status.WIN)
+            return;
+
+
         // check if the the other competitor is ready
         if (team1.getStatus() == Status.HIDDEN || team2.getStatus() == Status.HIDDEN) {
             showWarn("The other competitor is not ready.");
@@ -344,19 +349,19 @@ public class Tournament {
         }
 
         // if the two teams haven't started playing yet
-        if (team1.getStatus() != Status.SCORE_ENTERED && team2.getStatus() != Status.SCORE_ENTERED) {
+        if (team1.getStatus() == Status.NO_SCORE && team2.getStatus() == Status.NO_SCORE) {
             showWarn("Two teams haven't start playing yet.");
             return;
         }
 
         // if team1 has not start playing
-        if (team1.getStatus() != Status.SCORE_ENTERED) {
+        if (team1.getStatus() == Status.NO_SCORE) {
             showWarn(team1.getName() + " has no score.");
             return;
         }
 
         // if team2 has not start playing
-        if (team2.getStatus() != Status.SCORE_ENTERED) {
+        if (team2.getStatus() == Status.NO_SCORE) {
             showWarn(team2.getName() + " has no score.");
             return;
         }
