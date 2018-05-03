@@ -356,6 +356,12 @@ public class Tournament {
         Team team1 = teams.get(parentIndex * 2 + 2);
         Team team2 = teams.get(parentIndex * 2 + 3);
 
+        // if the two teams haven't started playing yet
+        if (team2.getStatus() != Status.SCORE_ENTERED && team1.getStatus() != Status.SCORE_ENTERED) {
+            showWarn("Two teams haven't start playing yet. ");
+            return 0;
+        }
+        
         // if team1 has not start playing
         if (team1.getStatus() != Status.SCORE_ENTERED) {
             showWarn(team1.getName() + " has no score.");
