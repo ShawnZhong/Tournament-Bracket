@@ -370,7 +370,6 @@ public class Tournament {
         if (competitor.getStatus() != Status.HIDDEN)
             confirmButtons.get(parentIndex / 2).setVisible(true);
     }
-
     /**
      * This method returns true if there is any error
      *
@@ -382,7 +381,6 @@ public class Tournament {
         // check if the round is already finished
         if (team1.getStatus() == Status.WIN || team2.getStatus() == Status.WIN)
             return true;
-
 
         // check if the the other competitor is ready
         if (team1.getStatus() == Status.HIDDEN || team2.getStatus() == Status.HIDDEN) {

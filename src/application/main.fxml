@@ -37,11 +37,12 @@
 
             <Group styleClass="team_container">
 
-                <Team alignment="CENTER" layoutX="98.0" layoutY="230.0">
+                <Team alignment="CENTER" layoutX="118.0" layoutY="243.0">
                     <Label text="Team 00"/>
-                    <TextField prefWidth="30" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <TextField onAction="#handleTextFieldEnter" onKeyPressed="#handleTextInput"
+                               onKeyReleased="#handleTextInput" onKeyTyped="#handleTextInput" prefWidth="35"/>
                 </Team>
-                <Team alignment="CENTER" layoutX="736.0" layoutY="230.0">
+                <Team alignment="CENTER" layoutX="716.0" layoutY="244.0">
                     <Label text="Team 01"/>
                     <TextField onAction="#handleTextFieldEnter" onKeyPressed="#handleTextInput"
                                onKeyReleased="#handleTextInput" onKeyTyped="#handleTextInput" prefWidth="35"/>
@@ -68,7 +69,7 @@
             </GridPane>
             <Group styleClass="confirm_container">
                 <children>
-                    <Button layoutX="445.0" layoutY="236.0" onAction="#handleConfirmButton" text="GO"/>
+                    <Button layoutX="445.0" layoutY="240.0" onAction="#handleConfirmButton" text="GO"/>
                 </children>
 
             </Group>
