@@ -76,16 +76,16 @@ Team > Label {
 /*}*/
 
 .confirm_container > Button {
-    -fx-background-color: #008CBA;
+    -fx-background-color: #49a9c7;
     -fx-text-fill: white;
-
+/* 
     -fx-border-radius: 2px;
     -fx-border-style: solid;
-    -fx-border-color: #008CBA;
+    -fx-border-color: #00D5CF;*/
+    
+    -fx-padding: 6, 8, 6, 8;
 }
 
 .confirm_container > Button:hover {
-
-    -fx-background-color: white;
-    -fx-text-fill: black;
+    -fx-background-color: #008CBA;
 }
