@@ -191,9 +191,12 @@ public class Tournament {
         }
 
         initializeTeams();
+
         initializeTopThreeBox();
+
         if (teamSize == 1) // No confirm button needed for only 1 team
             return;
+
         initializeConfirmButtons();
     }
 
@@ -277,23 +280,24 @@ public class Tournament {
         TextField textField = (TextField) event.getSource();
         Team team = (Team) textField.getParent();
 
+        // If there is no input, set the status to NO_SCORE
         if (textField.getText().trim().length() == 0) {
             team.setStatus(Status.NO_SCORE);
             return;
         }
 
-        try {// handles possible exceptions
+        try {
             String text = textField.getText();
-            if (text.contains("-"))
+            if (text.contains("-")) // handle negative number
                 throw new Exception("Score should not be negative");
 
-            if (text.contains("."))
+            if (text.contains("."))// handle decimal number
                 throw new Exception("Score must be a whole number");
 
             int score = Integer.valueOf(text);
 
             team.setScore(score);
-        } catch (Exception e) {
+        } catch (Exception e) {// handles possible exceptions, and set the status to NO_SCORE
             new Alert(Alert.AlertType.INFORMATION, "Invalid Input\n" + e.getMessage()).showAndWait();
             team.setStatus(Status.NO_SCORE);
         }
@@ -307,8 +311,8 @@ public class Tournament {
      */
     @FXML
     private void handleTextFieldEnter(ActionEvent event) {
-        int index = teams.indexOf(((Node) event.getSource()).getParent());
-        confirmScore((index - 2) / 2);
+        // parentIndex = teamIndex / 2 - 1
+        confirmScore(teams.indexOf(((Node) event.getSource()).getParent()) / 2 - 1);
     }
 
     /**
@@ -318,6 +322,7 @@ public class Tournament {
      */
     @FXML
     private void handleConfirmButton(ActionEvent event) {
+        // parentIndex = buttonIndex - 1
         confirmScore(confirmButtons.indexOf(event.getSource()) - 1);
     }
 

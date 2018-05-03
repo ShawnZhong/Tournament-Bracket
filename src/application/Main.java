@@ -16,14 +16,14 @@ package application;
 //
 //2018 Mar 28, 2018  Main.java
 ////////////////////////////80 columns wide //////////////////////////////////
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * 
- * This main class launches the GUI for the program, aka the tournament bracket. 
+ * This main class launches the GUI for the program, aka the tournament bracket.
  * This bracket is capable of handling a challenger list with a size of 0,1,2,4,8,and 16.
  */
 public class Main extends Application {
@@ -37,15 +37,17 @@ public class Main extends Application {
 
     /**
      * Read a command line parameter of the path of teamlist file
+     *
      * @param args String: the path of team list
      */
     public static void main(String[] args) {
-        filePath = args.length == 0 ? null : args[0];
+        filePath = args.length == 0 ? null : args[0]; // if the arg[0] is null, enter demo mode
         launch(args);
     }
 
     /**
      * Launch the JAVAFX GUI for the program
+     *
      * @param primaryStage the primary stage
      * @throws Exception when main.fxml cannot be read
      */
