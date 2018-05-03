@@ -266,6 +266,11 @@ public class Tournament {
     }
 
 
+    /**
+     * This method will handle the text input for TextField of each team
+     *
+     * @param event the key event
+     */
     @FXML
     private void handleTextInput(KeyEvent event) {
         TextField textField = (TextField) event.getSource();
@@ -293,13 +298,23 @@ public class Tournament {
         }
     }
 
+    /**
+     * This method handles the enter key in TextField
+     * It will call confirm score
+     *
+     * @param event the action event
+     */
     @FXML
     private void handleTextFieldEnter(ActionEvent event) {
         int index = teams.indexOf(((Node) event.getSource()).getParent());
         confirmScore((index - 2) / 2);
     }
 
-
+    /**
+     * This method handle the confirm button of each team
+     *
+     * @param event the action event
+     */
     @FXML
     private void handleConfirmButton(ActionEvent event) {
         confirmScore(confirmButtons.indexOf(event.getSource()) - 1);
@@ -310,6 +325,8 @@ public class Tournament {
      * Do two things:
      * 1. compare the score of two teams
      * 2. change the status of two teams
+     *
+     * @param parentIndex the index of parent
      */
     private void confirmScore(int parentIndex) {
         int result = compareScore(parentIndex);
