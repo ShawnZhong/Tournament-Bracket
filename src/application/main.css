@@ -46,14 +46,13 @@ Team > Label {
     -fx-text-fill: white;
 }
 
-/* Champion Box */
 .top_three_container > Button {
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
 }
 
 .top_three_container > .first {
-    -fx-background-color: #fdd80c;
+    -fx-background-color: gold;
 }
 
 .top_three_container > .second {
@@ -64,15 +63,29 @@ Team > Label {
     -fx-background-color: sandybrown;
 }
 
+/*.confirm_container > Button {*/
+/*!*-fx-background-color: black;*!*/
+/*-fx-text-fill: white;*/
+/*-fx-background-color: linear-gradient(from 0px 0px to 0px 50px, gray, darkgray 50%, dimgray 99%, white);*/
+/*!*-fx-background-radius: 5, 4, 3, 5;*!*/
+/*!*-fx-background-insets: 0, 1, 2, 0;*!*/
+/*!*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);*!*/
+/*!*-fx-text-fill: linear-gradient(white, #d0d0d0);*!*/
+/*!*-fx-font-size: 12px;*!*/
+/*!*-fx-padding: 6 14 6 14;*!*/
+/*}*/
+
 .confirm_container > Button {
-    -fx-background-color: #090a0c,
-    linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
-    linear-gradient(#20262b, #191d22),
-    radial-gradient(center 50% 0%, radius 100%, rgba(114, 131, 148, 0.9), rgba(255, 255, 255, 0));
-    -fx-background-radius: 5, 4, 3, 5;
-    -fx-background-insets: 0, 1, 2, 0;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
-    -fx-text-fill: linear-gradient(white, #d0d0d0);
-    -fx-font-size: 12px;
-    -fx-padding: 6 14 6 14;
+    -fx-background-color: #008CBA;
+    -fx-text-fill: white;
+
+    -fx-border-radius: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: #008CBA;
+}
+
+.confirm_container > Button:hover {
+
+    -fx-background-color: white;
+    -fx-text-fill: black;
 }
