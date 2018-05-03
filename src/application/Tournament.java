@@ -338,7 +338,7 @@ public class Tournament {
         Team team2 = teams.get(parentIndex * 2 + 3);
 
         // if the two teams haven't started playing yet
-        if (team1.getStatus() != Status.HIDDEN || team2.getStatus() != Status.HIDDEN) {
+        if (team1.getStatus() == Status.HIDDEN || team2.getStatus() == Status.HIDDEN) {
             showWarn("The competitor is not ready.");
             return;
         }
