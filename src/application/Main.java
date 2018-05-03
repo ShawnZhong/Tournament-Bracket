@@ -22,10 +22,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Just a common main class;
- * Read one parameter from cmd line to read the teamlist file;
- * Example "teamList.txt"
- * Launch the GUI for the program
+ * 
+ * This main class launches the GUI for the program, aka the tournament bracket. 
+ * This bracket is capable of handling a challenger list with a size of 0,1,2,4,8,and 16.
  */
 public class Main extends Application {
 
