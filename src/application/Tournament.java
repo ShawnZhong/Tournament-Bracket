@@ -266,6 +266,11 @@ public class Tournament {
     }
 
 
+    /**
+     * This method update the status of the team, modify the corresponding team score, 
+     * and determine whether the score input is valid or not.
+     * 
+     */
     @FXML
     private void handleTextInput(KeyEvent event) {
         TextField textField = (TextField) event.getSource();
