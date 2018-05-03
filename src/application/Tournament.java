@@ -117,7 +117,6 @@ public class Tournament {
      * This method will
      * 1. call initializeData to initialize {@code lines}
      * 2. call initializeGUI to initialize {@code pane} and {@code topThreeBox}
-     * 3. call initializeTeam to initialize all the teams
      *
      * @param filePath the path of the teamList file.
      */
@@ -298,7 +297,7 @@ public class Tournament {
 
             team.setScore(score);
         } catch (Exception e) {// handles possible exceptions, and set the status to NO_SCORE
-            new Alert(Alert.AlertType.INFORMATION, "Invalid Input\n" + e.getMessage()).showAndWait();
+            showWarn("Invalid Input\n" + e.getMessage());
             team.setStatus(Status.NO_SCORE);
         }
     }
@@ -335,12 +334,56 @@ public class Tournament {
      * @param parentIndex the index of parent
      */
     private void confirmScore(int parentIndex) {
-        int result = compareScore(parentIndex);
+        Team team1 = teams.get(parentIndex * 2 + 2);
+        Team team2 = teams.get(parentIndex * 2 + 3);
 
-        if (result > 0)
-            confirmButtons.get(parentIndex + 1).setVisible(false);
-        if (result == 1) // if this round is over
-            showButton(parentIndex + 1);
+        // if the two teams haven't started playing yet
+        if (team2.getStatus() != Status.SCORE_ENTERED && team1.getStatus() != Status.SCORE_ENTERED) {
+            showWarn("Two teams haven't start playing yet. ");
+            return;
+        }
+
+        // if team1 has not start playing
+        if (team1.getStatus() != Status.SCORE_ENTERED) {
+            showWarn(team1.getName() + " has no score.");
+            return;
+        }
+
+        // if team2 has not start playing
+        if (team2.getStatus() != Status.SCORE_ENTERED) {
+            showWarn(team2.getName() + " has no score.");
+            return;
+        }
+
+        // if two teams have the same score
+        if (team1.compareTo(team2) == 0) {
+            showWarn(team1.getName() + " and " + team2.getName() + " tie!" + "\r\nStart another game! ");
+            team1.setStatus(Status.NO_SCORE);
+            team2.setStatus(Status.NO_SCORE);
+            return;
+        }
+
+        // If the program can run to this line, then two teams both have scores
+        // decide the winner of the game
+        Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
+        Team loser = team1.compareTo(team2) < 0 ? team1 : team2;
+        winner.setStatus(Status.WIN);
+        loser.setStatus(Status.LOSE);
+
+        // Hide the confirm button
+        confirmButtons.get(parentIndex + 1).setVisible(false);
+
+        // Check if the whole game is finished
+        if (parentIndex == -1) {
+            showInfo(winner.getName() + " wins the game!!!");
+            showChampion(winner, loser);
+            return;
+        }
+
+        // set the name for next round
+        Team parent = teams.get(parentIndex);
+        parent.initialize(winner.getName());
+        showButton(parentIndex);
     }
 
     /**
@@ -350,80 +393,11 @@ public class Tournament {
      * @param index is the round that confirm buttons need to be showed.
      */
     private void showButton(int index) {
-        Team team2 = getCompetitor(index - 1);
-        if (team2.getStatus() != Status.HIDDEN)
-            confirmButtons.get((index - 1) / 2).setVisible(true);
-    }
-
-    /**
-     * A help method used to find the competitor of given team
-     *
-     * @param index the index of a given team
-     * @return its competitor
-     */
-    private Team getCompetitor(int index) {
-        return teams.get((index % 2 == 0) ? index + 1 : index - 1);
-    }
-
-    /**
-     * This method compares the scores of two teams and set their winning status.
-     *
-     * @param parentIndex the index of their parent
-     * @return the result of the comparison.
-     * -1 means tie.
-     * 0 means one or both of the teams are not ready.
-     * 1 means the comparison is made, and the winner will go to the next round
-     * 2 means the final round is over, and we have a winner.
-     */
-    private int compareScore(int parentIndex) {
-        Team team1 = teams.get(parentIndex * 2 + 2);
-        Team team2 = teams.get(parentIndex * 2 + 3);
-
-        // if the two teams haven't started playing yet
-        if (team2.getStatus() != Status.SCORE_ENTERED && team1.getStatus() != Status.SCORE_ENTERED) {
-            showWarn("Two teams haven't start playing yet. ");
-            return 0;
-        }
-
-        // if team1 has not start playing
-        if (team1.getStatus() != Status.SCORE_ENTERED) {
-            showWarn(team1.getName() + " has no score.");
-            return 0;
-        }
-
-        // if team2 has not start playing
-        if (team2.getStatus() != Status.SCORE_ENTERED) {
-            showWarn(team2.getName() + " has no score.");
-            return 0;
-        }
-
-
-        // if two teams have the same score
-        if (team1.compareTo(team2) == 0) {
-            showWarn(team1.getName() + " and " + team2.getName() + " tie!" + "\r\nStart another game! ");
-            team1.setStatus(Status.NO_SCORE);
-            team2.setStatus(Status.NO_SCORE);
-            return -1;
-        }
-
-        // decide the winner of the game
-        Team winner = team1.compareTo(team2) > 0 ? team1 : team2;
-        Team loser = team1.compareTo(team2) < 0 ? team1 : team2;
-        winner.setStatus(Status.WIN);
-        loser.setStatus(Status.LOSE);
-
-
-        // Check if the whole game is finished
-        if (parentIndex == -1) {
-            showInfo(winner.getName() + " wins the game!!!");
-            showChampion(winner, loser);
-            return 2;
-        }
-
-        // set the name for next round
-        Team parent = teams.get(parentIndex);
-        parent.initialize(winner.getName());
-        return 1;
+        // get the competitor
+        Team competitor = teams.get((index % 2 == 0) ? index + 1 : index - 1);
+        // Check whether the other competitor is ready
+        if (competitor.getStatus() != Status.HIDDEN)
+            confirmButtons.get(index / 2).setVisible(true);
     }
 
     /**
