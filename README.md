@@ -1,4 +1,3 @@
-![Screenshot](screenshot.gif)
 ![Screenshot](screenshot.png)
 
 # Useage
