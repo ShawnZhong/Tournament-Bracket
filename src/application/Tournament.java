@@ -334,45 +334,13 @@ public class Tournament {
      * @param parentIndex the index of parent
      */
     private void confirmScore(int parentIndex) {
+        // Get the two teams
         Team team1 = teams.get(parentIndex * 2 + 2);
         Team team2 = teams.get(parentIndex * 2 + 3);
 
-        // check if the round is already finished
-        if (team1.getStatus() == Status.WIN || team2.getStatus() == Status.WIN)
+        // If there is any error
+        if (checkTeamError(team1, team2))
             return;
-
-
-        // check if the the other competitor is ready
-        if (team1.getStatus() == Status.HIDDEN || team2.getStatus() == Status.HIDDEN) {
-            showWarn("The other competitor is not ready.");
-            return;
-        }
-
-        // if the two teams haven't started playing yet
-        if (team1.getStatus() == Status.NO_SCORE && team2.getStatus() == Status.NO_SCORE) {
-            showWarn("Two teams haven't start playing yet.");
-            return;
-        }
-
-        // if team1 has not start playing
-        if (team1.getStatus() == Status.NO_SCORE) {
-            showWarn(team1.getName() + " has no score.");
-            return;
-        }
-
-        // if team2 has not start playing
-        if (team2.getStatus() == Status.NO_SCORE) {
-            showWarn(team2.getName() + " has no score.");
-            return;
-        }
-
-        // if two teams have the same score
-        if (team1.compareTo(team2) == 0) {
-            showWarn(team1.getName() + " and " + team2.getName() + " tie!" + "\r\nStart another game! ");
-            team1.setStatus(Status.NO_SCORE);
-            team2.setStatus(Status.NO_SCORE);
-            return;
-        }
 
         // If the program can run to this line, then two teams both have scores
         // decide the winner of the game
@@ -394,21 +362,61 @@ public class Tournament {
         // set the name for next round
         Team parent = teams.get(parentIndex);
         parent.initialize(winner.getName());
-        showButton(parentIndex);
+
+        // Set the visibility of the next button
+        // 1. get the competitor
+        Team competitor = teams.get(parentIndex % 2 == 0 ? parentIndex + 1 : parentIndex - 1);
+        // 2. Check whether the other competitor is ready
+        if (competitor.getStatus() != Status.HIDDEN)
+            confirmButtons.get(parentIndex / 2).setVisible(true);
     }
 
     /**
-     * This method shows the confirm buttons of the next round
-     * after the former round is over.
+     * This method returns true if there is any error
      *
-     * @param index is the round that confirm buttons need to be showed.
+     * @param team1 the first team
+     * @param team2 the second team
+     * @return if there is any error for the two team
      */
-    private void showButton(int index) {
-        // get the competitor
-        Team competitor = teams.get((index % 2 == 0) ? index + 1 : index - 1);
-        // Check whether the other competitor is ready
-        if (competitor.getStatus() != Status.HIDDEN)
-            confirmButtons.get(index / 2).setVisible(true);
+    private boolean checkTeamError(Team team1, Team team2) {
+        // check if the round is already finished
+        if (team1.getStatus() == Status.WIN || team2.getStatus() == Status.WIN)
+            return true;
+
+
+        // check if the the other competitor is ready
+        if (team1.getStatus() == Status.HIDDEN || team2.getStatus() == Status.HIDDEN) {
+            showWarn("The other competitor is not ready.");
+            return true;
+        }
+
+        // if the two teams haven't started playing yet
+        if (team1.getStatus() == Status.NO_SCORE && team2.getStatus() == Status.NO_SCORE) {
+            showWarn("Two teams haven't start playing yet.");
+            return true;
+        }
+
+        // if team1 has not start playing
+        if (team1.getStatus() == Status.NO_SCORE) {
+            showWarn(team1.getName() + " has no score.");
+            return true;
+        }
+
+        // if team2 has not start playing
+        if (team2.getStatus() == Status.NO_SCORE) {
+            showWarn(team2.getName() + " has no score.");
+            return true;
+        }
+
+        // if two teams have the same score
+        if (team1.compareTo(team2) == 0) {
+            showWarn(team1.getName() + " and " + team2.getName() + " tie!" + "\r\nStart another game! ");
+            team1.setStatus(Status.NO_SCORE);
+            team2.setStatus(Status.NO_SCORE);
+            return true;
+        }
+
+        return false;
     }
 
     /**
