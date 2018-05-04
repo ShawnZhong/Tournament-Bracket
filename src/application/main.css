@@ -33,6 +33,7 @@ Team {
 Team > Label {
     -fx-background-radius: 5;
     -fx-label-padding: 3;
+    -fx-max-width: 70;
 }
 
 .winner > Label {
